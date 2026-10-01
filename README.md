@@ -32,4 +32,4 @@ The site uses the dedicated GA4 property `SiamTEFL` (web stream: `https://siamte
 
 Course fee references checked against the provider's current course comparison on 1 October 2026: Standard ฿45,000, TQUK Level 5 ฿50,000, paid internship ฿90,000 and All-In ฿130,000. The All-In page describes first-month accommodation, visa document guidance, orientation and 12-month career support. Employment wording is deliberately conservative: eligibility applies and the school makes the hiring decision. Recheck primary sources before publishing and periodically after launch.
 
-The contact address `hello@siamtefl.com` is a placeholder until the site owner configures a mailbox. Replace it or set it up before launch. The privacy policy describes current static behavior and must be updated if analytics or other tracking is added.
+The contact page routes course questions to Essential TEFL and site feedback to `hello@siamtefl.com`. Confirm that this mailbox or a forwarding rule is active before relying on it. The privacy policy describes the site’s current tracking behavior.
