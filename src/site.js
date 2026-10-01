@@ -11,9 +11,14 @@
   <meta property="og:title" content="{{TITLE}}">
   <meta property="og:description" content="{{DESCRIPTION}}">
   <meta property="og:url" content="{{CANONICAL}}">
-  <meta property="og:image" content="https://siamtefl.com/images/adult-class-social.jpg">
-  <meta property="og:image:alt" content="Generic classroom stock photo of an instructor and adult learners; not a verified TEFL or Essential TEFL training location.">
+  <meta property="og:image" content="{{OG_IMAGE}}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="{{OG_WIDTH}}">
+  <meta property="og:image:height" content="{{OG_HEIGHT}}">
+  <meta property="og:image:alt" content="{{OG_ALT}}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{OG_IMAGE}}">
+  <meta name="twitter:image:alt" content="{{OG_ALT}}">
   <meta name="twitter:title" content="{{TITLE}}">
   <meta name="twitter:description" content="{{DESCRIPTION}}">
   <link rel="canonical" href="{{CANONICAL}}">
