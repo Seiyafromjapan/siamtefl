@@ -24,9 +24,9 @@ Open `http://localhost:4173`. The production files in `dist/` include per-page m
 Repository: https://github.com/Seiyafromjapan/siamtefl
 The source repository is public; the site only becomes live after Pages and DNS are configured.
 
-## Analytics limitation
+## Analytics
 
-Affiliate CTA links use the referral URL and carry `rel="sponsored nofollow"`. The browser emits a `dataLayer` event and tries a same-origin beacon, but a plain static site cannot collect that beacon. To store click events, connect a real analytics provider or serverless endpoint and update the privacy policy. The affiliate network may separately count referrals according to its terms.
+The site uses the dedicated GA4 property `SiamTEFL` (web stream: `https://siamtefl.com`, measurement ID: `G-90601G33WS`). Analytics is opt-in: the Google tag loads only after a visitor allows it. The stream records page views and the custom `affiliate_click` event with page path, provider and CTA placement. Enhanced Measurement is disabled; calculator inputs and the full affiliate URL are not sent as event parameters. The footer privacy control lets visitors change or withdraw their choice. The affiliate platform may separately report referral clicks and conversions.
 
 ## Editorial notes
 
