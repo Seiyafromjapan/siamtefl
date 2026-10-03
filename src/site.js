@@ -8,8 +8,8 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="SiamTEFL">
-  <meta property="og:title" content="{{TITLE}}">
-  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:title" content="{{OG_TITLE}}">
+  <meta property="og:description" content="{{OG_DESCRIPTION}}">
   <meta property="og:url" content="{{CANONICAL}}">
   <meta property="og:image" content="{{OG_IMAGE}}">
   <meta property="og:image:type" content="image/jpeg">
