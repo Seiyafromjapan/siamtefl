@@ -18,6 +18,8 @@ for (const page of pages) {
   const html = base
     .replaceAll('{{TITLE}}', page.title)
     .replaceAll('{{DESCRIPTION}}', page.description)
+    .replaceAll('{{OG_TITLE}}', page.ogTitle || page.title)
+    .replaceAll('{{OG_DESCRIPTION}}', page.ogDescription || page.description)
     .replaceAll('{{CANONICAL}}', `https://siamtefl.com${page.path}`)
     .replaceAll('{{PATH}}', page.path)
     .replaceAll('{{KEYWORDS}}', page.keywords || 'TEFL Thailand, TEFL Bangkok, teach English Thailand')
