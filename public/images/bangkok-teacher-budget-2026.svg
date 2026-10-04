@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1013" viewBox="0 0 1800 1013" role="img" aria-labelledby="title desc">
+  <title id="title">Bangkok teacher monthly budget</title>
+  <desc id="desc">An editorial budget still life with a rental receipt, transit map, food and cost ledger.</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#fbf7ec"/><stop offset="1" stop-color="#e9dfc9"/></linearGradient>
+    <linearGradient id="teal" x2="1" y2="1"><stop stop-color="#123d45"/><stop offset="1" stop-color="#205c61"/></linearGradient>
+    <filter id="shadow" x="-.2" y="-.2" width="1.4" height="1.5"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#132f31" flood-opacity=".18"/></filter>
+    <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse"><path d="M52 0H0V52" fill="none" stroke="#b8b39f" stroke-opacity=".16"/></pattern>
+  </defs>
+  <rect width="1800" height="1013" fill="url(#paper)"/><rect width="1800" height="1013" fill="url(#grid)"/>
+  <path d="M0 0h690L0 365z" fill="#123d45"/><path d="M0 0h40v1013H0z" fill="#d49a42"/>
+  <g opacity=".14" fill="none" stroke="#f7f1e3" stroke-width="3">
+    <path d="M72 695h480v225H72zM310 695v112h242M72 812h238M430 695v225"/>
+    <path d="M72 723h190v61H72zM332 723h76v61h-76z"/>
+  </g>
+  <g transform="translate(90 118)">
+    <text x="0" y="0" fill="#e8b55e" font-family="Arial,sans-serif" font-size="20" font-weight="700" letter-spacing="5">THE BANGKOK BUDGET</text>
+    <text x="0" y="82" fill="#fffaf0" font-family="Georgia,serif" font-size="58" font-weight="700">One salary.</text>
+    <text x="0" y="151" fill="#fffaf0" font-family="Georgia,serif" font-size="58" font-weight="700">Three very</text>
+    <text x="0" y="220" fill="#e8b55e" font-family="Georgia,serif" font-size="58" font-weight="700">different months.</text>
+    <text x="2" y="286" fill="#d9e4d9" font-family="Arial,sans-serif" font-size="25">Rent · commute · food · what remains</text>
+    <path d="M0 338h470" stroke="#d9e4d9" stroke-opacity=".3"/>
+    <text x="0" y="394" fill="#fffaf0" font-family="Arial,sans-serif" font-size="27" font-weight="700">฿35,000 / month</text>
+    <text x="0" y="432" fill="#b8cec2" font-family="Arial,sans-serif" font-size="18">A practical teacher's cost-of-living guide</text>
+  </g>
+  <!-- Apartment plan and rent slip -->
+  <g transform="translate(700 118) rotate(-4 260 220)" filter="url(#shadow)">
+    <rect width="490" height="410" rx="12" fill="#fffdf7"/>
+    <text x="36" y="50" fill="#53665c" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">ROOM + RENT</text>
+    <path d="M38 82h414v285H38zM38 225h202v142M240 82v143h212M318 225v142M240 282h78" fill="none" stroke="#55766e" stroke-width="5"/>
+    <path d="M53 96h171v112H53zM253 239h51v112h-51z" fill="#e9efdf"/>
+    <rect x="283" y="295" width="116" height="55" rx="4" fill="#e7d7b4"/>
+    <g transform="translate(305 102) rotate(8)">
+      <rect width="144" height="106" rx="4" fill="#e4b45e"/>
+      <circle cx="34" cy="53" r="19" fill="none" stroke="#9a6c28" stroke-width="5"/>
+      <path d="M34 36v34M26 43h13a7 7 0 0 1 0 14H26" fill="none" stroke="#9a6c28" stroke-width="4"/>
+      <path d="M69 38h55M69 54h44M69 70h50" stroke="#9a6c28" stroke-width="4"/>
+    </g>
+    <text x="37" y="395" fill="#7a8275" font-family="Arial,sans-serif" font-size="13">LEASE · UTILITIES · DEPOSIT</text>
+  </g>
+  <!-- transit route map -->
+  <g transform="translate(1218 114) rotate(3 240 205)" filter="url(#shadow)">
+    <rect width="490" height="370" rx="12" fill="#fffdf7"/>
+    <text x="34" y="48" fill="#53665c" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">DOOR-TO-DOOR</text>
+    <path d="M54 114C145 72 174 223 261 176S368 102 431 134" fill="none" stroke="#1b6970" stroke-width="12" stroke-linecap="round"/>
+    <path d="M67 271c93-57 111-4 195-62s103-4 172-89" fill="none" stroke="#d49a42" stroke-width="10" stroke-linecap="round"/>
+    <g fill="#fffdf7" stroke="#1b6970" stroke-width="8"><circle cx="83" cy="105" r="14"/><circle cx="168" cy="134" r="14"/><circle cx="254" cy="181" r="14"/><circle cx="347" cy="131" r="14"/><circle cx="424" cy="132" r="14"/></g>
+    <g fill="#fffdf7" stroke="#d49a42" stroke-width="8"><circle cx="72" cy="267" r="13"/><circle cx="178" cy="231" r="13"/><circle cx="262" cy="208" r="13"/><circle cx="352" cy="168" r="13"/><circle cx="431" cy="124" r="13"/></g>
+    <path d="M54 316h105" stroke="#1b6970" stroke-width="8" stroke-linecap="round"/><text x="173" y="323" fill="#53665c" font-family="Arial,sans-serif" font-size="16">RAIL + LAST MILE</text>
+  </g>
+  <!-- food and cost ledger -->
+  <g transform="translate(718 590) rotate(2 470 170)" filter="url(#shadow)">
+    <rect width="950" height="306" rx="14" fill="#fffdf7"/>
+    <text x="42" y="54" fill="#53665c" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2">A MONTHLY PLAN, NOT A PROMISE</text>
+    <path d="M40 82h865" stroke="#ddd4c0" stroke-width="2"/>
+    <g font-family="Arial,sans-serif" font-size="22" fill="#314a45">
+      <text x="48" y="132">Rent</text><text x="48" y="180">Food + bills</text><text x="48" y="228">Commute</text>
+      <text x="710" y="132" font-weight="700">฿11,000</text><text x="710" y="180" font-weight="700">฿12,500</text><text x="710" y="228" font-weight="700">฿2,500</text>
+    </g>
+    <g fill="#1b6970"><rect x="212" y="111" width="412" height="18" rx="9"/><rect x="212" y="159" width="468" height="18" rx="9"/><rect x="212" y="207" width="216" height="18" rx="9"/></g>
+    <path d="M40 254h865" stroke="#ddd4c0" stroke-width="2"/>
+    <text x="48" y="287" fill="#9b6523" font-family="Arial,sans-serif" font-size="19" font-weight="700">THEN CHECK WHAT'S LEFT</text>
+    <g transform="translate(800 -36)"><circle cx="54" cy="22" r="39" fill="#d49a42"/><circle cx="54" cy="22" r="26" fill="none" stroke="#fff1d3" stroke-width="3"/><text x="39" y="31" fill="#fff9eb" font-family="Georgia,serif" font-size="26" font-weight="700">฿</text></g>
+  </g>
+  <g transform="translate(660 505) rotate(-10)" filter="url(#shadow)">
+    <rect width="178" height="238" rx="6" fill="#f3e7cb"/>
+    <path d="M25 35h124M25 61h103M25 87h118M25 113h89M25 165h125M25 191h101" stroke="#9b927e" stroke-width="3" opacity=".7"/>
+    <circle cx="91" cy="139" r="26" fill="#d6a74d"/><circle cx="91" cy="139" r="18" fill="none" stroke="#fff0cf" stroke-width="3"/>
+    <text x="80" y="147" fill="#fff8e9" font-family="Georgia,serif" font-size="25" font-weight="700">฿</text>
+    <text x="26" y="225" fill="#6a6557" font-family="Arial,sans-serif" font-size="10" letter-spacing="1.4">FOOD + BILLS</text>
+  </g>
+  <text x="90" y="964" fill="#31534f" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="3">SIAMTEFL  ·  THE THAILAND DECISION GUIDE</text>
+  <text x="1680" y="964" text-anchor="end" fill="#68766e" font-family="Arial,sans-serif" font-size="16">RENT • ROUTE • REALITY</text>
+</svg>
