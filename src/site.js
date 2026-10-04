@@ -12,7 +12,7 @@
   <meta property="og:description" content="{{OG_DESCRIPTION}}">
   <meta property="og:url" content="{{CANONICAL}}">
   <meta property="og:image" content="{{OG_IMAGE}}">
-  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:type" content="{{OG_IMAGE_TYPE}}">
   <meta property="og:image:width" content="{{OG_WIDTH}}">
   <meta property="og:image:height" content="{{OG_HEIGHT}}">
   <meta property="og:image:alt" content="{{OG_ALT}}">
