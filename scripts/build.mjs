@@ -24,6 +24,7 @@ for (const page of pages) {
     .replaceAll('{{PATH}}', page.path)
     .replaceAll('{{KEYWORDS}}', page.keywords || 'TEFL Thailand, TEFL Bangkok, teach English Thailand')
     .replaceAll('{{OG_IMAGE}}', `https://siamtefl.com${page.socialImage || '/images/adult-class-social.jpg'}`)
+    .replaceAll('{{OG_IMAGE_TYPE}}', page.socialImageType || 'image/jpeg')
     .replaceAll('{{OG_ALT}}', (page.socialImageAlt || 'Generic classroom stock photo of an instructor and adult learners; not a verified TEFL or Essential TEFL training location.').replaceAll('&', '&amp;').replaceAll('\"', '&quot;'))
     .replaceAll('{{OG_WIDTH}}', page.socialImageWidth || 1800)
     .replaceAll('{{OG_HEIGHT}}', page.socialImageHeight || 1013)
