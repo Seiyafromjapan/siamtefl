@@ -38,7 +38,7 @@ for (const page of pages) {
 }
 
 await writeFile(join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\nSitemap: https://siamtefl.com/sitemap.xml\n');
-await writeFile(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p => `  <url><loc>https://siamtefl.com${p.path}</loc><lastmod>2026-10-01</lastmod><changefreq>${p.path === '/' ? 'weekly' : 'monthly'}</changefreq><priority>${p.path === '/' ? '1.0' : '0.8'}</priority></url>`).join('\n')}\n</urlset>\n`);
+await writeFile(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p => `  <url><loc>https://siamtefl.com${p.path}</loc><lastmod>${p.schema?.dateModified || '2026-10-01'}</lastmod><changefreq>${p.path === '/' ? 'weekly' : 'monthly'}</changefreq><priority>${p.path === '/' ? '1.0' : '0.8'}</priority></url>`).join('\n')}\n</urlset>\n`);
 await writeFile(join(dist, '404.html'), `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>Page not found | SiamTEFL</title><link rel="stylesheet" href="/assets/site.css"><main class="wrap section"><p class="eyebrow">404 · LOST IN BANGKOK?</p><h1>This page took a wrong turn.</h1><p>Head back to the decision guide and find your route.</p><a class="button" href="/">Explore SiamTEFL</a></main>`);
 await mkdir(join(dist, 'assets'), { recursive: true });
 await cp(join(root, 'public'), dist, { recursive: true });
