@@ -15,11 +15,21 @@ await mkdir(dist, { recursive: true });
 for (const page of pages) {
   const pageDir = page.path === '/' ? dist : join(dist, page.path.slice(1));
   await mkdir(pageDir, { recursive: true });
+  const isArticle = page.schema?.['@type'] === 'Article'
+    || page.schema?.['@graph']?.some(item => item['@type'] === 'Article');
+  const articleSchema = isArticle
+    ? (page.schema['@type'] === 'Article' ? page.schema : page.schema['@graph'].find(item => item['@type'] === 'Article'))
+    : null;
+  const articleMeta = articleSchema
+    ? `<meta property="article:published_time" content="${articleSchema.datePublished || ''}">\n  <meta property="article:modified_time" content="${articleSchema.dateModified || ''}">`
+    : '';
   const html = base
     .replaceAll('{{TITLE}}', page.title)
     .replaceAll('{{DESCRIPTION}}', page.description)
     .replaceAll('{{OG_TITLE}}', page.ogTitle || page.title)
     .replaceAll('{{OG_DESCRIPTION}}', page.ogDescription || page.description)
+    .replaceAll('{{OG_TYPE}}', isArticle ? 'article' : 'website')
+    .replaceAll('{{ARTICLE_META}}', articleMeta)
     .replaceAll('{{CANONICAL}}', `https://siamtefl.com${page.path}`)
     .replaceAll('{{PATH}}', page.path)
     .replaceAll('{{KEYWORDS}}', page.keywords || 'TEFL Thailand, TEFL Bangkok, teach English Thailand')
