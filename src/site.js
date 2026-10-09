@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#123d35">
   <meta name="description" content="{{DESCRIPTION}}">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="{{OG_TYPE}}">
+  {{ARTICLE_META}}
   <meta property="og:site_name" content="SiamTEFL">
   <meta property="og:title" content="{{OG_TITLE}}">
   <meta property="og:description" content="{{OG_DESCRIPTION}}">
