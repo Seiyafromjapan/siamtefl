@@ -24,7 +24,13 @@
 
 /* Essential TEFL review: photo captions and a clear, inactive partner status. */
 .review-photo{max-width:760px;margin:24px auto 30px}.review-photo img{display:block;width:100%;height:auto;aspect-ratio:1.9/1;object-fit:cover;border-radius:8px;background:#e9eee6}.review-photo figcaption{padding:9px 2px 0;color:#77847b;font-size:11px;line-height:1.55}.review-photo figcaption a{color:inherit;text-decoration:underline;text-underline-offset:3px}
-.partner-status{display:flex;width:min(100%,560px);min-height:64px;align-items:center;justify-content:center;margin:22px auto;padding:16px 28px;border:2px solid #96a99d;border-radius:7px;background:linear-gradient(110deg,#e4e9df,#f3f4ec 48%,#e4e9df);color:#40584d;font-size:16px;font-weight:750;letter-spacing:.015em;text-align:center;box-shadow:0 5px 16px #123d3515;cursor:not-allowed;opacity:1;transition:box-shadow .2s ease,filter .2s ease}
-.partner-status:disabled{opacity:1}.partner-status:hover{filter:brightness(1.025);box-shadow:0 7px 20px #123d3522}.partner-status:focus-visible{outline:3px solid #9bab65;outline-offset:3px}
-@media(max-width:700px){.review-photo{width:calc(100% - 38px);margin:20px auto 25px}.partner-status{width:100%;min-height:60px;font-size:15px;padding:14px 18px}}
-@media(prefers-reduced-motion:reduce){.partner-status{transition:none}}
+
+/* Essential TEFL LP: clear, non-interactive CTA previews while referral terms are pending. */
+.cta-preview{max-width:620px;margin:22px auto;padding:16px 20px;border:1px dashed #98a69d;border-radius:6px;background:#f2f4f1;color:#42554b;text-align:center}.cta-preview-label{display:block;margin-bottom:7px;color:#697970;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}.cta-preview strong{display:block;font-size:19px;line-height:1.35}.cta-preview p{margin:7px 0 0;color:#697970;font-size:12px;line-height:1.5}.review-photo{max-width:760px;margin:26px auto 32px}.review-photo img{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:cover;border-radius:8px;background:#e9eee6}.review-photo figcaption{padding:9px 2px 0;color:#77847b;font-size:11px;line-height:1.55}
+@media(max-width:700px){.cta-preview{margin:20px 0;padding:15px 16px}.cta-preview strong{font-size:17px}.review-photo{width:100%;margin:20px auto 25px}}
+
+
+/* Ready-to-activate affiliate CTA design; not used until referral terms are confirmed. */
+.essential-tefl-cta{display:flex;width:min(100%,620px);min-height:64px;align-items:center;justify-content:center;gap:10px;margin:22px auto;padding:16px 24px;border:2px solid #0e554b;border-radius:7px;background:#0e554b;color:#fff;font-size:17px;font-weight:750;line-height:1.35;text-align:center;text-decoration:none;box-shadow:0 5px 14px #123d3520;transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease}.essential-tefl-cta:hover{transform:translateY(-2px);background:#0a463f;box-shadow:0 9px 20px #123d3530}.essential-tefl-cta:focus-visible{outline:3px solid #9bab65;outline-offset:4px}
+@media(max-width:700px){.essential-tefl-cta{width:100%;min-height:60px;padding:15px 18px;font-size:16px}}
+@media(prefers-reduced-motion:reduce){.essential-tefl-cta{transition:none}.essential-tefl-cta:hover{transform:none}}
