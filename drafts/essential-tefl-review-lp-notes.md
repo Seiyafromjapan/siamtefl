@@ -1,6 +1,6 @@
 # Essential TEFL LP draft
 
-**State:** Local review only, branch `codex/essential-tefl-lp-draft`; not pushed or published. Route candidate: `/essential-tefl-review/`.
+**State:** Review-only draft on branch `codex/essential-tefl-lp-draft`; pushed to GitHub but not merged or published. Route candidate: `/essential-tefl-review/`.
 
 ## Wireframe and page intent
 
