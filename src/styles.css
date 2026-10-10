@@ -32,5 +32,9 @@
 
 /* Ready-to-activate affiliate CTA design; not used until referral terms are confirmed. */
 .essential-tefl-cta{display:flex;width:min(100%,620px);min-height:64px;align-items:center;justify-content:center;gap:10px;margin:22px auto;padding:16px 24px;border:2px solid #0e554b;border-radius:7px;background:#0e554b;color:#fff;font-size:17px;font-weight:750;line-height:1.35;text-align:center;text-decoration:none;box-shadow:0 5px 14px #123d3520;transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease}.essential-tefl-cta:hover{transform:translateY(-2px);background:#0a463f;box-shadow:0 9px 20px #123d3530}.essential-tefl-cta:focus-visible{outline:3px solid #9bab65;outline-offset:4px}
+.essential-tefl-cta:disabled,.essential-tefl-cta:disabled:hover{opacity:.62;cursor:not-allowed;transform:none;background:#0e554b;box-shadow:none}
+.course-cta{width:min(100%,620px);margin:22px auto;text-align:center}.course-cta .essential-tefl-cta{width:100%;margin:0}.course-cta p{margin:9px 0 0;color:#596b60;font-size:12px;line-height:1.5}
+.provider-alternative{margin:24px 0;padding:22px 24px;border:1px solid var(--line);border-left:4px solid #9bab65;border-radius:6px;background:#fff}.provider-alternative h3{margin:3px 0 9px;color:var(--forest);font-size:19px}.provider-alternative p{margin:0 0 12px;font-size:13px;line-height:1.65}.provider-alternative a{font-size:12px;font-weight:700;color:var(--forest);text-decoration:underline;text-underline-offset:3px}
 @media(max-width:700px){.essential-tefl-cta{width:100%;min-height:60px;padding:15px 18px;font-size:16px}}
+@media(max-width:700px){.course-cta{margin:19px 0}.provider-alternative{padding:18px 16px}}
 @media(prefers-reduced-motion:reduce){.essential-tefl-cta{transition:none}.essential-tefl-cta:hover{transform:none}}
