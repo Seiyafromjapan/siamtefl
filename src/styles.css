@@ -37,3 +37,30 @@
 @media(max-width:700px){.essential-tefl-cta{width:100%;min-height:60px;padding:15px 18px;font-size:16px}}
 @media(max-width:700px){.course-cta{margin:19px 0}.provider-alternative{padding:18px 16px}}
 @media(prefers-reduced-motion:reduce){.essential-tefl-cta{transition:none}.essential-tefl-cta:hover{transform:none}}
+
+/* S023 job search tables: readable desktop comparisons and mobile cards. */
+.job-table-scroll{width:100%;margin:18px 0 28px;overflow-x:auto;overscroll-behavior-inline:contain;border:1px solid #d7e1d8;border-radius:9px;background:#fff;box-shadow:0 5px 18px #173b2d0b;scrollbar-color:#829b8a #eef2ed;scrollbar-width:thin}
+.job-table-scroll:focus-visible{outline:3px solid #75977f;outline-offset:3px}
+.job-table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-size:13px;line-height:1.65}
+.job-table-1{min-width:760px}.job-table-2{min-width:650px}.job-table-3{min-width:650px}
+.job-table th,.job-table td{padding:15px 16px;text-align:left;vertical-align:top;border-right:1px solid #e3e9e2;border-bottom:1px solid #e3e9e2;overflow-wrap:anywhere;hyphens:auto}
+.job-table th:last-child,.job-table td:last-child{border-right:0}
+.job-table tbody tr:last-child td{border-bottom:0}
+.job-table thead th{background:#173f36;color:#fff;font-size:11px;font-weight:750;letter-spacing:.035em;line-height:1.45}
+.job-table tbody tr:nth-child(even){background:#f3f7f2}
+.job-table tbody td:first-child{font-weight:700;color:#173f36}
+.job-table a{color:#145b4c;text-decoration:underline;text-decoration-color:#a5b9a9;text-underline-offset:3px;overflow-wrap:anywhere}
+.job-table a:hover{color:#0c392f}
+@media(max-width:700px){
+  .job-table-scroll{overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;margin:16px 0 24px}
+  .job-table{min-width:0!important;border-spacing:0;background:transparent;font-size:13px}
+  .job-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .job-table,.job-table tbody,.job-table tr,.job-table td{display:block;width:100%}
+  .job-table tbody{display:grid;gap:12px}
+  .job-table tbody tr{overflow:hidden;border:1px solid #d8e3d9;border-radius:9px;background:#fff!important;box-shadow:0 4px 14px #173b2d0c}
+  .job-table td{display:grid;grid-template-columns:minmax(94px,28%) minmax(0,1fr);gap:12px;padding:12px 14px;border-right:0;border-bottom:1px solid #e6ebe5;font-size:13px;line-height:1.6}
+  .job-table td:before{content:attr(data-label);font-size:10px;font-weight:750;letter-spacing:.025em;color:#285a49;line-height:1.45}
+  .job-table td:last-child{border-bottom:0}
+  .job-table tbody td:first-child{background:#edf4ed;color:#173f36;font-size:14px}
+  .job-table-1 td{grid-template-columns:minmax(94px,25%) minmax(0,1fr)}
+}
