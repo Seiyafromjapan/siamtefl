@@ -3,6 +3,8 @@ const toggle=document.querySelector('.menu-toggle');const nav=document.querySele
 const analyticsId='G-90601G33WS';
 const consentKey='siamtefl_analytics_consent';
 const consentBanner=document.querySelector('#analytics-consent');
+const consentStatus=document.querySelector('#analytics-consent-status');
+function showConsentBanner(){if(consentBanner){const choice=localStorage.getItem(consentKey);if(consentStatus)consentStatus.textContent=choice==='granted'?'Current choice: Analytics allowed.':choice==='denied'?'Current choice: Analytics declined.':'No choice saved yet.';consentBanner.hidden=false}}
 const hasAnalyticsConsent=()=>localStorage.getItem(consentKey)==='granted';
 function loadAnalytics(){
   if(!hasAnalyticsConsent()||window.gtag)return;
@@ -26,10 +28,10 @@ function chooseAnalytics(value){
   }
 }
 if(consentBanner){
-  if(!localStorage.getItem(consentKey))consentBanner.hidden=false;
+  if(!localStorage.getItem(consentKey))showConsentBanner();
   consentBanner.addEventListener('click',e=>{const button=e.target.closest('[data-analytics-consent]');if(button)chooseAnalytics(button.dataset.analyticsConsent)});
 }
-document.querySelector('#privacy-settings')?.addEventListener('click',()=>{if(consentBanner)consentBanner.hidden=false});
+document.querySelector('#privacy-settings')?.addEventListener('click',showConsentBanner);
 if(hasAnalyticsConsent())loadAnalytics();
 document.addEventListener('click',e=>{
   const a=e.target.closest('a[data-affiliate]');
