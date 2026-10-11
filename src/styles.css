@@ -67,7 +67,7 @@
 
 /* Footer navigation: brand beside a balanced two-by-two group grid. */
 .footer-grid{
-  grid-template-columns:minmax(210px,.85fr) minmax(0,1.7fr);
+  grid-template-columns:minmax(210px,.85fr) repeat(2,minmax(0,1fr));
   align-items:start;
 }
 .footer-brand{grid-column:1;grid-row:1 / span 2}
