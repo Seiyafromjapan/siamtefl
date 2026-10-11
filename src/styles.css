@@ -65,4 +65,47 @@
   .job-table-1 td{grid-template-columns:minmax(94px,25%) minmax(0,1fr)}
 }
 
-
+/* Footer navigation: brand beside a balanced two-by-two group grid. */
+.footer-grid{
+  grid-template-columns:minmax(210px,.85fr) minmax(0,1.7fr);
+  align-items:start;
+}
+.footer-brand{grid-column:1;grid-row:1 / span 2}
+.footer-group{min-width:0}
+.footer-group:nth-child(2){grid-column:2;grid-row:1}
+.footer-group:nth-child(3){grid-column:3;grid-row:1}
+.footer-group:nth-child(4){grid-column:2;grid-row:2}
+.footer-group:nth-child(5){grid-column:3;grid-row:2}
+.footer-grid h2{margin:2px 0 12px;color:#e4eee7;font-size:12px;line-height:1.4;letter-spacing:.035em}
+.footer-grid>div>a:not(.brand){width:auto;margin:0;padding:5px 0;color:#c1d2c8;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.footer-bottom{align-items:center;flex-wrap:wrap}
+.privacy-settings-link{
+  flex:none;display:inline-flex;align-items:center;justify-content:center;
+  min-height:38px;margin:0 0 0 auto;padding:8px 13px;border:1px solid #8fa99a;
+  border-radius:4px;background:transparent;color:#e3eee7;font-size:12px;font-weight:650;
+  text-decoration:none;cursor:pointer
+}
+.privacy-settings-link:hover{border-color:var(--lime);background:#ffffff0d;color:var(--lime)}
+@media(max-width:1050px){
+  .footer-grid{grid-template-columns:minmax(190px,.75fr) repeat(2,minmax(0,1fr));gap:28px 24px}
+  .footer-brand{grid-column:1;grid-row:1 / span 2}
+  .footer-group:nth-child(2){grid-column:2;grid-row:1}
+  .footer-group:nth-child(3){grid-column:3;grid-row:1}
+  .footer-group:nth-child(4){grid-column:2;grid-row:2}
+  .footer-group:nth-child(5){grid-column:3;grid-row:2}
+}
+@media(max-width:760px){
+  .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 22px}
+  .footer-brand{grid-column:1 / -1;grid-row:auto}
+  .footer-group:nth-child(2),.footer-group:nth-child(3),
+  .footer-group:nth-child(4),.footer-group:nth-child(5){grid-column:auto;grid-row:auto}
+  .footer-bottom{display:flex}
+  .privacy-settings-link{margin:8px 0 0}
+}
+@media(max-width:520px){
+  .footer-grid{grid-template-columns:minmax(0,1fr);gap:23px}
+  .footer-brand,.footer-group:nth-child(2),.footer-group:nth-child(3),
+  .footer-group:nth-child(4),.footer-group:nth-child(5){grid-column:1;grid-row:auto}
+  .footer-bottom{display:block}
+  .privacy-settings-link{margin:11px 0 0}
+}
