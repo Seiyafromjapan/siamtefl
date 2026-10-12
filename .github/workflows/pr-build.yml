@@ -24,8 +24,9 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - name: Verify all 29 article routes were generated
+      - name: Verify all registered routes were generated
         run: |
           count=$(find dist -type f -name index.html | wc -l)
-          echo "Generated HTML pages: $count"
-          test "$count" -eq 29
+          expected=$(node -e "console.log(JSON.parse(require('fs').readFileSync('src/pages.json', 'utf8')).length)")
+          echo "Generated HTML pages: $count (expected $expected)"
+          test "$count" -eq "$expected"
