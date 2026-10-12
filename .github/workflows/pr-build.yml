@@ -24,9 +24,33 @@ jobs:
           node-version: 20
       - run: npm install
       - run: npm run build
-      - name: Verify all registered routes were generated
+      - name: Verify all registered routes were generated without dropping base routes
         run: |
-          count=$(find dist -type f -name index.html | wc -l)
-          expected=$(node -e "console.log(JSON.parse(require('fs').readFileSync('src/pages.json', 'utf8')).length)")
-          echo "Generated HTML pages: $count (expected $expected)"
-          test "$count" -eq "$expected"
+          git fetch --no-tags --depth=1 origin main
+          node --input-type=module <<'NODE'
+          import { execFileSync } from 'node:child_process';
+          import { readFileSync, statSync } from 'node:fs';
+          import { join } from 'node:path';
+
+          const base = JSON.parse(execFileSync('git', ['show', 'origin/main:src/pages.json'], { encoding: 'utf8' }));
+          const pages = JSON.parse(readFileSync('src/pages.json', 'utf8'));
+          const basePaths = new Set(base.map(page => page.path));
+          const pagePaths = pages.map(page => page.path);
+          const uniquePaths = new Set(pagePaths);
+          const addedPaths = [...uniquePaths].filter(route => !basePaths.has(route));
+          const expectedCount = base.length + addedPaths.length;
+          const missingBase = [...basePaths].filter(route => !uniquePaths.has(route));
+          const outputFiles = execFileSync('find', ['dist', '-type', 'f', '-name', 'index.html'], { encoding: 'utf8' }).trim().split('\n').filter(Boolean);
+          const outputCount = outputFiles.length;
+          const missingOutput = pages.filter(page => {
+            const output = join('dist', page.path === '/' ? '' : page.path.slice(1), 'index.html');
+            try { return !statSync(output).isFile(); } catch { return true; }
+          }).map(page => page.path);
+
+          console.log(`Base routes: ${base.length}; added routes: ${addedPaths.length}; expected output: ${expectedCount}; registered: ${pages.length}; generated: ${outputCount}`);
+          if (uniquePaths.size !== pagePaths.length) throw new Error('Duplicate route paths exist in src/pages.json');
+          if (missingBase.length) throw new Error(`Base routes were removed: ${missingBase.join(', ')}`);
+          if (pages.length !== expectedCount) throw new Error(`Route count should be ${expectedCount} (base routes plus additions), got ${pages.length}`);
+          if (outputCount !== expectedCount) throw new Error(`Generated HTML count should be ${expectedCount}, got ${outputCount}`);
+          if (missingOutput.length) throw new Error(`Generated files are missing: ${missingOutput.join(', ')}`);
+          NODE
