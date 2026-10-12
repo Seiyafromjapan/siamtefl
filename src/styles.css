@@ -109,3 +109,8 @@
   .footer-bottom{display:block}
   .privacy-settings-link{margin:11px 0 0}
 }
+
+/* Keep the job timeline readable on narrow screens without changing other course tables. */
+.timeline-scroll{width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
+.timeline-scroll table{min-width:700px}
+.timeline-scroll:focus-visible{outline:3px solid #75977f;outline-offset:3px}
