@@ -123,3 +123,11 @@
 .menu-toggle{min-width:44px;min-height:44px;align-items:center;justify-content:center;cursor:pointer}
 @media(max-width:850px) and (min-width:701px){.nav-links{gap:12px;font-size:10px}.nav-wrap{padding-inline:20px}}
 @media(max-width:700px){.hero-actions{align-items:stretch;flex-direction:column;max-width:420px}.hero-actions .button{width:100%;justify-content:space-between}.hero h1 em{display:inline}}
+
+.breadcrumbs{display:block;max-width:100%;overflow-wrap:anywhere}
+.breadcrumbs ol{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;list-style:none;margin:0;padding:0}
+.breadcrumbs li{display:inline-flex;align-items:center;min-width:0}
+.breadcrumbs li+li::before{content:"›";margin-right:8px;color:#9ba69e}
+.breadcrumbs a{text-underline-offset:3px}
+.breadcrumbs [aria-current="page"]{color:#59675f}
+@media(max-width:520px){.breadcrumbs{font-size:12px;line-height:1.5;margin-bottom:16px}}
