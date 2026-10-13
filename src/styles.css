@@ -114,3 +114,12 @@
 .timeline-scroll{width:100%;overflow-x:auto;overscroll-behavior-inline:contain}
 .timeline-scroll table{min-width:700px}
 .timeline-scroll:focus-visible{outline:3px solid #75977f;outline-offset:3px}
+
+/* Phase 1: give the three first-visit decisions comfortable mobile tap targets. */
+.hero-actions .button{min-height:48px;padding:13px 17px}
+.choice{min-height:58px;align-items:center}
+.nav-links>a{min-height:44px;display:flex;align-items:center}
+.nav-links>a.nav-cta{justify-content:center}
+.menu-toggle{min-width:44px;min-height:44px;align-items:center;justify-content:center;cursor:pointer}
+@media(max-width:850px) and (min-width:701px){.nav-links{gap:12px;font-size:10px}.nav-wrap{padding-inline:20px}}
+@media(max-width:700px){.hero-actions{align-items:stretch;flex-direction:column;max-width:420px}.hero-actions .button{width:100%;justify-content:space-between}.hero h1 em{display:inline}}
