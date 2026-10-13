@@ -59,9 +59,9 @@ function escapeHtml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
 }
 function breadcrumbData(page) {
-  const oldNav = page.content.match(/<nav class="breadcrumbs"[^>]*>([\\s\\S]*?)<\\/nav>/i);
-  const labels = oldNav ? [...oldNav[1].matchAll(/<span[^>]*>([\\s\\S]*?)<\\/span>/gi)] : [];
-  const current = (labels.at(-1)?.[1] || page.title.replace(/\\s*\\|\\s*SiamTEFL$/, ''))
+  const oldNav = page.content.match(/<nav class="breadcrumbs"[^>]*>([\s\S]*?)<\/nav>/i);
+  const labels = oldNav ? [...oldNav[1].matchAll(/<span[^>]*>([\s\S]*?)<\/span>/gi)] : [];
+  const current = (labels.at(-1)?.[1] || page.title.replace(/\s*\|\s*SiamTEFL$/, ''))
     .replace(/<[^>]+>/g, '').replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>').trim();
   const hub = hubByCluster[clusterFor[page.path]];
   const items = [{ name: 'Home', path: '/' }];
