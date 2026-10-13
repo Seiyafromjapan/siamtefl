@@ -65,7 +65,7 @@ function breadcrumbData(page) {
     .replace(/<[^>]+>/g, '').replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>').trim();
   const hub = hubByCluster[clusterFor[page.path]];
   const items = [{ name: 'Home', path: '/' }];
-  if (hub && hub.path !== page.path) items.push(hub);
+  if (hub && hub.path !== page.path) items.push({ name: hub.label, path: hub.path });
   items.push({ name: current, path: page.path });
   const nav = `<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>${items.map((item, index) => {
     const last = index === items.length - 1;
