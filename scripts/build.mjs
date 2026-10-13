@@ -36,6 +36,7 @@ const clusterFor = {
   '/standard-vs-all-in/': 'tefl',
   '/celta-vs-tefl-thailand/': 'tefl',
   '/tefl-job-placement-guarantee-thailand/': 'tefl',
+  '/tefl-course-deposit-refund-thailand/': 'tefl',
   '/essential-tefl-review/': 'tefl',
   '/first-time-english-teacher-salary-thailand/': 'budget',
   '/can-you-live-in-bangkok-on-35000-baht-teaching-salary/': 'budget',

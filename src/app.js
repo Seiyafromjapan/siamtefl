@@ -36,7 +36,7 @@ document.querySelector('#privacy-settings')?.addEventListener('click',showConsen
 const clusterRoutes={
   start_here:['/teach-english-thailand-no-experience/','/teach-english-thailand-non-native-speaker/','/thailand-teacher-visa-work-permit/'],
   find_a_job:['/where-to-find-teaching-jobs-thailand/','/teaching-agency-vs-direct-hire-thailand/','/too-late-apply-teaching-jobs-thailand/','/thailand-teaching-job-application-documents/','/thailand-teaching-interview-demo-lesson/','/cv-resume-teaching-jobs-thailand/','/thailand-teaching-contract-checklist/','/how-long-after-tefl-to-get-teaching-job-thailand/'],
-  choose_tefl:['/do-you-need-tefl-to-teach-in-thailand/','/how-to-choose-tefl-course-thailand/','/120-hour-tefl-certificate-thailand/','/online-vs-in-person-tefl-thailand/','/standard-vs-all-in/','/celta-vs-tefl-thailand/','/tefl-job-placement-guarantee-thailand/','/essential-tefl-review/','/120-hour-vs-level-5-tefl-thailand/'],
+  choose_tefl:['/do-you-need-tefl-to-teach-in-thailand/','/how-to-choose-tefl-course-thailand/','/120-hour-tefl-certificate-thailand/','/online-vs-in-person-tefl-thailand/','/standard-vs-all-in/','/celta-vs-tefl-thailand/','/tefl-job-placement-guarantee-thailand/','/tefl-course-deposit-refund-thailand/','/essential-tefl-review/','/120-hour-vs-level-5-tefl-thailand/'],
   pay_and_budget:['/first-time-english-teacher-salary-thailand/','/can-you-live-in-bangkok-on-35000-baht-teaching-salary/','/tefl-bangkok-cost/','/money-to-move-to-thailand-to-teach/','/calculator/','/thailand-teacher-school-holiday-pay/'],
   teach_and_settle:['/teach-english-thailand-without-speaking-thai/','/teaching-large-classes-thailand/']
 };
