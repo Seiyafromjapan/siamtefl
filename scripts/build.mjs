@@ -19,7 +19,6 @@ const breadcrumbHubs = {
 const clusterFor = {
   '/teach-english-thailand-no-experience/': 'start',
   '/teach-english-thailand-non-native-speaker/': 'start',
-  '/teach-english-thailand-without-speaking-thai/': 'start',
   '/thailand-teacher-visa-work-permit/': 'start',
   '/where-to-find-teaching-jobs-thailand/': 'jobs',
   '/too-late-apply-teaching-jobs-thailand/': 'jobs',
@@ -46,7 +45,7 @@ const clusterFor = {
   '/thailand-teacher-school-holiday-pay/': 'budget',
   '/teaching-large-classes-thailand/': 'teach',
   '/teach-english-thailand-without-speaking-thai/': 'teach',
-  '/thailand-teacher-visa-work-permit/': 'teach'
+  '/thailand-teacher-visa-work-permit/': 'start'
 };
 const hubByCluster = {
   start: breadcrumbHubs['/teach-english-thailand-no-experience/'],
