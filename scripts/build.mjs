@@ -1,4 +1,5 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { join } from 'node:path';
 
 const root = new URL('../', import.meta.url).pathname;
@@ -8,6 +9,7 @@ const css = await readFile(join(root, 'src/styles.css'), 'utf8');
 const js = await readFile(join(root, 'src/app.js'), 'utf8');
 const pages = JSON.parse(await readFile(join(root, 'src/pages.json'), 'utf8'));
 const affiliate = 'https://www.essentialtefl.com/?ref=suThaiJapan';
+const appVersion = createHash('sha256').update(js).digest('hex').slice(0, 12);
 
 const breadcrumbHubs = {
   '/teach-english-thailand-no-experience/': { path: '/teach-english-thailand-no-experience/', label: 'Start Here' },
@@ -121,7 +123,8 @@ for (const page of pages) {
     .replaceAll('{{CSS}}', css)
     .replaceAll('{{JS}}', js)
     .replaceAll('{{DATE}}', '2026-10-01')
-    .replaceAll('{{AFFILIATE}}', affiliate);
+    .replaceAll('{{AFFILIATE}}', affiliate)
+    .replaceAll('{{APP_VERSION}}', appVersion);
   await writeFile(join(pageDir, 'index.html'), html);
 }
 
