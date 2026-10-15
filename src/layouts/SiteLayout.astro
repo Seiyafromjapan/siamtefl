@@ -1,41 +1,61 @@
+---
+import { createHash } from 'node:crypto';
+import styles from '../styles.css?raw';
+import app from '../app.js?raw';
+
+const { page, content, schema } = Astro.props;
+const appVersion = createHash('sha256').update(app).digest('hex').slice(0, 12);
+const isArticle = page.schema?.['@type'] === 'Article'
+  || page.schema?.['@graph']?.some((item) => item['@type'] === 'Article');
+const articleSchema = isArticle
+  ? (page.schema['@type'] === 'Article' ? page.schema : page.schema['@graph'].find((item) => item['@type'] === 'Article'))
+  : null;
+const articleMeta = articleSchema
+  ? `<meta property="article:published_time" content="${articleSchema.datePublished || ''}">\n  <meta property="article:modified_time" content="${articleSchema.dateModified || ''}">`
+  : '';
+const canonical = `https://siamtefl.com${page.path}`;
+const socialImage = `https://siamtefl.com${page.socialImage || '/images/adult-class-social.jpg'}`;
+const socialImageAlt = (page.socialImageAlt || 'Generic classroom stock photo of an instructor and adult learners; not a verified TEFL or Essential TEFL training location.')
+  .replaceAll('&', '&amp;').replaceAll('"', '&quot;');
+const appLoader = `<script defer>const appBase=location.hostname.endsWith('github.io')?'/siamtefl':'';const appScript=document.createElement('script');appScript.src=appBase+'/assets/app.js?v=${appVersion}';appScript.defer=true;document.body.append(appScript)</script>`;
+---
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123d35">
-  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="description" content={page.description}>
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta property="og:type" content="{{OG_TYPE}}">
-  {{ARTICLE_META}}
+  <meta property="og:type" content={isArticle ? 'article' : 'website'}>
+  <Fragment set:html={articleMeta} />
   <meta property="og:site_name" content="SiamTEFL">
-  <meta property="og:title" content="{{OG_TITLE}}">
-  <meta property="og:description" content="{{OG_DESCRIPTION}}">
-  <meta property="og:url" content="{{CANONICAL}}">
-  <meta property="og:image" content="{{OG_IMAGE}}">
-  <meta property="og:image:type" content="{{OG_IMAGE_TYPE}}">
-  <meta property="og:image:width" content="{{OG_WIDTH}}">
-  <meta property="og:image:height" content="{{OG_HEIGHT}}">
-  <meta property="og:image:alt" content="{{OG_ALT}}">
+  <meta property="og:title" content={page.ogTitle || page.title}>
+  <meta property="og:description" content={page.ogDescription || page.description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={socialImage}>
+  <meta property="og:image:type" content={page.socialImageType || 'image/jpeg'}>
+  <meta property="og:image:width" content={page.socialImageWidth || 1800}>
+  <meta property="og:image:height" content={page.socialImageHeight || 1013}>
+  <meta property="og:image:alt" content={socialImageAlt}>
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="{{OG_IMAGE}}">
-  <meta name="twitter:image:alt" content="{{OG_ALT}}">
-  <meta name="twitter:title" content="{{TITLE}}">
-  <meta name="twitter:description" content="{{DESCRIPTION}}">
-  <link rel="canonical" href="{{CANONICAL}}">
+  <meta name="twitter:image" content={socialImage}>
+  <meta name="twitter:image:alt" content={socialImageAlt}>
+  <meta name="twitter:title" content={page.title}>
+  <meta name="twitter:description" content={page.description}>
+  <link rel="canonical" href={canonical}>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://www.essentialtefl.com">
-  <style>{{CSS}}</style>
-  <script type="application/ld+json">{{SCHEMA}}</script>
-  <title>{{TITLE}}</title>
+  <Fragment set:html={`<style>${styles}</style>`} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <title>{page.title}</title>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="nav-wrap"><a class="brand" href="/" aria-label="SiamTEFL home"><span class="brand-mark">S</span><span>SIAM<span class="brand-light">TEFL</span><small>THE THAILAND DECISION GUIDE</small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button><nav id="nav" class="nav-links" aria-label="Main navigation"><a href="/teach-english-thailand-no-experience/">Start Here</a><a href="/where-to-find-teaching-jobs-thailand/">Find a Job</a><a href="/how-to-choose-tefl-course-thailand/">Choose TEFL</a><a href="/money-to-move-to-thailand-to-teach/">Pay &amp; Budget</a><a href="/teaching-large-classes-thailand/">Teach &amp; Settle</a><a class="nav-cta" href="/calculator/">Plan My Budget <span>↗</span></a></nav></div></header>
-<main id="main">{{CONTENT}}</main>
+<main id="main"><Fragment set:html={content} /></main>
 <footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark">S</span><span>SIAM<span class="brand-light">TEFL</span><small>THE THAILAND DECISION GUIDE</small></span></a><p class="footer-note">Independent research for your next chapter in Thailand.</p></div><div class="footer-group"><h2>Find teaching work</h2><a href="/teach-english-thailand-no-experience/">Start with eligibility</a><a href="/where-to-find-teaching-jobs-thailand/">Find teaching jobs</a><a href="/thailand-teaching-job-application-documents/">Prepare your application</a><a href="/thailand-teaching-interview-demo-lesson/">Prepare for interviews</a></div><div class="footer-group"><h2>Choose TEFL training</h2><a href="/do-you-need-tefl-to-teach-in-thailand/">Do you need TEFL?</a><a href="/how-to-choose-tefl-course-thailand/">Compare TEFL courses</a><a href="/essential-tefl-review/">Read our Essential TEFL review</a></div><div class="footer-group"><h2>Pay, budget &amp; settle</h2><a href="/money-to-move-to-thailand-to-teach/">Plan your move and first-pay runway</a><a href="/calculator/">Estimate your costs</a><a href="/first-time-english-teacher-salary-thailand/">Compare salary and living costs</a><a href="/thailand-teacher-visa-work-permit/">Understand visa and work-permit steps</a><a href="/teaching-large-classes-thailand/">Prepare for your first classroom</a><a href="/teach-english-thailand-without-speaking-thai/">Plan communication when you do not speak Thai</a></div><div class="footer-group"><h2>About this guide</h2><a href="/about/">About SiamTEFL</a><a href="/methodology/">Research methodology</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy policy</a></div></div><div class="footer-bottom"><span>© 2026 SiamTEFL · Independent guide, independently operated.</span><span>Course details can change. Verify fees, dates and eligibility with the provider before booking.</span><button class="privacy-settings-link" id="privacy-settings" type="button">Privacy choices</button></div></footer>
 <aside class="consent-banner" id="analytics-consent" role="region" aria-label="Privacy choices" hidden><div><strong>Choose whether to allow analytics</strong><p id="analytics-consent-status" aria-live="polite"></p><p>Optional Google Analytics helps us understand page visits and clicks to course details. It stays off unless you allow it. <a href="/privacy/">Privacy policy</a></p></div><div class="consent-actions"><button class="consent-decline" type="button" data-analytics-consent="denied">Decline</button><button class="consent-allow" type="button" data-analytics-consent="granted">Allow analytics</button></div></aside>
-<script defer>const appBase=location.hostname.endsWith('github.io')?'/siamtefl':'';const appScript=document.createElement('script');appScript.src=appBase+'/assets/app.js?v={{APP_VERSION}}';appScript.defer=true;document.body.append(appScript)</script>
+<Fragment set:html={appLoader} />
 </body>
 </html>
-

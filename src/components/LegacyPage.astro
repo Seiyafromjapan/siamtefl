@@ -1,0 +1,12 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { addBreadcrumbs } from '../lib/page-rendering.js';
+
+const { page } = Astro.props;
+const resolvedPage = {
+  ...page,
+  content: page.content.replaceAll('{{AFFILIATE}}', 'https://www.essentialtefl.com/?ref=suThaiJapan')
+};
+const enhanced = page.path === '/' ? { content: resolvedPage.content, schema: page.schema } : addBreadcrumbs(resolvedPage);
+---
+<SiteLayout page={page} content={enhanced.content} schema={enhanced.schema} />

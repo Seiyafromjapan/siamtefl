@@ -9,6 +9,7 @@ on:
       - 'public/**'
       - 'package.json'
       - 'package-lock.json'
+      - 'astro.config.mjs'
       - '.github/workflows/pr-build.yml'
 
 permissions:
@@ -21,9 +22,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: npm install
+          node-version: 24
+          cache: npm
+      - run: npm ci
       - run: npm run build
+      - run: npm run verify
       - name: Verify all registered routes were generated without dropping base routes
         run: |
           git fetch --no-tags --depth=1 origin main

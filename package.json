@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "preview": "node scripts/preview.mjs"
+    "preview": "node scripts/preview.mjs",
+    "verify": "node scripts/verify-site.mjs"
+  },
+  "dependencies": {
+    "astro": "7.3.8"
   }
 }
