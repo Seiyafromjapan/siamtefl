@@ -14,6 +14,7 @@ const appVersion = createHash('sha256').update(js).digest('hex').slice(0, 12);
 const breadcrumbHubs = {
   '/teach-english-thailand-no-experience/': { path: '/teach-english-thailand-no-experience/', label: 'Start Here' },
   '/where-to-find-teaching-jobs-thailand/': { path: '/where-to-find-teaching-jobs-thailand/', label: 'Find a Job' },
+  '/move-to-thailand-before-finding-teaching-job/': { path: '/where-to-find-teaching-jobs-thailand/', label: 'Find a Job' },
   '/how-to-choose-tefl-course-thailand/': { path: '/how-to-choose-tefl-course-thailand/', label: 'Choose TEFL' },
   '/money-to-move-to-thailand-to-teach/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' },
   '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' }
