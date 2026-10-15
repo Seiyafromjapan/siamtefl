@@ -10,4 +10,4 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' });
     res.end(await readFile(file));
   } catch { res.writeHead(404); res.end('Not found'); }
-}).listen(4173, () => console.log('Preview at http://localhost:4173'));
+}).listen(4173, '127.0.0.1', () => console.log('Preview at http://localhost:4173'));

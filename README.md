@@ -1,17 +1,18 @@
 # SiamTEFL
 
-Lightweight, dependency-free static website for SiamTEFL. The generated site is in `dist/` and can be hosted on any static host.
+Astro-powered static website for SiamTEFL. Article content, SEO metadata and canonical routes are maintained in `src/pages.json`. The generated site is in `dist/` and can be hosted on any static host.
 
 ## Build and preview
 
-Requires Node.js 18 or newer; no install step is needed.
+Requires Node.js 22.12 or newer.
 
 ```sh
+npm ci
 npm run build
 npm run preview
 ```
 
-Open `http://localhost:4173`. The production files in `dist/` include per-page metadata, canonical links, structured data, an XML sitemap, robots.txt, 404 page and `CNAME` for `siamtefl.com`.
+Open `http://localhost:4173`. Astro statically renders every route listed in `src/pages.json`, keeping the existing trailing-slash URLs and article HTML. The production files in `dist/` include per-page metadata, canonical links, structured data, an XML sitemap, robots.txt, a 404 page and `CNAME` for `siamtefl.com`.
 
 ## Publish with GitHub Pages
 

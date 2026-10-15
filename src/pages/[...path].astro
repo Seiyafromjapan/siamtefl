@@ -1,0 +1,16 @@
+---
+import pages from '../pages.json';
+import LegacyPage from '../components/LegacyPage.astro';
+
+export function getStaticPaths() {
+  return pages
+    .filter((page) => page.path !== '/')
+    .map((page) => ({
+      params: { path: page.path.slice(1, -1) },
+      props: { page }
+    }));
+}
+
+const { page } = Astro.props;
+---
+<LegacyPage page={page} />
