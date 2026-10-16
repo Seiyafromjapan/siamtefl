@@ -158,3 +158,38 @@
 .year-plan-list li:not(:last-child)::after{content:"↓";position:absolute;left:25px;bottom:-17px;z-index:1;color:#678474;font-size:12px;line-height:1}
 .year-plan-list strong{color:var(--ink)}
 @media(max-width:700px){.one-year-hero-visual,.one-year-city-visual{width:calc(100% - 38px)}.one-year-city-visual{margin:21px 0 26px}.one-year-hero-visual img,.one-year-city-visual img{border-radius:6px}.year-plan{margin:20px 0 2px;padding:17px 14px 18px}.year-plan figcaption{font-size:14px}.year-plan-list li{padding:11px 11px 11px 55px;font-size:13px!important}.year-plan-list li::before{left:10px;top:11px;width:32px;height:32px}.year-plan-list li:not(:last-child)::after{left:25px}}
+
+/* Lightweight, accessible career-planning checklist and budget bars. */
+.budget-chart{margin:24px 0;padding:22px;background:#eef3ed;border:1px solid #d7e3d8;border-radius:8px}
+.budget-chart figcaption{margin-bottom:16px;font:700 18px var(--display);color:var(--forest)}
+.budget-chart-row{display:grid;grid-template-columns:minmax(190px,1fr) minmax(120px,2fr);align-items:center;gap:14px;margin:12px 0}
+.budget-chart-label{display:flex;justify-content:space-between;gap:10px;font-size:13px}
+.budget-chart-label span{font-weight:700;white-space:nowrap}
+.budget-chart-track{height:18px;background:#fff;border-radius:999px;overflow:hidden}
+.budget-bar{display:block;height:100%;min-width:6px;border-radius:999px}
+.income-bar{background:#1d5547}.expense-bar{background:#77977d}.remaining-bar{background:#d49a3c}
+.budget-chart-note{margin:17px 0 0;padding-top:13px;border-top:1px solid #d7e3d8;font-size:13px;font-weight:700}
+.career-checklist{margin:18px 0 28px;padding:22px;background:#eef3ed;border:1px solid #d7e3d8;border-radius:8px}
+.checklist-note{margin-top:0;color:var(--muted);font-size:14px}
+.career-checklist-status{display:grid;grid-template-columns:auto minmax(100px,1fr) auto auto;align-items:center;gap:12px;margin:16px 0;padding:13px;background:#fff;border:1px solid var(--line);border-radius:6px;font-size:13px;font-weight:700}
+.career-checklist-status progress{width:100%;height:14px;accent-color:var(--forest)}
+.career-checklist-status button{min-height:44px;padding:9px 13px;font-size:13px}
+.career-checklist-items{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.career-checklist-items li{margin:0;padding:0}
+.career-checklist-items label{display:flex;align-items:flex-start;gap:12px;min-height:54px;padding:13px;background:#fff;border:1px solid var(--line);border-radius:6px;cursor:pointer}
+.career-checklist-items input{flex:0 0 auto;width:20px;height:20px;margin:2px 0 0;accent-color:var(--forest)}
+.career-checklist-items label:focus-within{outline:3px solid #75977f;outline-offset:2px}
+.career-checklist-items label:has(input:checked){background:#f7faf5;border-color:#75977f}
+.checklist-disclaimer{margin:15px 0 0;font-size:13px;color:var(--muted)}
+@media(max-width:600px){.budget-chart,.career-checklist{padding:16px}.budget-chart-row{grid-template-columns:1fr;gap:7px}.career-checklist-status{grid-template-columns:1fr auto}.career-checklist-status progress{grid-column:1/-1;grid-row:2}.career-checklist-status [data-checklist-percent]{grid-column:2;grid-row:1}.career-checklist-status button{grid-column:1/-1;width:100%}.career-checklist-items label{min-height:60px;padding:14px 12px}}
+
+/* Stack only the age-40 article's three comparison tables on small screens. */
+@media(max-width:700px){
+  .age-40-article .timeline-scroll table.age-40-stack-table{min-width:0;width:100%;table-layout:fixed}
+  .age-40-article .age-40-stack-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .age-40-article .age-40-stack-table tbody{display:block;width:100%}
+  .age-40-article .age-40-stack-table tr{display:block;margin:0 0 12px;padding:8px;background:#fff;border:1px solid var(--line);border-radius:6px}
+  .age-40-article .age-40-stack-table td,.age-40-article .age-40-stack-table th{display:grid;grid-template-columns:minmax(7.5rem,36%) minmax(0,1fr);gap:10px;width:100%;padding:9px 8px;border:0;border-bottom:1px solid var(--line);text-align:left;overflow-wrap:anywhere}
+  .age-40-article .age-40-stack-table td:last-child,.age-40-article .age-40-stack-table th:last-child{border-bottom:0}
+  .age-40-article .age-40-stack-table td::before,.age-40-article .age-40-stack-table th::before{content:attr(data-mobile-label);font-weight:700;color:var(--forest)}
+}
