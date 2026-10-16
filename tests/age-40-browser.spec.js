@@ -9,6 +9,8 @@ test('desktop 1440 by 900 renders article and key content', async ({ page }) => 
   await page.setViewportSize({ width: 1440, height: 900 });
   const response = await page.goto(`http://127.0.0.1:4173${articlePath}`);
   expect(response?.status()).toBe(200);
+  await page.locator('[data-analytics-consent="denied"]').click();
+  await expect(page.locator('#analytics-consent')).toBeHidden();
   await expect(page.locator('h1')).toContainText('Teaching English in Thailand after 40');
 
   const hero = page.locator('.page-hero img, figure img').first();
@@ -40,6 +42,8 @@ test('mobile 390 by 844 keeps content usable and checklist interactive', async (
   await page.setViewportSize({ width: 390, height: 844 });
   const response = await page.goto(`http://127.0.0.1:4173${articlePath}`);
   expect(response?.status()).toBe(200);
+  await page.locator('[data-analytics-consent="denied"]').click();
+  await expect(page.locator('#analytics-consent')).toBeHidden();
   await expect(page.locator('h1')).toBeVisible();
   const hero = page.locator('.page-hero img, figure img').first();
   await expect(hero).toBeVisible();
