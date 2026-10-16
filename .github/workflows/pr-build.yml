@@ -61,7 +61,6 @@ jobs:
           NODE
 
   browser-qa:
-    if: github.event.pull_request.number == 80
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -90,7 +89,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: pr-80-browser-qa-screenshots
+          name: age-40-hero-browser-qa-screenshots
           path: test-results/screenshots/*.png
           if-no-files-found: error
           retention-days: 14
