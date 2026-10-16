@@ -10,6 +10,7 @@ on:
       - 'public/**'
       - 'package.json'
       - 'package-lock.json'
+      - 'tests/**'
       - 'astro.config.mjs'
       - '.github/workflows/pr-build.yml'
 
@@ -58,3 +59,38 @@ jobs:
           if (outputCount !== expectedCount) throw new Error(`Generated HTML count should be ${expectedCount}, got ${outputCount}`);
           if (missingOutput.length) throw new Error(`Generated files are missing: ${missingOutput.join(', ')}`);
           NODE
+
+  browser-qa:
+    if: github.event.pull_request.number == 80
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: npm run verify
+      - name: Serve built site
+        run: |
+          python3 -m http.server 4173 --directory dist > /tmp/siamtefl-http.log 2>&1 &
+          echo $! > /tmp/siamtefl-http.pid
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:4173/teaching-english-thailand-after-40/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/siamtefl-http.log
+          exit 1
+      - name: Run desktop and mobile browser QA
+        run: npx playwright test tests/age-40-browser.spec.js
+      - name: Upload browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-80-browser-qa-screenshots
+          path: test-results/screenshots/*.png
+          if-no-files-found: error
+          retention-days: 14
