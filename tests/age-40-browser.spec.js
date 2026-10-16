@@ -16,6 +16,10 @@ test('desktop 1440 by 900 renders article and key content', async ({ page }) => 
   const hero = page.locator('.page-hero img, figure img').first();
   await expect(hero).toBeVisible();
   await expect.poll(() => hero.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+  await expect(hero).toHaveAttribute('src', '/images/teaching-thailand-after-40-high-angle.webp');
+  await expect(hero).toHaveAttribute('width', '1600');
+  await expect(hero).toHaveAttribute('height', '900');
+  expect(await hero.evaluate(image => Math.abs(image.getBoundingClientRect().width / image.getBoundingClientRect().height - 16 / 9) < 0.02)).toBe(true);
   await expect(page.locator('.age-40-article table.age-40-stack-table')).toHaveCount(3);
   await expect(page.locator('.budget-chart')).toBeVisible();
   await expect(page.locator('.budget-chart')).toContainText('฿35,000');
@@ -48,6 +52,10 @@ test('mobile 390 by 844 keeps content usable and checklist interactive', async (
   const hero = page.locator('.page-hero img, figure img').first();
   await expect(hero).toBeVisible();
   await expect.poll(() => hero.evaluate(image => image.complete && image.naturalWidth > 0)).toBe(true);
+  await expect(hero).toHaveAttribute('src', '/images/teaching-thailand-after-40-high-angle.webp');
+  await expect(hero).toHaveAttribute('width', '1600');
+  await expect(hero).toHaveAttribute('height', '900');
+  expect(await hero.evaluate(image => Math.abs(image.getBoundingClientRect().width / image.getBoundingClientRect().height - 16 / 9) < 0.02)).toBe(true);
   await expect(page.locator('.age-40-article table.age-40-stack-table')).toHaveCount(3);
   await expect(page.locator('.budget-chart')).toBeVisible();
 
