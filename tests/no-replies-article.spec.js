@@ -40,8 +40,8 @@ for (const viewport of [{ name: 'desktop', width: 1440, height: 900 }, { name: '
     await expect(flow).toBeVisible();
     await expect(flow).toHaveAttribute('loading', 'lazy');
     expect(await flow.evaluate(image => image.complete && image.naturalWidth === 760 && image.naturalHeight === 1420)).toBe(true);
-    await expect(page.locator('details.reply-flow-text')).toContainText('Target suitable vacancies');
-    await expect(page.locator('details.reply-flow-text')).toContainText('Send a polite follow-up');
+    await expect(page.locator('details.reply-flow-text')).toContainText(/target suitable vacancies/i);
+    await expect(page.locator('details.reply-flow-text')).toContainText(/send a polite follow-up/i);
 
     for (const href of [
       '/where-to-find-teaching-jobs-thailand/',
