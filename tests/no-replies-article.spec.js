@@ -22,8 +22,9 @@ for (const viewport of [{ name: 'desktop', width: 1440, height: 900 }, { name: '
     await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', /Bangkok apartment/);
     await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute('content', `https://siamtefl.com${heroPath}`);
 
-    const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
-    expect(schema['@type']).toBe('Article');
+    const jsonLd = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent());
+    const schema = (jsonLd['@graph'] || [jsonLd]).find(node => node['@type'] === 'Article');
+    expect(schema).toBeTruthy();
     expect(schema.mainEntityOfPage).toBe(`https://siamtefl.com${articlePath}`);
     expect(schema.image).toBe(`https://siamtefl.com${heroPath}`);
 
