@@ -116,7 +116,7 @@ test('consent gates page setup and sends one minimal outbound event per provider
   expect(calls.filter(call => call[0] === 'event' && call[1] === 'affiliate_click')).toHaveLength(1);
   expect(calls.some(call => call[0] === 'event' && call[1] === 'provider_outbound_click')).toBe(false);
 
-  await page.locator('a[href="/120-hour-vs-level-5-tefl-thailand/"]').first().click();
+  await page.locator('.next-steps a[href="/120-hour-vs-level-5-tefl-thailand/"]').first().click();
   const internalCalls = await analyticsCalls(page);
   expect(internalCalls.filter(call => call[0] === 'event' && call[1] === 'internal_navigation_click')).toHaveLength(1);
 });
