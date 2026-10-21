@@ -79,7 +79,7 @@ export function addBreadcrumbs(page) {
     }))
   });
   return {
-    content: oldNav ? page.content.replace(oldNav[0], nav) : `${nav}${page.content}`,
+    content: page.path === '/' && !oldNav ? `${nav}${page.content}` : oldNav ? page.content.replace(oldNav[0], nav) : `${nav}${page.content}`,
     schema: { '@context': 'https://schema.org', '@graph': graph }
   };
 }
