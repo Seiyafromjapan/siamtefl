@@ -7,6 +7,6 @@ const resolvedPage = {
   ...page,
   content: page.content.replaceAll('{{AFFILIATE}}', 'https://www.essentialtefl.com/?ref=suThaiJapan')
 };
-const enhanced = page.path === '/' ? { content: resolvedPage.content, schema: page.schema } : addBreadcrumbs(resolvedPage);
+const enhanced = addBreadcrumbs(resolvedPage);
 ---
 <SiteLayout page={page} content={enhanced.content} schema={enhanced.schema} />
