@@ -3,6 +3,7 @@ const breadcrumbHubs = {
   '/where-to-find-teaching-jobs-thailand/': { path: '/where-to-find-teaching-jobs-thailand/', label: 'Find a Job' },
   '/move-to-thailand-before-finding-teaching-job/': { path: '/where-to-find-teaching-jobs-thailand/', label: 'Find a Job' },
   '/how-to-choose-tefl-course-thailand/': { path: '/how-to-choose-tefl-course-thailand/', label: 'Choose TEFL' },
+  '/tefl-course-comparison-thailand/': { path: '/tefl-course-comparison-thailand/', label: 'Compare TEFL' },
   '/money-to-move-to-thailand-to-teach/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' },
   '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' }
 };
@@ -21,6 +22,9 @@ const clusterFor = {
   '/how-long-after-tefl-to-get-teaching-job-thailand/': 'jobs',
   '/do-you-need-tefl-to-teach-in-thailand/': 'tefl',
   '/how-to-choose-tefl-course-thailand/': 'tefl',
+  '/tefl-course-comparison-thailand/': 'tefl',
+  '/see-tefl-chiang-mai-review/': 'tefl',
+  '/world-tesol-academy-review/': 'tefl',
   '/120-hour-tefl-certificate-thailand/': 'tefl',
   '/online-vs-in-person-tefl-thailand/': 'tefl',
   '/120-hour-vs-level-5-tefl-thailand/': 'tefl',
@@ -43,7 +47,7 @@ const clusterFor = {
 const hubByCluster = {
   start: breadcrumbHubs['/teach-english-thailand-no-experience/'],
   jobs: breadcrumbHubs['/where-to-find-teaching-jobs-thailand/'],
-  tefl: breadcrumbHubs['/how-to-choose-tefl-course-thailand/'],
+  tefl: breadcrumbHubs['/tefl-course-comparison-thailand/'],
   budget: breadcrumbHubs['/money-to-move-to-thailand-to-teach/'],
   teach: breadcrumbHubs['/teaching-large-classes-thailand/']
 };
@@ -75,7 +79,7 @@ export function addBreadcrumbs(page) {
     }))
   });
   return {
-    content: oldNav ? page.content.replace(oldNav[0], nav) : `${nav}${page.content}`,
+    content: page.path === '/' && !oldNav ? `${nav}${page.content}` : oldNav ? page.content.replace(oldNav[0], nav) : `${nav}${page.content}`,
     schema: { '@context': 'https://schema.org', '@graph': graph }
   };
 }
