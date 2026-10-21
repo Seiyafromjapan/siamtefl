@@ -29,6 +29,32 @@ for (const page of pages) {
   assert.ok(html.includes('property="og:image"'), `Open Graph image missing: ${page.path}`);
   assert.ok(html.includes('name="twitter:card" content="summary_large_image"'), `Twitter card missing: ${page.path}`);
   assert.ok(html.includes('type="application/ld+json"'), `Structured data missing: ${page.path}`);
+
+  const jsonLdMatch = html.match(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/i);
+  assert.ok(jsonLdMatch, `JSON-LD script missing: ${page.path}`);
+  let generatedSchema;
+  try {
+    generatedSchema = JSON.parse(jsonLdMatch[1]);
+  } catch (error) {
+    throw new Error(`Invalid JSON-LD for ${page.path}: ${error.message}`);
+  }
+  const schemaGraph = Array.isArray(generatedSchema['@graph']) ? generatedSchema['@graph'] : [generatedSchema];
+  const expectedArticle = page.schema?.['@type'] === 'Article'
+    ? page.schema
+    : page.schema?.['@graph']?.find((item) => item['@type'] === 'Article');
+  if (expectedArticle) {
+    const generatedArticle = schemaGraph.find((item) => item['@type'] === 'Article');
+    assert.deepEqual(generatedArticle, expectedArticle, `Article schema changed: ${page.path}`);
+  }
+  const breadcrumb = schemaGraph.find((item) => item['@type'] === 'BreadcrumbList');
+  assert.ok(breadcrumb, `BreadcrumbList missing: ${page.path}`);
+  const breadcrumbItems = breadcrumb.itemListElement;
+  assert.ok(Array.isArray(breadcrumbItems) && breadcrumbItems.length > 0, `BreadcrumbList items missing: ${page.path}`);
+  breadcrumbItems.forEach((item, index) => {
+    assert.equal(item.position, index + 1, `BreadcrumbList position mismatch: ${page.path}`);
+    assert.ok(paths.includes(new URL(item.item).pathname), `BreadcrumbList points to an unregistered route: ${page.path} -> ${item.item}`);
+  });
+  assert.equal(breadcrumbItems[0].item, 'https://siamtefl.com/', `BreadcrumbList must start at Home: ${page.path}`);
   assert.ok(html.includes('id="main"'), `Main content missing: ${page.path}`);
   assert.ok(!html.includes('{{AFFILIATE}}'), `Unresolved template token: ${page.path}`);
 
