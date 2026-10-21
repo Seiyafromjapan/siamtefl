@@ -12,6 +12,11 @@ const gaScriptStub = `
 `;
 
 async function installAnalyticsStubs(page) {
+  await page.addInitScript(() => {
+    document.addEventListener('click', event => {
+      if (event.target.closest('a[href]')) event.preventDefault();
+    }, true);
+  });
   await page.route('https://www.googletagmanager.com/gtag/js**', route =>
     route.fulfill({ status: 200, contentType: 'application/javascript', body: gaScriptStub })
   );
@@ -19,6 +24,8 @@ async function installAnalyticsStubs(page) {
   await page.route('https://seetefl.com/**', route => route.abort());
   await page.route('https://www.seetefl.com/**', route => route.abort());
   await page.route('https://www.worldtesolacademy.com/**', route => route.abort());
+  await page.route('https://essentialtefl.com/**', route => route.abort());
+  await page.route('https://www.essentialtefl.com/**', route => route.abort());
 }
 
 async function analyticsCalls(page) {
@@ -108,4 +115,8 @@ test('consent gates page setup and sends one minimal outbound event per provider
   const calls = await analyticsCalls(page);
   expect(calls.filter(call => call[0] === 'event' && call[1] === 'affiliate_click')).toHaveLength(1);
   expect(calls.some(call => call[0] === 'event' && call[1] === 'provider_outbound_click')).toBe(false);
+
+  await page.locator('a[href="/120-hour-vs-level-5-tefl-thailand/"]').first().click();
+  const internalCalls = await analyticsCalls(page);
+  expect(internalCalls.filter(call => call[0] === 'event' && call[1] === 'internal_navigation_click')).toHaveLength(1);
 });
