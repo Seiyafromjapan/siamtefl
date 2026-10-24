@@ -1,6 +1,6 @@
 # Essential TEFL（Bangkok）とSEE TEFL（Chiang Mai）の比較・送客設計
 
-調査日：2026年10月24日  
+調査日：2026年10月24日
 対象：既存のEssential TEFLレビュー、SEE TEFLレビュー、TEFL比較ハブと関連記事。この記事設計・リンク案は提案のみで、内部リンクは新たに変更していない。
 
 ## 編集方針
