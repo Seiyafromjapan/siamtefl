@@ -52,7 +52,12 @@ test('first visit and declined analytics do not load the GA tag or send clicks',
   expect(await page.evaluate(() => localStorage.getItem('siamtefl_analytics_consent'))).toBe('denied');
   expect(gaScriptRequests).toHaveLength(0);
 
-  await page.locator('a[href="https://seetefl.com/"]').first().click();
+  await page.locator('a[href^="https://seetefl.com/"]').first().click();
+  expect(gaScriptRequests).toHaveLength(0);
+  expect(await analyticsCalls(page)).toHaveLength(0);
+
+  await page.goto(`${baseUrl}/see-tefl-chiang-mai-review/`);
+  await page.locator('a[data-affiliate][data-provider="see_tefl"]').click();
   expect(gaScriptRequests).toHaveLength(0);
   expect(await analyticsCalls(page)).toHaveLength(0);
 });
@@ -73,7 +78,7 @@ test('consent gates page setup and sends one minimal outbound event per provider
   expect(await page.evaluate(id => window.__gaCalls.some(call => call[0] === 'config' && call[1] === id), gaMeasurementId)).toBe(true);
   expect(gaScriptRequests).toHaveLength(1);
 
-  await page.locator('a[href="https://seetefl.com/"]').first().click();
+  await page.locator('a[href^="https://seetefl.com/"]').first().click();
   let events = await providerEvents(page);
   expect(events).toHaveLength(1);
   expect(events[0]).toEqual(['event', 'provider_outbound_click', {
@@ -82,7 +87,7 @@ test('consent gates page setup and sends one minimal outbound event per provider
     destination: 'seetefl.com'
   }]);
 
-  await page.locator('a[href="https://www.worldtesolacademy.com/"]').first().click();
+  await page.locator('a[href^="https://www.worldtesolacademy.com/"]').first().click();
   events = await providerEvents(page);
   expect(events).toHaveLength(2);
   expect(events[1]).toEqual(['event', 'provider_outbound_click', {
@@ -97,6 +102,16 @@ test('consent gates page setup and sends one minimal outbound event per provider
   events = await providerEvents(page);
   expect(events).toHaveLength(1);
   expect(events[0][2].placement).toBe('provider_review');
+
+  await page.locator('a[data-affiliate][data-provider="see_tefl"]').click();
+  const seeAffiliateEvents = (await analyticsCalls(page)).filter(call => call[0] === 'event' && call[1] === 'affiliate_click');
+  expect(seeAffiliateEvents).toHaveLength(1);
+  expect(seeAffiliateEvents[0][2]).toMatchObject({
+    provider: 'see_tefl',
+    page_path: '/see-tefl-chiang-mai-review/',
+    placement: 'provider_review',
+    destination: 'seetefl.com'
+  });
 
   await page.goto(`${baseUrl}/world-tesol-academy-review/`);
   await page.waitForFunction(() => Array.isArray(window.__gaCalls));
