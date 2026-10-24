@@ -61,7 +61,11 @@ if(hasAnalyticsConsent())loadAnalytics();
 document.addEventListener('click',e=>{
   const a=e.target.closest('a[data-affiliate]');
   if(!a)return;
-  const payload={event:'affiliate_click',provider:'essential_tefl',page_path:location.pathname,placement:a.dataset.placement||'unspecified',destination:'essentialtefl.com'};
+  const providers={essential_tefl:'essentialtefl.com',see_tefl:'seetefl.com'};
+  const provider=a.dataset.provider||'essential_tefl';
+  const destination=providers[provider];
+  if(!destination)return;
+  const payload={event:'affiliate_click',provider,page_path:location.pathname,placement:a.dataset.placement||'unspecified',destination};
   window.dispatchEvent(new CustomEvent('siamtefl:affiliate-click',{detail:payload}));
   if(hasAnalyticsConsent()&&typeof window.gtag==='function'){
     window.gtag('event','affiliate_click',{provider:payload.provider,page_path:payload.page_path,placement:payload.placement,destination:payload.destination,transport_type:'beacon'});
