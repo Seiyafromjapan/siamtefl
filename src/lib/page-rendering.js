@@ -10,6 +10,7 @@ const breadcrumbHubs = {
 
 const clusterFor = {
   '/teach-english-thailand-no-experience/': 'start',
+  '/thailand-vs-vietnam-teaching-english/': 'start',
   '/teach-english-thailand-non-native-speaker/': 'start',
   '/thailand-teacher-visa-work-permit/': 'start',
   '/where-to-find-teaching-jobs-thailand/': 'jobs',
