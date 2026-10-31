@@ -61,9 +61,9 @@ if(hasAnalyticsConsent())loadAnalytics();
 document.addEventListener('click',e=>{
   const a=e.target.closest('a[data-affiliate]');
   if(!a)return;
-  const providers={essential_tefl:'essentialtefl.com',see_tefl:'seetefl.com'};
+  const providers={essential_tefl:'essentialtefl.com',see_tefl:'seetefl.com',world_tesol_academy:'www.worldtesolacademy.com'};
   const provider=a.dataset.provider||'essential_tefl';
-  const destination=providers[provider];
+  const destination=providers[provider]||new URL(a.href,location.href).hostname.toLowerCase();
   if(!destination)return;
   const payload={event:'affiliate_click',provider,page_path:location.pathname,placement:a.dataset.placement||'unspecified',destination};
   window.dispatchEvent(new CustomEvent('siamtefl:affiliate-click',{detail:payload}));
