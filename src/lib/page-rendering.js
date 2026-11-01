@@ -98,6 +98,10 @@ export function renderSavingsScenarioVisual(page) {
   return page.content.replace(marker, `<section class="savings-visual" aria-label="Illustrative monthly savings scenarios"><p class="eyebrow">Illustrative scenarios</p><ul>${cards}</ul><p class="table-hint">Amounts are taken from the table above. The bar compares the illustrative amount left after modeled tax and listed costs; it is not a guaranteed saving.</p></section>`);
 }
 
+export function removeInternalStoryLabels(content) {
+  return content.replace(/\bS\d{3}\s*·\s*/g, '');
+}
+
 export function addBreadcrumbs(page) {
   const oldNav = page.content.match(/<nav class="breadcrumbs"[^>]*>([\s\S]*?)<\/nav>/i);
   const labels = oldNav ? [...oldNav[1].matchAll(/<span[^>]*>([\s\S]*?)<\/span>/gi)] : [];
