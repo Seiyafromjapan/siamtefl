@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Between the bell and the last light</title><desc id="desc">Original editorial illustration of a teacher in a Thai school corridor at late afternoon, with classroom doors, a distant temple roof, tropical plants and two clocks representing classroom periods and campus presence.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#a4c7b4"/><stop offset=".62" stop-color="#f2c997"/><stop offset="1" stop-color="#f6e9cf"/></linearGradient><linearGradient id="floor" x2="0" y2="1"><stop stop-color="#e1caa3"/><stop offset="1" stop-color="#9b9874"/></linearGradient><linearGradient id="wall" x2="1" y2=".2"><stop stop-color="#f2e5ca"/><stop offset="1" stop-color="#c2c9a4"/></linearGradient><linearGradient id="shade" x2="0" y2="1"><stop stop-color="#183d35"/><stop offset="1" stop-color="#27584a"/></linearGradient><radialGradient id="sun"><stop stop-color="#fff7d8" stop-opacity=".95"/><stop offset="1" stop-color="#ffe5a4" stop-opacity="0"/></radialGradient><pattern id="grain" width="17" height="17" patternUnits="userSpaceOnUse"><circle cx="4" cy="3" r=".55" fill="#173c34" opacity=".12"/><circle cx="13" cy="10" r=".65" fill="#fff" opacity=".16"/></pattern></defs>
+<rect width="1200" height="630" fill="#dcece4"/><rect width="1200" height="440" fill="url(#sky)"/><circle cx="846" cy="226" r="240" fill="url(#sun)"/>
+<!-- distant Thai campus and temple roof -->
+<path d="M570 342 650 305 715 334 768 292 827 320 905 291 1010 334 1200 325V465H570Z" fill="#72917d" opacity=".58"/><path d="M645 339 703 310 762 339 757 354H651Z" fill="#284c42"/><path d="M686 313 705 276 722 313Z" fill="#b78a52"/><path d="M694 277 704 263 715 277Z" fill="#284c42"/><rect x="664" y="351" width="80" height="69" fill="#d6d4b7"/><path d="M925 337 1000 301 1073 338 1073 348H925Z" fill="#32594b"/><rect x="941" y="349" width="117" height="72" fill="#b7c5a4"/>
+<!-- lush leaves -->
+<g fill="#2f6450"><path d="M1132 405q-51-106 26-202-22 98 16 193Z"/><path d="M1150 395q-110-85-80-170 19 97 108 152Z"/><path d="M1148 390q-20-126 54-164-53 87-19 173Z"/></g><g fill="#507b5b"><path d="M1120 420q-82-40-84-112 40 74 116 85Z"/><path d="M1155 403q34-118 45-109v126Z"/></g>
+<!-- corridor -->
+<path d="M0 0H430L622 365 1200 446V630H0Z" fill="url(#wall)"/><path d="M0 0H395L605 363H0Z" fill="#e7e1c9"/><path d="M0 0H427L622 364H581L361 0Z" fill="#244b40"/><path d="M0 371 624 371 1200 447V630H0Z" fill="url(#floor)"/><path d="M0 392 621 384 1200 630H0Z" fill="#d4b99a" opacity=".48"/>
+<!-- perspective lines -->
+<g stroke="#7d8c75" opacity=".38" stroke-width="2"><path d="M0 467 612 386"/><path d="M0 565 612 386"/><path d="M270 630 612 386"/><path d="M730 630 612 386"/><path d="M1150 630 612 386"/></g>
+<!-- doorways -->
+<path d="M43 107H232L353 366H90Z" fill="#183d35"/><path d="M64 124H218L320 345H106Z" fill="#355b4e"/><path d="M128 173H226L285 314H155Z" fill="#e4cf9f" opacity=".3"/><path d="M301 205H394L490 365H349Z" fill="#234b3e"/><path d="M314 220H384L460 350H361Z" fill="#6e8d76"/>
+<!-- old noticeboard -->
+<path d="M0 102H70L155 335H0Z" fill="#bb986b"/><path d="M0 121H58L130 319H0Z" fill="#e5dbba"/><path d="M0 145H45L81 249H0Z" fill="#faf1d6"/><path d="M12 158 48 257M3 187 61 274" stroke="#adab91" stroke-width="3"/>
+<!-- architectural columns -->
+<path d="M390 0H432L645 392H618Z" fill="#f7f0d8"/><path d="M584 337H605L689 450H663Z" fill="#e2d6b8"/>
+<!-- classroom clock on wall -->
+<circle cx="289" cy="103" r="57" fill="#e6dec4" stroke="#234b3e" stroke-width="8"/><circle cx="289" cy="103" r="46" fill="#f8f0d9"/><g stroke="#234b3e" stroke-width="3"><path d="M289 64V73M289 133V142M250 103H259M319 103H328"/></g><path d="M289 103 289 77M289 103 310 117" stroke="#234b3e" stroke-width="5" stroke-linecap="round"/><circle cx="289" cy="103" r="4" fill="#234b3e"/>
+<!-- sunlit footprints / long shadows -->
+<path d="M780 485 1200 580V610L764 508Z" fill="#31594b" opacity=".18"/>
+<!-- teacher silhouette, viewed from behind -->
+<path d="M792 319q-20 6-27 29l-9 90 35 3 11-64 8 58 40 6-13-93q-10-26-45-29Z" fill="#173c34"/><ellipse cx="798" cy="293" rx="25" ry="32" fill="#bb8666"/><path d="M773 291q-7-37 23-39 33-1 31 39l-9-9-10-20-22 8Z" fill="#1c2e2a"/><path d="M772 425 773 512 760 592 784 598 811 503 814 441Z" fill="#293e36"/><path d="M811 430 834 511 858 588 881 583 862 502 852 434Z" fill="#304c40"/><path d="M756 438 746 488 760 494 783 448Z" fill="#b98b68"/><path d="M845 441 869 480 883 474 854 426Z" fill="#bd8e6e"/><path d="M752 594h39v11h-49Z M851 586h39v11h-34Z" fill="#162a28"/><path d="M760 347q-10 22-9 51l25 10 12-57Z" fill="#6d876c"/>
+<!-- books -->
+<path d="M722 448 753 452 751 482 722 478Z" fill="#f6d28e"/><path d="M727 450 751 453" stroke="#29473e" stroke-width="2"/>
+<!-- typography overlay, integrated with art -->
+<rect x="0" y="0" width="1200" height="630" fill="url(#grain)"/>
+<rect x="46" y="472" width="535" height="122" rx="5" fill="#123d35" opacity=".97"/><text x="76" y="512" font-family="Georgia,serif" font-size="18" fill="#c4e879" letter-spacing="2">THE SCHOOL DAY / THAILAND</text><text x="76" y="556" font-family="Georgia,serif" font-size="34" fill="#fff8e8">Between the bells</text><text x="76" y="580" font-family="Arial,sans-serif" font-size="13" fill="#d7e4d9" letter-spacing="1.1">A TEACHER'S HOURS, BEYOND THE TIMETABLE</text>
+<text x="1163" y="598" text-anchor="end" font-family="Arial,sans-serif" font-size="13" fill="#123d35" font-weight="bold" letter-spacing="2">SIAM TEFL · EDITORIAL ILLUSTRATION</text>
+</svg>
