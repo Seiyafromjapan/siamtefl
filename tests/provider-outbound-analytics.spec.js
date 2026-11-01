@@ -115,14 +115,17 @@ test('consent gates page setup and sends one minimal outbound event per provider
 
   await page.goto(`${baseUrl}/world-tesol-academy-review/`);
   await page.waitForFunction(() => Array.isArray(window.__gaCalls));
-  await page.locator('a[href="https://www.worldtesolacademy.com/"]').first().click();
+  await page.locator('a[href^="https://www.worldtesolacademy.com/"]').first().click();
   events = await providerEvents(page);
-  expect(events).toHaveLength(1);
-  expect(events[0][2]).toEqual({
+  const wtaAffiliateEvents = (await analyticsCalls(page)).filter(call => call[0] === 'event' && call[1] === 'affiliate_click');
+  expect(wtaAffiliateEvents).toHaveLength(1);
+  expect(wtaAffiliateEvents[0][2]).toMatchObject({
     provider: 'world_tesol_academy',
-    placement: 'provider_review',
+    page_path: '/world-tesol-academy-review/',
+    placement: 'review-120-hour',
     destination: 'www.worldtesolacademy.com'
   });
+  expect(wtaAffiliateEvents).toHaveLength(1);
 
   await page.goto(`${baseUrl}/essential-tefl-review/`);
   await page.waitForFunction(() => Array.isArray(window.__gaCalls));
@@ -134,4 +137,32 @@ test('consent gates page setup and sends one minimal outbound event per provider
   await page.locator('.next-steps a[href="/120-hour-vs-level-5-tefl-thailand/"]').first().click();
   const internalCalls = await analyticsCalls(page);
   expect(internalCalls.filter(call => call[0] === 'event' && call[1] === 'internal_navigation_click')).toHaveLength(1);
+});
+
+test('World TESOL Academy review has disclosed, accessible affiliate links to each course', async ({ page }) => {
+  await page.goto(`${baseUrl}/world-tesol-academy-review/`);
+  const links = page.locator('a[data-affiliate][data-provider="world_tesol_academy"]');
+  await expect(links).toHaveCount(2);
+  await expect(links.nth(0)).toHaveAttribute('href', 'https://www.worldtesolacademy.com/tesol-course-enrollment/?study=140057');
+  await expect(links.nth(1)).toHaveAttribute('href', 'https://www.worldtesolacademy.com/level-5-tesol-diploma/?study=140057');
+  for (const link of await links.all()) {
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', /sponsored/);
+    await expect(link).toHaveAttribute('rel', /noopener/);
+    await expect(link).toHaveAttribute('aria-label', /new tab/);
+  }
+  await expect(page.locator('.affiliate-options a[href="/affiliate-disclosure/"]')).toHaveCount(1);
+});
+
+test('review and comparison pages consistently disclose approved SEE TEFL and WTA affiliate links', async ({ page }) => {
+  for (const route of ['/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/']) {
+    await page.goto(`${baseUrl}${route}`);
+    await expect(page.locator('body')).not.toContainText(/pending|application pending|no referral link on this page|currently has no referral link/i);
+  }
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('body')).toContainText('approved affiliate relationships');
+  await page.goto(`${baseUrl}/see-tefl-chiang-mai-review/`);
+  const seeLink = page.locator('a[data-affiliate][data-provider="see_tefl"]').first();
+  await expect(seeLink).toHaveAttribute('href', 'https://seetefl.com?ap_id=SiamTEFL');
+  await expect(seeLink).toHaveAttribute('rel', /sponsored/);
 });
