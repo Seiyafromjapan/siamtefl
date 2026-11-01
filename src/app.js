@@ -36,7 +36,7 @@ document.querySelector('#privacy-settings')?.addEventListener('click',showConsen
 const clusterRoutes={
   start_here:['/teach-english-thailand-no-experience/','/teach-english-thailand-non-native-speaker/','/thailand-teacher-visa-work-permit/'],
   find_a_job:['/where-to-find-teaching-jobs-thailand/','/teaching-agency-vs-direct-hire-thailand/','/too-late-apply-teaching-jobs-thailand/','/thailand-teaching-job-application-documents/','/thailand-teaching-interview-demo-lesson/','/cv-resume-teaching-jobs-thailand/','/thailand-teaching-contract-checklist/','/how-long-after-tefl-to-get-teaching-job-thailand/'],
-  choose_tefl:['/do-you-need-tefl-to-teach-in-thailand/','/how-to-choose-tefl-course-thailand/','/120-hour-tefl-certificate-thailand/','/online-vs-in-person-tefl-thailand/','/standard-vs-all-in/','/celta-vs-tefl-thailand/','/tefl-job-placement-guarantee-thailand/','/tefl-course-deposit-refund-thailand/','/essential-tefl-review/','/120-hour-vs-level-5-tefl-thailand/'],
+  choose_tefl:['/do-you-need-tefl-to-teach-in-thailand/','/how-to-choose-tefl-course-thailand/','/120-hour-tefl-certificate-thailand/','/online-vs-in-person-tefl-thailand/','/standard-vs-all-in/','/celta-vs-tefl-thailand/','/tefl-job-placement-guarantee-thailand/','/tefl-course-deposit-refund-thailand/','/essential-tefl-review/','/120-hour-vs-level-5-tefl-thailand/','/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/','/is-chiang-mai-a-good-place-to-get-tefl-certified/'],
   pay_and_budget:['/first-time-english-teacher-salary-thailand/','/can-you-live-in-bangkok-on-35000-baht-teaching-salary/','/tefl-bangkok-cost/','/money-to-move-to-thailand-to-teach/','/calculator/','/thailand-teacher-school-holiday-pay/'],
   teach_and_settle:['/teach-english-thailand-without-speaking-thai/','/teaching-large-classes-thailand/']
 };
@@ -44,11 +44,11 @@ function contentCluster(path){for(const [name,paths] of Object.entries(clusterRo
 document.addEventListener('click',e=>{
   const link=e.target.closest('a[href]');
   if(!link||link.hasAttribute('data-affiliate')||!hasAnalyticsConsent()||typeof window.gtag!=='function')return;
-  const zone=link.closest('#nav, .next-steps, .article, .page-hero .hero-actions, .hero-actions, .home-path-grid');
+  const zone=link.closest('#nav, .next-steps, .article, .page-hero .hero-actions, .hero-actions, .home-path-grid, .course-path');
   if(!zone)return;
   const destination=new URL(link.href,location.href);
   if(destination.origin!==location.origin||destination.pathname===location.pathname)return;
-  const context=link.closest('#nav')?'header_nav':link.closest('.home-path-grid')?'homepage_path':link.closest('.next-steps')?'next_steps':link.closest('.hero-actions')?'homepage_hero':link.closest('.page-hero')?'page_intro':'article_body';
+  const context=link.closest('#nav')?'header_nav':link.closest('.home-path-grid')?'homepage_path':link.closest('.next-steps')?'next_steps':link.closest('.hero-actions')?'homepage_hero':link.closest('.page-hero')?'page_intro':link.closest('.course-path')?'course_path':'article_body';
   window.gtag('event','internal_navigation_click',{
     source_page:location.pathname,
     destination_page:destination.pathname,
