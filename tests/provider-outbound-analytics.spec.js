@@ -154,13 +154,14 @@ test('World TESOL Academy review has disclosed, accessible affiliate links to ea
   await expect(page.locator('.affiliate-options a[href="/affiliate-disclosure/"]')).toHaveCount(1);
 });
 
-test('review and comparison pages consistently disclose approved SEE TEFL and WTA affiliate links', async ({ page }) => {
+test('review and comparison pages disclose affiliate commissions without exposing partner status', async ({ page }) => {
   for (const route of ['/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/']) {
     await page.goto(`${baseUrl}${route}`);
     await expect(page.locator('body')).not.toContainText(/pending|application pending|no referral link on this page|currently has no referral link/i);
+    await expect(page.locator('body')).toContainText(/may earn a commission/i);
   }
   await page.goto(`${baseUrl}/`);
-  await expect(page.locator('body')).toContainText('approved affiliate relationships');
+  await expect(page.locator('body')).toContainText('Some course links are referral links. If you enrol through one, SiamTEFL may earn a commission.');
   await page.goto(`${baseUrl}/see-tefl-chiang-mai-review/`);
   const seeLink = page.locator('a[data-affiliate][data-provider="see_tefl"]').first();
   await expect(seeLink).toHaveAttribute('href', 'https://seetefl.com?ap_id=SiamTEFL');
