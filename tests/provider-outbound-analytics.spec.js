@@ -167,3 +167,24 @@ test('review and comparison pages disclose affiliate commissions without exposin
   await expect(seeLink).toHaveAttribute('href', 'https://seetefl.com?ap_id=SiamTEFL');
   await expect(seeLink).toHaveAttribute('rel', /sponsored/);
 });
+
+test('generated site routes do not expose internal story IDs in visible text', async ({ page, request }) => {
+  const sitemapResponse = await request.get(`${baseUrl}/sitemap.xml`);
+  await expect(sitemapResponse).toBeOK();
+  const sitemap = await sitemapResponse.text();
+  const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
+  expect(new Set(routes).size).toBe(49);
+
+  const exposed = [];
+  for (const route of routes) {
+    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
+    expect(response?.status(), route).toBe(200);
+    await page.locator('details').evaluateAll(elements => elements.forEach(element => { element.open = true; }));
+    const visibleText = await page.locator('body').innerText();
+    for (const match of visibleText.matchAll(/\bS\d{3,}\b/g)) {
+      exposed.push(`${route}: ${match[0]}`);
+    }
+  }
+
+  expect(exposed).toEqual([]);
+});
