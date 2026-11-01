@@ -365,3 +365,12 @@
   .nav-links>a.nav-cta{min-height:48px;margin-top:10px;padding:12px}
 }
 @media(prefers-reduced-motion:reduce){.feature-card{transition:none}.feature-card:hover{transform:none}}
+@media(max-width:390px){
+  .home-hero{padding:42px 0 34px}
+  .home-hero h1{font-size:40px}
+  .home-hero .eyebrow{font-size:9px;letter-spacing:.12em}
+}
+@media(max-width:340px){
+  .home-hero{padding:36px 0 28px}
+  .home-hero h1{font-size:38px}
+}
