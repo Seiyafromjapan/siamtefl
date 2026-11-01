@@ -1,5 +1,5 @@
 const basePath=location.hostname.endsWith('github.io')&&location.pathname.startsWith('/siamtefl/')?'/siamtefl':'';if(basePath){document.querySelectorAll('a[href^="/"]').forEach(a=>a.setAttribute('href',basePath+a.getAttribute('href')));const icon=document.querySelector('link[rel="icon"]');if(icon)icon.href=basePath+icon.getAttribute('href')}
-const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('#nav');if(toggle&&nav){const setMenuOpen=open=>{nav.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu')};toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';setMenuOpen(open);if(open)nav.querySelector('a')?.focus()});nav.addEventListener('click',e=>{if(e.target.closest('a'))setMenuOpen(false)});window.addEventListener('keydown',e=>{if(e.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){e.preventDefault();setMenuOpen(false);toggle.focus()}});document.addEventListener('click',e=>{if(toggle.getAttribute('aria-expanded')==='true'&&!nav.contains(e.target)&&!toggle.contains(e.target))setMenuOpen(false)})}
+const toggle=document.querySelector('.menu-toggle');const nav=document.querySelector('#nav');if(toggle&&nav){const setMenuOpen=open=>{nav.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close menu':'Open menu')};toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';setMenuOpen(open);if(open)nav.querySelector('a')?.focus()});nav.addEventListener('click',e=>{const link=e.target.closest('a');if(!link)return;setMenuOpen(false);const destination=new URL(link.href,location.href);if(destination.pathname===location.pathname&&destination.hash){const target=document.getElementById(decodeURIComponent(destination.hash.slice(1)));if(target){if(!target.hasAttribute('tabindex'))target.setAttribute('tabindex','-1');target.focus({preventScroll:true})}}});window.addEventListener('keydown',e=>{if(e.key==='Escape'&&toggle.getAttribute('aria-expanded')==='true'){e.preventDefault();setMenuOpen(false);toggle.focus()}});document.addEventListener('click',e=>{if(toggle.getAttribute('aria-expanded')==='true'&&!nav.contains(e.target)&&!toggle.contains(e.target))setMenuOpen(false)})}
 const analyticsId='G-90601G33WS';
 const consentKey='siamtefl_analytics_consent';
 const consentBanner=document.querySelector('#analytics-consent');
@@ -44,11 +44,11 @@ function contentCluster(path){for(const [name,paths] of Object.entries(clusterRo
 document.addEventListener('click',e=>{
   const link=e.target.closest('a[href]');
   if(!link||link.hasAttribute('data-affiliate')||!hasAnalyticsConsent()||typeof window.gtag!=='function')return;
-  const zone=link.closest('.next-steps, .article, .page-hero .hero-actions, .hero-actions');
+  const zone=link.closest('#nav, .next-steps, .article, .page-hero .hero-actions, .hero-actions, .home-path-grid');
   if(!zone)return;
   const destination=new URL(link.href,location.href);
   if(destination.origin!==location.origin||destination.pathname===location.pathname)return;
-  const context=link.closest('.next-steps')?'next_steps':link.closest('.hero-actions')?'homepage_hero':link.closest('.page-hero')?'page_intro':'article_body';
+  const context=link.closest('#nav')?'header_nav':link.closest('.home-path-grid')?'homepage_path':link.closest('.next-steps')?'next_steps':link.closest('.hero-actions')?'homepage_hero':link.closest('.page-hero')?'page_intro':'article_body';
   window.gtag('event','internal_navigation_click',{
     source_page:location.pathname,
     destination_page:destination.pathname,
