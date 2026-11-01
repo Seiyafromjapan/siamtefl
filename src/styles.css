@@ -220,3 +220,20 @@
 /* Disclosed provider referral options */
 .affiliate-options{padding:24px;background:#fff;border:1px solid var(--line);border-radius:8px;margin:24px 0}.affiliate-options .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.affiliate-options .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;text-align:center}.affiliate-options .source-note{margin-bottom:0}
 @media(max-width:600px){.affiliate-options{padding:18px}.affiliate-options .cta-row{display:grid;grid-template-columns:1fr}.affiliate-options .button{width:100%;min-height:52px}}
+
+
+/* Working-hours editorial: original artwork, legible diagrams, and responsive comparisons */
+.workday-hero,.workday-chart{margin:0 auto 22px;width:min(1100px,calc(100% - 32px));background:#e9eee6;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.workday-hero img,.workday-chart img{display:block;width:100%;height:auto}
+.workday-hero figcaption,.workday-chart figcaption{padding:11px 19px 14px;color:#53645a;font-size:12px;line-height:1.55;background:#fff}
+.workday-chart{width:100%;margin:22px 0}
+.workday-article .table-scroll{max-width:100%;overflow-x:auto;border-radius:8px;margin:20px 0}
+.workday-article .price-table{min-width:550px}
+.workday-article .source-note{line-height:1.65}
+.workday-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.workday-comparison>div{border:1px solid #b7cbb9;border-radius:8px;background:#fff;padding:22px}
+.workday-comparison>div:nth-child(2){background:#e7efe5}
+.workday-comparison h3{font-size:20px;margin:8px 0 10px}
+.workday-comparison p{margin:0;font-size:14px}
+.workday-kicker{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--forest2)}
+@media(max-width:640px){.workday-hero{width:calc(100% - 20px)}.workday-hero figcaption,.workday-chart figcaption{font-size:11px;padding:10px 13px}.workday-comparison{grid-template-columns:1fr}.workday-comparison>div{padding:18px}.workday-chart{margin:18px 0}.workday-article .price-table{min-width:520px}}
