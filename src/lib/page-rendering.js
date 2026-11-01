@@ -5,7 +5,8 @@ const breadcrumbHubs = {
   '/how-to-choose-tefl-course-thailand/': { path: '/how-to-choose-tefl-course-thailand/', label: 'Choose TEFL' },
   '/tefl-course-comparison-thailand/': { path: '/tefl-course-comparison-thailand/', label: 'Compare TEFL' },
   '/money-to-move-to-thailand-to-teach/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' },
-  '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' }
+  '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' },
+  '/english-teacher-housing-thailand/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' }
 };
 
 const clusterFor = {
@@ -43,6 +44,7 @@ const clusterFor = {
   '/calculator/': 'budget',
   '/thailand-teacher-school-holiday-pay/': 'budget',
   '/teaching-large-classes-thailand/': 'teach',
+  '/english-teacher-housing-thailand/': 'budget',
   '/teach-english-thailand-without-speaking-thai/': 'teach',
   '/thailand-teacher-visa-work-permit/': 'start'
 };
