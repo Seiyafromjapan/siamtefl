@@ -202,6 +202,32 @@
 
 @media(max-width:700px){.table-scroll.course-comparison-table{overflow:visible}.course-comparison-table .price-table{min-width:0;border-collapse:separate;border-spacing:0;background:transparent}.course-comparison-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.course-comparison-table .price-table,.course-comparison-table tbody,.course-comparison-table tr,.course-comparison-table td{display:block;width:100%}.course-comparison-table tbody{display:grid;gap:14px}.course-comparison-table tr{background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden;box-shadow:0 3px 14px #1e45300a}.course-comparison-table td{display:grid;grid-template-columns:minmax(96px,34%) minmax(0,1fr);gap:10px;padding:11px 13px!important;border-bottom:1px solid var(--line)!important;font-size:13px!important;overflow-wrap:anywhere}.course-comparison-table td:before{content:attr(data-label);font-size:10px;font-weight:700;color:var(--forest);line-height:1.4}.course-comparison-table tr:last-child td:last-child{border-bottom:0!important}}
 
+/* Teacher housing guide */
+.housing-hero{position:relative;isolation:isolate;min-height:470px;display:flex;align-items:center;overflow:hidden;background:#123d35}
+.housing-hero-photo{position:absolute;inset:0;z-index:-1;margin:0}
+.housing-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 55%;opacity:.32}
+.housing-hero-photo:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,#123d35f2 0%,#123d35d9 55%,#123d3570 100%)}
+.housing-hero-photo figcaption{position:absolute;z-index:1;right:18px;bottom:12px;max-width:calc(100% - 36px);padding:6px 9px;border-radius:3px;background:#0d2c26c9;color:#eef5ef;font-size:10px;line-height:1.45}
+.housing-hero-photo figcaption a,.housing-inline-photo figcaption a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+.housing-hero-copy{position:relative;z-index:1;padding:55px 0 50px;color:#fff}
+.housing-hero-copy .breadcrumbs{color:#d8e6dc}
+.housing-hero-copy .eyebrow{color:#c4e879}
+.housing-hero-copy h1{max-width:760px;color:#fff;font-size:clamp(38px,5.3vw,62px)}
+.housing-hero-copy .lead{max-width:700px;color:#edf3ee}
+.housing-hero-copy .hero-caveat{max-width:680px;color:#d0e0d6;font-size:13px}
+.housing-article{padding-top:50px}
+.housing-types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.housing-types>div,.housing-example{padding:22px 24px;border:1px solid #dfe4dc;border-radius:7px;background:#fff}
+.housing-types h3{font-size:19px;margin-bottom:9px;color:#123d35}
+.housing-types p,.housing-example p{margin-bottom:0}
+.housing-example{margin:22px 0;background:#edf3ec}
+.housing-example ul{margin:12px 0;padding-left:22px;color:#536159}
+.housing-example>p:last-child{margin-top:12px}
+.housing-inline-photo{margin:34px 0 42px}
+.housing-inline-photo img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:8px}
+.housing-inline-photo figcaption{padding:8px 2px;color:#66746d;font-size:11px;line-height:1.5}
+@media(max-width:640px){.housing-hero{min-height:480px}.housing-hero-copy{padding:42px 0 38px}.housing-hero-copy h1{font-size:clamp(36px,10vw,48px)}.housing-types{grid-template-columns:1fr}.housing-types>div,.housing-example{padding:18px}.housing-hero-photo img{object-position:58% center}.housing-hero-photo:after{background:linear-gradient(90deg,#123d35ee,#123d35b8)}}
+
 /* Chiang Mai location guide photography */
 .chiang-mai-photo{width:min(calc(100% - 32px),780px);margin:28px auto 34px}
 .chiang-mai-photo img{display:block;width:100%;height:auto;aspect-ratio:1920/1277;object-fit:cover;border-radius:8px;background:#e9eee6}
@@ -216,3 +242,181 @@
 /* Savings article visuals */
 .article-hero-image,.article-wide-image{width:min(1000px,calc(100% - 48px));margin:0 auto 20px;overflow:hidden;border-radius:8px;background:#e9eee6}.article-hero-image img,.article-wide-image img{display:block;width:100%;height:auto;aspect-ratio:1672/941;object-fit:cover}.article-hero-image figcaption{padding:10px 14px;color:var(--muted);font-size:11px}.article-inline-image{width:100%;margin:0 0 24px}.savings-visual{margin:22px 0 24px;padding:22px;background:#e9eee6;border:1px solid var(--line);border-radius:8px}.savings-visual>.eyebrow{margin:0 0 12px}.savings-visual ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;list-style:none;margin:0;padding:0}.savings-card{min-width:0;padding:16px;background:#fff;border:1px solid var(--line);border-radius:6px}.savings-card h3{margin:0 0 12px;color:var(--forest);font-size:18px}.savings-card h3 span{display:block;margin-top:3px;font:600 10px var(--sans);letter-spacing:.02em;color:var(--muted)}.savings-card dl{margin:0}.savings-card dl>div{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.savings-card dt,.savings-card dd{margin:0;font-size:11px;line-height:1.4}.savings-card dt{color:var(--muted)}.savings-card dd{font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}.savings-card dl>.savings-left{padding-top:9px;border:0}.savings-card .savings-left dt,.savings-card .savings-left dd{color:var(--forest);font-weight:700}.savings-bar{height:7px;margin-top:8px;border-radius:99px;background:#e6f0e7;overflow:hidden}.savings-bar span{display:block;height:100%;border-radius:inherit;background:var(--forest2)}.savings-visual>.table-hint{margin:12px 0 0}
 @media(max-width:700px){.article-hero-image,.article-wide-image{width:calc(100% - 28px);border-radius:6px}.savings-visual{padding:16px}.savings-visual ul{grid-template-columns:1fr;gap:9px}.savings-card{padding:14px 15px}.savings-card h3{font-size:17px}.savings-card dt,.savings-card dd{font-size:12px}}
+
+/* Disclosed provider referral options */
+.affiliate-options{padding:24px;background:#fff;border:1px solid var(--line);border-radius:8px;margin:24px 0}.affiliate-options .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0}.affiliate-options .button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;text-align:center}.affiliate-options .source-note{margin-bottom:0}
+@media(max-width:600px){.affiliate-options{padding:18px}.affiliate-options .cta-row{display:grid;grid-template-columns:1fr}.affiliate-options .button{width:100%;min-height:52px}}
+
+
+/* Working-hours editorial: original artwork, legible diagrams, and responsive comparisons */
+.workday-hero,.workday-chart{margin:0 auto 22px;width:min(1100px,calc(100% - 32px));background:#e9eee6;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.workday-hero img,.workday-chart img{display:block;width:100%;height:auto}
+.workday-hero figcaption,.workday-chart figcaption{padding:11px 19px 14px;color:#53645a;font-size:12px;line-height:1.55;background:#fff}
+.workday-chart{width:100%;margin:22px 0}
+.workday-article .table-scroll{max-width:100%;overflow-x:auto;border-radius:8px;margin:20px 0}
+.workday-article .price-table{min-width:550px}
+.workday-article .source-note{line-height:1.65}
+.workday-comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.workday-comparison>div{border:1px solid #b7cbb9;border-radius:8px;background:#fff;padding:22px}
+.workday-comparison>div:nth-child(2){background:#e7efe5}
+.workday-comparison h3{font-size:20px;margin:8px 0 10px}
+.workday-comparison p{margin:0;font-size:14px}
+.workday-kicker{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--forest2)}
+@media(max-width:640px){.workday-hero{width:calc(100% - 20px)}.workday-hero figcaption,.workday-chart figcaption{font-size:11px;padding:10px 13px}.workday-comparison{grid-template-columns:1fr}.workday-comparison>div{padding:18px}.workday-chart{margin:18px 0}.workday-article .price-table{min-width:520px}}
+
+
+.workday-mobile-map{display:none}
+@media(max-width:640px){
+.workday-chart img{display:none}
+.workday-mobile-map{display:block;padding:17px 14px 9px;background:#f1f3e9}
+.workday-mobile-map-title{font-weight:800;color:var(--forest);font-size:16px!important;margin:0 0 15px!important}
+.workday-mobile-bar{position:relative;display:grid;grid-template-columns:48px 1fr;gap:7px;align-items:center;margin:10px 0;padding:11px 12px;isolation:isolate;min-height:54px;background:#fff;border-radius:6px;overflow:hidden}
+.workday-mobile-bar span{position:absolute;z-index:-1;left:0;top:0;bottom:0;background:#b5d2bc}
+.workday-mobile-bar:first-of-type span{background:#c4e879}
+.workday-mobile-bar:last-of-type span{background:#f4d09b}
+.workday-mobile-bar strong{font-size:19px;color:#123d35}
+.workday-mobile-bar em{font-style:normal;font-size:13px;color:#244d3d}
+.workday-mobile-map>p:last-child{font-size:11px!important;margin:12px 0 4px!important}
+}
+
+/* Working-hours article photographs and accessible HTML comparison */
+.workday-inline-photo{width:100%;margin:24px 0 30px;border-radius:10px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.workday-inline-photo img{display:block;width:100%;height:auto;aspect-ratio:1600/901;object-fit:cover}
+.workday-inline-photo figcaption{padding:10px 16px 12px;color:#53645a;font-size:12px;line-height:1.55}
+.workday-chart{display:block;border:1px solid var(--line);background:#fff}
+.workday-chart figcaption{font-size:13px}
+.workday-mobile-map{display:block;padding:18px;background:#f1f3e9}
+.workday-mobile-map-title{font-weight:800;color:var(--forest);font-size:18px;margin:0 0 12px}
+.workday-mobile-bar{position:relative;display:grid;grid-template-columns:52px 1fr;gap:8px;align-items:center;margin:10px 0;padding:11px 12px;min-height:52px;background:#fff;border-radius:6px;overflow:hidden}
+.workday-mobile-bar span{position:absolute;inset:0 auto 0 0;background:#b5d2bc;z-index:0}
+.workday-mobile-bar strong,.workday-mobile-bar em{position:relative;z-index:1}
+.workday-mobile-bar em{font-size:14px;font-style:normal}
+.workday-mobile-map>p:last-child{font-size:12px;margin:12px 0 0}
+@media(max-width:640px){.workday-inline-photo{margin:18px 0 24px}.workday-inline-photo figcaption{font-size:11px;padding:9px 12px}.workday-mobile-map{padding:14px 12px}}
+
+/* Phase 1: compact first-visit navigation and homepage paths. */
+.nav-links{gap:clamp(13px,1.8vw,24px);font-size:12px}
+.nav-links>a[aria-current="page"]:not(.nav-cta),.nav-links>a[aria-current="location"]:not(.nav-cta){color:var(--forest);text-decoration:underline;text-decoration-color:#91a995;text-decoration-thickness:2px;text-underline-offset:6px}
+.nav-links>a.nav-course{color:#64736a;font-weight:600}
+.nav-links>a.nav-cta{min-height:44px;padding:10px 14px;white-space:nowrap}
+.nav-links>a:focus-visible,.menu-toggle:focus-visible{outline:3px solid #9bab65;outline-offset:3px;border-radius:4px}
+.home-hero{padding:92px 0 82px}
+.home-hero .hero-photo{position:absolute;inset:0;margin:0;z-index:0;overflow:hidden}
+.home-hero .hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 56%}
+.home-hero:before{z-index:1;background:linear-gradient(90deg,rgba(18,61,53,.94) 0%,rgba(18,61,53,.82) 57%,rgba(18,61,53,.58) 100%)}
+.home-hero:after{z-index:1}
+.home-hero .hero-content{position:relative;z-index:2}
+.home-hero h1{max-width:760px}
+.home-hero .hero-copy{max-width:560px}
+.home-hero .hero-actions .button:first-child{background:var(--lime);color:var(--forest)}
+.home-hero .hero-actions .button:first-child .arrow{color:var(--forest)}
+.home-hero .hero-actions .button:not(:first-child){background:transparent;color:#fff;border:1px solid #739287}
+.home-hero .hero-actions .button:not(:first-child):hover{background:#ffffff12;color:#fff}
+.hero-trust{margin:20px 0 0;color:#d3e0d9;font-size:12px}
+.home-paths{background:#fff}
+.home-path-grid{gap:14px}
+.home-path-grid .feature-card{min-height:178px;display:flex;flex-direction:column;align-items:flex-start;padding:24px}
+.home-path-grid .feature-card h3{margin:0 0 9px}
+.home-path-grid .feature-card p{margin-bottom:12px}
+.home-path-grid .feature-card .text-link{margin-top:auto}
+.guide-grid{gap:0 34px}
+.guide-link{display:flex;flex-direction:column;gap:4px;padding:18px 0;border-bottom:1px solid var(--line)}
+.guide-link strong{font:700 17px/1.3 var(--display);color:var(--ink)}
+.guide-link span{font-size:13px;line-height:1.5;color:var(--muted)}
+.guide-link:hover strong,.guide-link:focus-visible strong{color:var(--forest2);text-decoration:underline;text-underline-offset:3px}
+.guide-link:focus-visible,.trust-links a:focus-visible{outline:3px solid #9bab65;outline-offset:4px;border-radius:3px}
+.course-section{background:#eef1eb}
+.course-choice-grid .feature-card{display:flex;flex-direction:column;align-items:flex-start;min-height:220px;padding:24px}
+.course-choice-grid .tag{margin-bottom:16px}
+.course-choice-grid h3{margin-bottom:9px}
+.course-choice-grid p{margin-bottom:16px}
+.course-choice-grid .text-link{margin-top:auto}
+.course-disclosure{max-width:780px;margin:22px 0 8px;font-size:12px;line-height:1.65}
+.comparison-link{margin:8px 0 0}
+.budget-section{padding-top:54px;padding-bottom:54px}
+.budget-band{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:34px 38px;background:#fff;border:1px solid var(--line);border-radius:7px}
+.budget-band h2{font-size:clamp(25px,3.3vw,36px);margin-bottom:9px}
+.budget-band p:not(.eyebrow){max-width:620px;margin:0;font-size:14px}
+.budget-band .eyebrow{margin-bottom:9px}
+.budget-band .button{flex:none;min-height:48px;white-space:nowrap}
+.trust-section{padding-top:22px;padding-bottom:36px}
+.trust-links{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:22px}
+.trust-links p{margin:0;font-size:12px}
+.trust-links nav{display:flex;flex-wrap:wrap;gap:10px 22px}
+.trust-links a{font-size:12px;font-weight:700;color:var(--forest);text-decoration:underline;text-decoration-color:#b9c5bc;text-underline-offset:4px}
+@media(max-width:850px) and (min-width:701px){.nav-links{gap:11px;font-size:10px}.nav-wrap{padding-inline:20px}.nav-links>a.nav-cta{padding-inline:10px}}
+@media(max-width:700px){
+  .home-hero{padding:65px 0 55px}
+  .home-hero:before{background:linear-gradient(90deg,rgba(18,61,53,.94),rgba(18,61,53,.76))}
+  .home-hero .hero-actions{max-width:420px}
+  .home-hero .hero-photo figcaption{right:12px;bottom:8px;max-width:calc(100% - 24px);font-size:9px}
+  .home-path-grid{grid-template-columns:1fr;gap:10px}
+  .home-path-grid .feature-card{min-height:0;padding:19px}
+  .guide-grid{grid-template-columns:1fr}
+  .guide-link{padding:15px 0}
+  .course-choice-grid{grid-template-columns:1fr;gap:10px}
+  .course-choice-grid .feature-card{min-height:0;padding:20px}
+  .budget-band{display:block;padding:24px 20px}
+  .budget-band .button{width:100%;margin-top:18px}
+  .trust-links{display:block}
+  .trust-links nav{gap:10px 18px;margin-top:12px}
+  .nav-links.open{padding:6px 0 16px}
+  .nav-links>a{min-height:48px;padding:12px 4px}
+  .nav-links>a.nav-cta{min-height:48px;margin-top:10px;padding:12px}
+}
+@media(prefers-reduced-motion:reduce){.feature-card{transition:none}.feature-card:hover{transform:none}}
+@media(max-width:390px){
+  .home-hero{padding:42px 0 34px}
+  .home-hero h1{font-size:40px}
+  .home-hero .eyebrow{font-size:9px;letter-spacing:.12em}
+}
+@media(max-width:340px){
+  .home-hero{padding:36px 0 28px}
+  .home-hero h1{font-size:38px}
+}
+@media(max-width:340px){
+  .cta-band:has(a[data-provider="see_tefl"][data-placement="provider_review"]) .button{
+    display:flex;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    white-space:normal;
+    text-align:center;
+    overflow-wrap:anywhere;
+  }
+}
+@media(max-width:700px){
+  .cta-band .button{
+    display:inline-flex;
+    width:fit-content;
+    max-width:100%;
+    min-width:0;
+    box-sizing:border-box;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    text-align:center;
+    flex-wrap:nowrap;
+  }
+  .cta-band .button .arrow{flex:0 0 auto}
+  .table-scroll.mobile-table-scroll{
+    max-width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    overscroll-behavior-inline:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+}
+@media(min-width:390px){.mobile-table-scroll-hint{display:none}}
+
+
+/* TEFL comparison editorial images */
+.tefl-comparison-photo{width:100%;margin:26px 0 30px;overflow:hidden;border-radius:8px;background:#e9eee6}
+.tefl-comparison-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.tefl-comparison-photo figcaption{padding:9px 13px;color:var(--muted);font-size:11px;line-height:1.5}
+@media(max-width:700px){.tefl-comparison-photo{margin:20px 0 24px;border-radius:6px}}
+
+/* WTA review editorial images */
+.wta-review-photo{width:100%;margin:26px 0 30px;overflow:hidden;border-radius:8px;background:#e9eee6}
+.wta-review-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.wta-review-photo figcaption{padding:9px 13px;color:var(--muted);font-size:11px;line-height:1.5}
+@media(max-width:700px){.wta-review-photo{margin:20px 0 24px;border-radius:6px}}

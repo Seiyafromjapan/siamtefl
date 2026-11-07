@@ -24,6 +24,7 @@ async function installAnalyticsStubs(page) {
   await page.route('https://seetefl.com/**', route => route.abort());
   await page.route('https://www.seetefl.com/**', route => route.abort());
   await page.route('https://www.worldtesolacademy.com/**', route => route.abort());
+  await page.route('https://teflen.com/**', route => route.abort());
   await page.route('https://essentialtefl.com/**', route => route.abort());
   await page.route('https://www.essentialtefl.com/**', route => route.abort());
 }
@@ -87,6 +88,16 @@ test('consent gates page setup and sends one minimal outbound event per provider
     destination: 'seetefl.com'
   }]);
 
+  await page.locator('a[data-affiliate][data-provider="teflen"]').click();
+  const teflenAffiliateEvents = (await analyticsCalls(page)).filter(call => call[0] === 'event' && call[1] === 'affiliate_click');
+  expect(teflenAffiliateEvents).toHaveLength(1);
+  expect(teflenAffiliateEvents[0][2]).toMatchObject({
+    provider: 'teflen',
+    page_path: '/tefl-course-comparison-thailand/',
+    placement: 'comparison-table',
+    destination: 'teflen.com'
+  });
+
   await page.locator('a[href^="https://www.worldtesolacademy.com/"]').first().click();
   events = await providerEvents(page);
   expect(events).toHaveLength(2);
@@ -115,14 +126,17 @@ test('consent gates page setup and sends one minimal outbound event per provider
 
   await page.goto(`${baseUrl}/world-tesol-academy-review/`);
   await page.waitForFunction(() => Array.isArray(window.__gaCalls));
-  await page.locator('a[href="https://www.worldtesolacademy.com/"]').first().click();
+  await page.locator('a[href^="https://www.worldtesolacademy.com/"]').first().click();
   events = await providerEvents(page);
-  expect(events).toHaveLength(1);
-  expect(events[0][2]).toEqual({
+  const wtaAffiliateEvents = (await analyticsCalls(page)).filter(call => call[0] === 'event' && call[1] === 'affiliate_click');
+  expect(wtaAffiliateEvents).toHaveLength(1);
+  expect(wtaAffiliateEvents[0][2]).toMatchObject({
     provider: 'world_tesol_academy',
-    placement: 'provider_review',
+    page_path: '/world-tesol-academy-review/',
+    placement: 'review-120-hour',
     destination: 'www.worldtesolacademy.com'
   });
+  expect(wtaAffiliateEvents).toHaveLength(1);
 
   await page.goto(`${baseUrl}/essential-tefl-review/`);
   await page.waitForFunction(() => Array.isArray(window.__gaCalls));
@@ -134,4 +148,84 @@ test('consent gates page setup and sends one minimal outbound event per provider
   await page.locator('.next-steps a[href="/120-hour-vs-level-5-tefl-thailand/"]').first().click();
   const internalCalls = await analyticsCalls(page);
   expect(internalCalls.filter(call => call[0] === 'event' && call[1] === 'internal_navigation_click')).toHaveLength(1);
+});
+
+test('World TESOL Academy review has disclosed, accessible affiliate links to each course', async ({ page }) => {
+  await page.goto(`${baseUrl}/world-tesol-academy-review/`);
+  const links = page.locator('a[data-affiliate][data-provider="world_tesol_academy"]');
+  await expect(links).toHaveCount(2);
+  await expect(links.nth(0)).toHaveAttribute('href', 'https://www.worldtesolacademy.com/tesol-course-enrollment/?study=140057');
+  await expect(links.nth(1)).toHaveAttribute('href', 'https://www.worldtesolacademy.com/level-5-tesol-diploma/?study=140057');
+  for (const link of await links.all()) {
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', /sponsored/);
+    await expect(link).toHaveAttribute('rel', /noopener/);
+    await expect(link).toHaveAttribute('aria-label', /new tab/);
+  }
+  await expect(page.locator('.affiliate-options a[href="/affiliate-disclosure/"]')).toHaveCount(1);
+});
+
+test('review and comparison pages disclose affiliate commissions without exposing partner status', async ({ page }) => {
+  for (const route of ['/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/']) {
+    await page.goto(`${baseUrl}${route}`);
+    await expect(page.locator('body')).not.toContainText(/pending|application pending/);
+    await expect(page.locator('body')).not.toContainText(/pending|application pending|no referral link on this page|currently has no referral link/i);
+    await expect(page.locator('body')).toContainText(/may earn a commission/i);
+  }
+  await page.goto(`${baseUrl}/`);
+  await expect(page.locator('body')).toContainText('Some course links are referral links. If you enrol through one, SiamTEFL may earn a commission.');
+  await page.goto(`${baseUrl}/see-tefl-chiang-mai-review/`);
+  const seeLink = page.locator('a[data-affiliate][data-provider="see_tefl"]').first();
+  await expect(seeLink).toHaveAttribute('href', 'https://seetefl.com?ap_id=SiamTEFL');
+  await expect(seeLink).toHaveAttribute('rel', /sponsored/);
+});
+
+test('generated routes hide internal IDs and do not overflow at 320px', async ({ page, request }) => {
+  const sitemapResponse = await request.get(`${baseUrl}/sitemap.xml`);
+  await expect(sitemapResponse).toBeOK();
+  const sitemap = await sitemapResponse.text();
+  const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
+  expect(new Set(routes).size).toBe(49);
+
+  await page.setViewportSize({ width: 320, height: 900 });
+  const exposed = [];
+  const overflows = [];
+  for (const route of routes) {
+    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
+    expect(response?.status(), route).toBe(200);
+    await page.locator('details').evaluateAll(elements => elements.forEach(element => { element.open = true; }));
+    const visibleText = await page.locator('body').innerText();
+    for (const match of visibleText.matchAll(/\bS\d{3,}\b/g)) {
+      exposed.push(`${route}: ${match[0]}`);
+    }
+
+    const overflow = await page.evaluate(() => {
+      const viewportWidth = document.documentElement.clientWidth;
+      const offenders = [...document.body.querySelectorAll('*')].filter(element => {
+        const rect = element.getBoundingClientRect();
+        if (rect.right <= viewportWidth + 1) return false;
+        for (let parent = element.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
+          const overflowX = getComputedStyle(parent).overflowX;
+          if (overflowX === 'auto' || overflowX === 'scroll') return false;
+        }
+        return true;
+      }).slice(0, 5).map(element => {
+        const rect = element.getBoundingClientRect();
+        return `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ''}${typeof element.className === 'string' && element.className ? `.${element.className.trim().replace(/\s+/g, '.')}` : ''} left=${Math.round(rect.left)} right=${Math.round(rect.right)}`;
+      });
+      return {
+        viewportWidth,
+        documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+        rootOverflowX: getComputedStyle(document.documentElement).overflowX,
+        bodyOverflowX: getComputedStyle(document.body).overflowX,
+        offenders
+      };
+    });
+    if (overflow.documentWidth > overflow.viewportWidth + 1 || ['hidden', 'clip'].includes(overflow.rootOverflowX) || ['hidden', 'clip'].includes(overflow.bodyOverflowX)) {
+      overflows.push(`${route}: ${Math.max(0, overflow.documentWidth - overflow.viewportWidth)}px over (${JSON.stringify(overflow)})`);
+    }
+  }
+
+  expect(exposed).toEqual([]);
+  expect(overflows).toEqual([]);
 });
