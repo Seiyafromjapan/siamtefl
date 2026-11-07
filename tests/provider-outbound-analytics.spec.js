@@ -165,15 +165,67 @@ test('World TESOL Academy review has disclosed, accessible affiliate links to ea
   await expect(page.locator('.affiliate-options a[href="/affiliate-disclosure/"]')).toHaveCount(1);
 });
 
-test('review and comparison pages consistently disclose approved SEE TEFL and WTA affiliate links', async ({ page }) => {
+test('review and comparison pages disclose affiliate commissions without exposing partner status', async ({ page }) => {
   for (const route of ['/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/']) {
     await page.goto(`${baseUrl}${route}`);
     await expect(page.locator('body')).not.toContainText(/pending|application pending/);
+    await expect(page.locator('body')).not.toContainText(/pending|application pending|no referral link on this page|currently has no referral link/i);
+    await expect(page.locator('body')).toContainText(/may earn a commission/i);
   }
   await page.goto(`${baseUrl}/`);
-  await expect(page.locator('body')).toContainText('approved affiliate relationships');
+  await expect(page.locator('body')).toContainText('Some course links are referral links. If you enrol through one, SiamTEFL may earn a commission.');
   await page.goto(`${baseUrl}/see-tefl-chiang-mai-review/`);
   const seeLink = page.locator('a[data-affiliate][data-provider="see_tefl"]').first();
   await expect(seeLink).toHaveAttribute('href', 'https://seetefl.com?ap_id=SiamTEFL');
   await expect(seeLink).toHaveAttribute('rel', /sponsored/);
+});
+
+test('generated routes hide internal IDs and do not overflow at 320px', async ({ page, request }) => {
+  const sitemapResponse = await request.get(`${baseUrl}/sitemap.xml`);
+  await expect(sitemapResponse).toBeOK();
+  const sitemap = await sitemapResponse.text();
+  const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
+  expect(new Set(routes).size).toBe(49);
+
+  await page.setViewportSize({ width: 320, height: 900 });
+  const exposed = [];
+  const overflows = [];
+  for (const route of routes) {
+    const response = await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
+    expect(response?.status(), route).toBe(200);
+    await page.locator('details').evaluateAll(elements => elements.forEach(element => { element.open = true; }));
+    const visibleText = await page.locator('body').innerText();
+    for (const match of visibleText.matchAll(/\bS\d{3,}\b/g)) {
+      exposed.push(`${route}: ${match[0]}`);
+    }
+
+    const overflow = await page.evaluate(() => {
+      const viewportWidth = document.documentElement.clientWidth;
+      const offenders = [...document.body.querySelectorAll('*')].filter(element => {
+        const rect = element.getBoundingClientRect();
+        if (rect.right <= viewportWidth + 1) return false;
+        for (let parent = element.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
+          const overflowX = getComputedStyle(parent).overflowX;
+          if (overflowX === 'auto' || overflowX === 'scroll') return false;
+        }
+        return true;
+      }).slice(0, 5).map(element => {
+        const rect = element.getBoundingClientRect();
+        return `${element.tagName.toLowerCase()}${element.id ? `#${element.id}` : ''}${typeof element.className === 'string' && element.className ? `.${element.className.trim().replace(/\s+/g, '.')}` : ''} left=${Math.round(rect.left)} right=${Math.round(rect.right)}`;
+      });
+      return {
+        viewportWidth,
+        documentWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
+        rootOverflowX: getComputedStyle(document.documentElement).overflowX,
+        bodyOverflowX: getComputedStyle(document.body).overflowX,
+        offenders
+      };
+    });
+    if (overflow.documentWidth > overflow.viewportWidth + 1 || ['hidden', 'clip'].includes(overflow.rootOverflowX) || ['hidden', 'clip'].includes(overflow.bodyOverflowX)) {
+      overflows.push(`${route}: ${Math.max(0, overflow.documentWidth - overflow.viewportWidth)}px over (${JSON.stringify(overflow)})`);
+    }
+  }
+
+  expect(exposed).toEqual([]);
+  expect(overflows).toEqual([]);
 });
