@@ -24,6 +24,7 @@ async function installAnalyticsStubs(page) {
   await page.route('https://seetefl.com/**', route => route.abort());
   await page.route('https://www.seetefl.com/**', route => route.abort());
   await page.route('https://www.worldtesolacademy.com/**', route => route.abort());
+  await page.route('https://teflen.com/**', route => route.abort());
   await page.route('https://essentialtefl.com/**', route => route.abort());
   await page.route('https://www.essentialtefl.com/**', route => route.abort());
 }
@@ -86,6 +87,16 @@ test('consent gates page setup and sends one minimal outbound event per provider
     placement: 'comparison_hub',
     destination: 'seetefl.com'
   }]);
+
+  await page.locator('a[data-affiliate][data-provider="teflen"]').click();
+  const teflenAffiliateEvents = (await analyticsCalls(page)).filter(call => call[0] === 'event' && call[1] === 'affiliate_click');
+  expect(teflenAffiliateEvents).toHaveLength(1);
+  expect(teflenAffiliateEvents[0][2]).toMatchObject({
+    provider: 'teflen',
+    page_path: '/tefl-course-comparison-thailand/',
+    placement: 'comparison-table',
+    destination: 'teflen.com'
+  });
 
   await page.locator('a[href^="https://www.worldtesolacademy.com/"]').first().click();
   events = await providerEvents(page);
@@ -157,6 +168,7 @@ test('World TESOL Academy review has disclosed, accessible affiliate links to ea
 test('review and comparison pages disclose affiliate commissions without exposing partner status', async ({ page }) => {
   for (const route of ['/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/']) {
     await page.goto(`${baseUrl}${route}`);
+    await expect(page.locator('body')).not.toContainText(/pending|application pending/);
     await expect(page.locator('body')).not.toContainText(/pending|application pending|no referral link on this page|currently has no referral link/i);
     await expect(page.locator('body')).toContainText(/may earn a commission/i);
   }

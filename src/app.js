@@ -61,9 +61,9 @@ if(hasAnalyticsConsent())loadAnalytics();
 document.addEventListener('click',e=>{
   const a=e.target.closest('a[data-affiliate]');
   if(!a)return;
-  const providers={essential_tefl:'essentialtefl.com',see_tefl:'seetefl.com',world_tesol_academy:'www.worldtesolacademy.com'};
+  const providers={essential_tefl:'essentialtefl.com',see_tefl:'seetefl.com',world_tesol_academy:'www.worldtesolacademy.com',teflen:'teflen.com'};
   const provider=a.dataset.provider||'essential_tefl';
-  const destination=providers[provider]||new URL(a.href,location.href).hostname.toLowerCase();
+  const destination=providers[provider];
   if(!destination)return;
   const payload={event:'affiliate_click',provider,page_path:location.pathname,placement:a.dataset.placement||'unspecified',destination};
   window.dispatchEvent(new CustomEvent('siamtefl:affiliate-click',{detail:payload}));
@@ -74,6 +74,7 @@ document.addEventListener('click',e=>{
 const providerOutboundEventFlag=Symbol.for('siamtefl.providerOutboundClickTracked');
 const providerOutboundHosts=new Map([
   ['seetefl.com','see_tefl'],
+  ['teflen.com','teflen'],
   ['www.seetefl.com','see_tefl'],
   ['worldtesolacademy.com','world_tesol_academy'],
   ['www.worldtesolacademy.com','world_tesol_academy']
