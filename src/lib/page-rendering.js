@@ -5,7 +5,8 @@ const breadcrumbHubs = {
   '/how-to-choose-tefl-course-thailand/': { path: '/how-to-choose-tefl-course-thailand/', label: 'Choose TEFL' },
   '/tefl-course-comparison-thailand/': { path: '/tefl-course-comparison-thailand/', label: 'Compare TEFL' },
   '/money-to-move-to-thailand-to-teach/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' },
-  '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' }
+  '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' },
+  '/english-teacher-housing-thailand/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' }
 };
 
 const clusterFor = {
@@ -20,6 +21,7 @@ const clusterFor = {
   '/cv-resume-teaching-jobs-thailand/': 'jobs',
   '/thailand-teaching-interview-demo-lesson/': 'jobs',
   '/thailand-teaching-contract-checklist/': 'jobs',
+  '/english-teacher-working-hours-thailand/': 'jobs',
   '/how-long-after-tefl-to-get-teaching-job-thailand/': 'jobs',
   '/do-you-need-tefl-to-teach-in-thailand/': 'tefl',
   '/how-to-choose-tefl-course-thailand/': 'tefl',
@@ -42,6 +44,7 @@ const clusterFor = {
   '/calculator/': 'budget',
   '/thailand-teacher-school-holiday-pay/': 'budget',
   '/teaching-large-classes-thailand/': 'teach',
+  '/english-teacher-housing-thailand/': 'budget',
   '/teach-english-thailand-without-speaking-thai/': 'teach',
   '/thailand-teacher-visa-work-permit/': 'start'
 };
@@ -93,6 +96,10 @@ export function renderSavingsScenarioVisual(page) {
     return `<li class="savings-card"><h3>${escapeHtml(salary)} <span>gross / month</span></h3><dl><div><dt>Estimated tax</dt><dd>${money(tax)}</dd></div><div><dt>Budgeted costs</dt><dd>${money(costs)}</dd></div><div class="savings-left"><dt>Illustrative amount left</dt><dd>${money(left)}</dd></div></dl><div class="savings-bar" role="img" aria-label="Illustrative amount left: ${money(left)} per month"><span style="width:${width}%"></span></div></li>`;
   }).join('');
   return page.content.replace(marker, `<section class="savings-visual" aria-label="Illustrative monthly savings scenarios"><p class="eyebrow">Illustrative scenarios</p><ul>${cards}</ul><p class="table-hint">Amounts are taken from the table above. The bar compares the illustrative amount left after modeled tax and listed costs; it is not a guaranteed saving.</p></section>`);
+}
+
+export function removeInternalStoryLabels(content) {
+  return content.replace(/\bS\d{3}\s*·\s*/g, '');
 }
 
 export function addBreadcrumbs(page) {

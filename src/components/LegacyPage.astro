@@ -1,6 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import { addBreadcrumbs, renderSavingsScenarioVisual } from '../lib/page-rendering.js';
+import { addBreadcrumbs, removeInternalStoryLabels, renderSavingsScenarioVisual } from '../lib/page-rendering.js';
 
 const { page } = Astro.props;
 const resolvedPage = {
@@ -9,7 +9,7 @@ const resolvedPage = {
 };
 const enhanced = addBreadcrumbs({
   ...resolvedPage,
-  content: renderSavingsScenarioVisual(resolvedPage)
+  content: removeInternalStoryLabels(renderSavingsScenarioVisual(resolvedPage))
 });
 ---
 <SiteLayout page={page} content={enhanced.content} schema={enhanced.schema} />
