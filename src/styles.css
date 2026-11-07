@@ -420,3 +420,9 @@
 .wta-review-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .wta-review-photo figcaption{padding:9px 13px;color:var(--muted);font-size:11px;line-height:1.5}
 @media(max-width:700px){.wta-review-photo{margin:20px 0 24px;border-radius:6px}}
+
+/* TEFLen review responsive figures */
+.article figure img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.article figure{max-width:100%;min-width:0}
+.article-content figure{max-width:100%;min-width:0;margin:24px auto;overflow:hidden}
+.article-content figure img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
