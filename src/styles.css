@@ -407,3 +407,10 @@
   }
 }
 @media(min-width:390px){.mobile-table-scroll-hint{display:none}}
+
+
+/* TEFL comparison editorial images */
+.tefl-comparison-photo{width:100%;margin:26px 0 30px;overflow:hidden;border-radius:8px;background:#e9eee6}
+.tefl-comparison-photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.tefl-comparison-photo figcaption{padding:9px 13px;color:var(--muted);font-size:11px;line-height:1.5}
+@media(max-width:700px){.tefl-comparison-photo{margin:20px 0 24px;border-radius:6px}}
