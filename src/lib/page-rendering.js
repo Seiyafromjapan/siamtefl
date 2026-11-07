@@ -5,11 +5,13 @@ const breadcrumbHubs = {
   '/how-to-choose-tefl-course-thailand/': { path: '/how-to-choose-tefl-course-thailand/', label: 'Choose TEFL' },
   '/tefl-course-comparison-thailand/': { path: '/tefl-course-comparison-thailand/', label: 'Compare TEFL' },
   '/money-to-move-to-thailand-to-teach/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' },
-  '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' }
+  '/teaching-large-classes-thailand/': { path: '/teaching-large-classes-thailand/', label: 'Teach & Settle' },
+  '/english-teacher-housing-thailand/': { path: '/money-to-move-to-thailand-to-teach/', label: 'Pay & Budget' }
 };
 
 const clusterFor = {
   '/teach-english-thailand-no-experience/': 'start',
+  '/thailand-vs-vietnam-teaching-english/': 'start',
   '/teach-english-thailand-non-native-speaker/': 'start',
   '/thailand-teacher-visa-work-permit/': 'start',
   '/where-to-find-teaching-jobs-thailand/': 'jobs',
@@ -19,6 +21,7 @@ const clusterFor = {
   '/cv-resume-teaching-jobs-thailand/': 'jobs',
   '/thailand-teaching-interview-demo-lesson/': 'jobs',
   '/thailand-teaching-contract-checklist/': 'jobs',
+  '/english-teacher-working-hours-thailand/': 'jobs',
   '/how-long-after-tefl-to-get-teaching-job-thailand/': 'jobs',
   '/do-you-need-tefl-to-teach-in-thailand/': 'tefl',
   '/how-to-choose-tefl-course-thailand/': 'tefl',
@@ -34,12 +37,14 @@ const clusterFor = {
   '/tefl-course-deposit-refund-thailand/': 'tefl',
   '/essential-tefl-review/': 'tefl',
   '/first-time-english-teacher-salary-thailand/': 'budget',
+  '/can-you-save-money-teaching-english-thailand/': 'budget',
   '/can-you-live-in-bangkok-on-35000-baht-teaching-salary/': 'budget',
   '/tefl-bangkok-cost/': 'budget',
   '/money-to-move-to-thailand-to-teach/': 'budget',
   '/calculator/': 'budget',
   '/thailand-teacher-school-holiday-pay/': 'budget',
   '/teaching-large-classes-thailand/': 'teach',
+  '/english-teacher-housing-thailand/': 'budget',
   '/teach-english-thailand-without-speaking-thai/': 'teach',
   '/thailand-teacher-visa-work-permit/': 'start'
 };
@@ -54,6 +59,43 @@ const hubByCluster = {
 
 function escapeHtml(value) {
   return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+}
+
+function cellText(cell) {
+  return cell.replace(/<[^>]+>/g, '').replaceAll('&amp;', '&').trim();
+}
+
+function amountFromCell(cell) {
+  const amount = cellText(cell).match(/[฿]?\s*([\d,]+)/)?.[1];
+  return amount ? Number(amount.replaceAll(',', '')) : null;
+}
+
+export function renderSavingsScenarioVisual(page) {
+  const marker = '<!-- SAVINGS_SCENARIO_VISUAL -->';
+  if (page.path !== '/can-you-save-money-teaching-english-thailand/' || !page.content.includes(marker)) {
+    return page.content;
+  }
+  const table = page.content.match(/<table class="price-table">([\s\S]*?)<\/table>/)?.[1];
+  if (!table) return page.content.replace(marker, '');
+  const rows = [...table.matchAll(/<tr>([\s\S]*?)<\/tr>/g)].map(([, row]) =>
+    [...row.matchAll(/<th[^>]*>([\s\S]*?)<\/th>|<td[^>]*>([\s\S]*?)<\/td>/g)].map(([, th, td]) => th ?? td)
+  );
+  const headings = rows[0]?.slice(1).map(cellText) ?? [];
+  const values = Object.fromEntries(rows.slice(1).map((row) => [cellText(row[0] ?? ''), row.slice(1)]));
+  const salaries = headings.map((heading, index) => ({
+    salary: heading.match(/฿[\d,]+/)?.[0] ?? heading,
+    tax: amountFromCell(values['Estimated income tax / month*']?.[index] ?? ''),
+    costs: ['Rent and utilities', 'Food and household basics', 'Local transport and phone', 'Health, personal, work and visa reserve', 'Social life and local trips']
+      .reduce((sum, label) => sum + (amountFromCell(values[label]?.[index] ?? '') ?? 0), 0),
+    left: amountFromCell(values['Illustrative amount left']?.[index] ?? '')
+  }));
+  const maxLeft = Math.max(...salaries.map(({ left }) => left ?? 0), 1);
+  const cards = salaries.map(({ salary, tax, costs, left }) => {
+    const width = Math.max(4, Math.round((left / maxLeft) * 100));
+    const money = (value) => `฿${value.toLocaleString('en-US')}`;
+    return `<li class="savings-card"><h3>${escapeHtml(salary)} <span>gross / month</span></h3><dl><div><dt>Estimated tax</dt><dd>${money(tax)}</dd></div><div><dt>Budgeted costs</dt><dd>${money(costs)}</dd></div><div class="savings-left"><dt>Illustrative amount left</dt><dd>${money(left)}</dd></div></dl><div class="savings-bar" role="img" aria-label="Illustrative amount left: ${money(left)} per month"><span style="width:${width}%"></span></div></li>`;
+  }).join('');
+  return page.content.replace(marker, `<section class="savings-visual" aria-label="Illustrative monthly savings scenarios"><p class="eyebrow">Illustrative scenarios</p><ul>${cards}</ul><p class="table-hint">Amounts are taken from the table above. The bar compares the illustrative amount left after modeled tax and listed costs; it is not a guaranteed saving.</p></section>`);
 }
 
 export function addBreadcrumbs(page) {
