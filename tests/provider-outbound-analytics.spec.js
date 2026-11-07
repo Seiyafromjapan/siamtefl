@@ -185,7 +185,7 @@ test('generated routes hide internal IDs and do not overflow at 320px', async ({
   await expect(sitemapResponse).toBeOK();
   const sitemap = await sitemapResponse.text();
   const routes = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => new URL(match[1]).pathname);
-  expect(new Set(routes).size).toBe(49);
+  expect(new Set(routes).size).toBe(50);
 
   await page.setViewportSize({ width: 320, height: 900 });
   const exposed = [];
