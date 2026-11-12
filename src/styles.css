@@ -426,3 +426,104 @@
 .article figure{max-width:100%;min-width:0}
 .article-content figure{max-width:100%;min-width:0;margin:24px auto;overflow:hidden}
 .article-content figure img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+/* SIAM TEFL typography rules: readable defaults at every viewport. */
+:root{
+  --type-body:17px;
+  --type-support:14px;
+  --type-legal:12px;
+  --leading-body:1.72;
+  --leading-compact:1.5;
+}
+body{font-size:var(--type-body);line-height:var(--leading-body)}
+p,.article p,.article li,.article-content p,.article-content li{font-size:var(--type-body);line-height:var(--leading-body)}
+.hero-copy{font-size:var(--type-body);line-height:1.65}
+.page-hero .lead,.lead{font-size:19px;line-height:1.65}
+.nav-links,.breadcrumbs,.eyebrow,.hero-meta,.decision-card .eyebrow,.decision-card>p,
+.choice-num,.choice strong,.choice span,.feature-card p,.info-card p,.checklist li,
+.cta-band p,.trust-row,.tag,.note,.source-note,.price-table,.price-table th,
+.price-card ul,.price-card .amount small,.field label,.field input,.field select,
+.hint,.calc-result>p,.breakdown-row,.calc-result .fine,.disclosure-strip,
+.author-card p,.author-card strong,.footer-note,.footer-grid h2,
+.footer-grid>div>a:not(.brand),.footer-bottom,.stat span,.tool-links a,
+.blog-citation,.consent-banner p,.consent-actions button,.privacy-settings-link,
+.photo-card figcaption,.location-photo figcaption,.year-plan-list li,
+.package-visual-core span:last-child,.package-visual-card p,.package-visual-card li,
+.package-visual-label,.package-visual-caption,.budget-chart-label,
+.budget-chart-note,.checklist-note,.career-checklist-status,
+.career-checklist-items label,.checklist-disclaimer,.course-path p,
+.course-path-link,.course-path-label,.course-path-points,
+.no-replies-article .reply-hero figcaption,
+.no-replies-article .reply-diagnosis-figure figcaption,
+.no-replies-article .reply-flow-text li,.chiang-mai-photo figcaption,
+.article-hero-image figcaption,.savings-card dt,.savings-card dd{
+  font-size:max(var(--type-support),1em);
+}
+/* Labels, links and metadata stay at the support-text floor. */
+.button,.button-small,.text-link,.field label,.nav-links,.breadcrumbs,
+.hero-meta,.footer-grid h2,.footer-grid>div>a:not(.brand),.footer-note,
+.footer-bottom,.privacy-settings-link,.consent-actions button{
+  font-size:var(--type-support);
+}
+.eyebrow,.tag,.package-visual-label{font-size:var(--type-support);letter-spacing:.08em}
+.decision-card .eyebrow{font-size:var(--type-support)}
+.choice-num{font-size:var(--type-support)}
+.choice strong{font-size:16px}
+.choice span{font-size:var(--type-support)}
+.feature-card p,.info-card p,.checklist li,.cta-band p,.trust-row,
+.note,.price-table,.price-table th,.price-card ul,.field input,.field select,
+.hint,.calc-result>p,.breakdown-row,.disclosure-strip,.author-card p,
+.author-card strong,.stat span,.tool-links a,.blog-citation,
+.photo-card figcaption,.location-photo figcaption,.year-plan-list li,
+.package-visual-core span:last-child,.package-visual-card p,
+.package-visual-card li,.package-visual-caption,.budget-chart-label,
+.budget-chart-note,.checklist-note,.career-checklist-status,
+.career-checklist-items label,.checklist-disclaimer,.course-path p,
+.course-path-link,.course-path-label,.course-path-points,
+.no-replies-article .reply-hero figcaption,
+.no-replies-article .reply-diagnosis-figure figcaption,
+.no-replies-article .reply-flow-text li,.chiang-mai-photo figcaption,
+.article-hero-image figcaption,.savings-card dt,.savings-card dd{font-size:var(--type-support)}
+table th,table td{font-size:var(--type-support)!important;line-height:1.5}
+figcaption,.photo-card figcaption,.location-photo figcaption,.one-year-hero-visual figcaption,
+.one-year-city-visual figcaption,.reply-hero figcaption,.article-hero-image figcaption,
+.chiang-mai-photo figcaption{font-size:var(--type-support)!important;line-height:1.5}
+.brand small{font-size:14px;line-height:1.2;letter-spacing:.08em}
+.source-note,.footer-social,.hero-caveat,.table-hint,.decision-strip span:last-child,
+.journey-start span,.journey-step p,.journey-next p,.journey-number,
+.course-table-fit,.job-table,.course-table td,.course-comparison-table td,
+.course-table td:before,.course-comparison-table td:before,
+.year-plan-list li,.course-path-label,.course-path-points,
+.course-path-link,.savings-card h3 span,.savings-card dt,.savings-card dd{
+  font-size:var(--type-support)!important;
+}
+.journey-step h3,.journey-next h3{font-size:18px}
+.job-table th,.job-table td{font-size:var(--type-support)!important}
+.button,.button-small,.text-link{font-size:var(--type-support)!important}
+main a{font-size:max(var(--type-support),1em)!important}
+.note{overflow-wrap:anywhere}
+.eyebrow,.home-hero .eyebrow,.hero-trust,.trust-links p{font-size:var(--type-support)!important}
+main p:not(.eyebrow):not(.hero-trust):not(.course-disclosure):not(.table-hint):not(.hero-caveat):not(.source-note):not(.legal-note):not(.fine-print):not(.fine){font-size:var(--type-body)!important;line-height:var(--leading-body)!important}
+main li:not(.breadcrumbs li){font-size:var(--type-body)!important;line-height:var(--leading-body)}
+main p,main li{overflow-wrap:anywhere}
+@media(max-width:700px){.table-scroll:has(.price-table){overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-inline:contain}.table-scroll:has(.price-table) .price-table thead{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto;white-space:normal;border:0}}
+.source-note,.footer-bottom,.calc-result .fine,.legal-note,.fine-print{
+  font-size:var(--type-legal);
+  line-height:var(--leading-compact);
+}
+.article h2{font-size:clamp(27px,3vw,32px)}
+.article h3{font-size:22px}
+.footer-grid>div>a:not(.brand){line-height:1.55;margin:5px 0}
+.price-table th,.course-comparison-table td:before,.job-table td:before{
+  font-size:var(--type-support);
+  line-height:1.45;
+}
+@media(max-width:700px){
+  .article p,.article li,.article-content p,.article-content li{font-size:17px;line-height:1.75}
+  .page-hero .lead{font-size:17px}
+  .hero h1{font-size:clamp(39px,10vw,48px)}
+  .price-table th,.price-table td{font-size:14px}
+  .footer-bottom{font-size:12px}
+  .article{padding-top:36px}
+  .cta-band{min-width:0;max-width:100%;overflow-wrap:anywhere}
+  .cta-band .button{max-width:100%;white-space:normal;text-align:left}
+}
