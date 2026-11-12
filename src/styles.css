@@ -349,7 +349,7 @@
   .home-hero{padding:65px 0 55px}
   .home-hero:before{background:linear-gradient(90deg,rgba(18,61,53,.94),rgba(18,61,53,.76))}
   .home-hero .hero-actions{max-width:420px}
-  .home-hero .hero-photo figcaption{right:12px;bottom:8px;max-width:calc(100% - 24px);font-size:9px}
+  .home-hero .hero-photo figcaption{right:12px;bottom:8px;max-width:calc(100% - 24px);padding:8px 10px;border-radius:4px;background:rgba(10,35,30,.92);color:#fff;font-size:14px;line-height:1.5}
   .home-path-grid{grid-template-columns:1fr;gap:10px}
   .home-path-grid .feature-card{min-height:0;padding:19px}
   .guide-grid{grid-template-columns:1fr}
