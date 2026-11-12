@@ -1,5 +1,13 @@
 # SIAM TEFL image and diagram guide
 
+## Typography and readability
+- Use Apple's current web typography as a readability reference: clear hierarchy, generous line spacing, short supporting copy and responsive type that remains comfortable on phones. Treat this as a visual reference, not a requirement to copy Apple's fonts or exact sizes.
+- Minimum body copy: **17 px** on desktop and mobile, with a line height of about **1.7–1.8** for article text. Keep paragraph spacing generous enough to distinguish ideas.
+- Supporting text, navigation, labels, table contents, captions and controls: **14 px minimum**. Use at least 44 px for interactive touch targets where practical.
+- Legal notices, privacy disclosures and similarly limited fine print may use **12 px**, with readable contrast and line height. Keep source notes and ordinary captions at 14 px.
+- Preserve the established display hierarchy for headings; use responsive `clamp()` sizing and avoid reducing text to fit a narrow screen. Prefer wrapping or a labelled horizontal-scroll region for genuinely wide tables.
+- Keep the existing font families, color palette and visual identity. Typography changes should preserve the page's spacing rhythm and avoid horizontal overflow at mobile widths.
+
 Use the current site design as the source of truth. The shared stylesheet defines these existing colors: forest `#123d35`, forest2 `#1d5547`, mint `#dcece4`, paper `#f7f7f2`, ink `#19251f`, muted `#66746d`, line `#dfe4dc`, lime `#c4e879`, and amber `#e8a344`. Do not introduce replacement brand colors.
 
 ## Article hero images
