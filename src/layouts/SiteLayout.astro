@@ -14,6 +14,13 @@ const currentNavSection = (() => {
   return Object.entries(sections).find(([, paths]) => paths.includes(page.path))?.[0] || null;
 })();
 const navCurrent = (section, exactPath) => page.path === exactPath ? 'page' : currentNavSection === section ? 'location' : undefined;
+const pageBodyClass = {
+  '/': 'home-page',
+  '/essential-tefl-review/': 'essential-review-page',
+  '/tefl-course-comparison-thailand/': 'comparison-editorial-page',
+  '/first-time-english-teacher-salary-thailand/': 'salary-editorial-page',
+  '/calculator/': 'calculator-editorial-page'
+}[page.path];
 const appVersion = createHash('sha256').update(app).digest('hex').slice(0, 12);
 const isArticle = page.schema?.['@type'] === 'Article'
   || page.schema?.['@graph']?.some((item) => item['@type'] === 'Article');
@@ -61,7 +68,7 @@ const appLoader = `<script defer>const appBase=location.hostname.endsWith('githu
   <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
   <title>{page.title}</title>
 </head>
-<body>
+<body class={pageBodyClass}>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="nav-wrap"><a class="brand" href="/" aria-label="SiamTEFL home"><span class="brand-mark">S</span><span>SIAM<span class="brand-light">TEFL</span><small>THE THAILAND DECISION GUIDE</small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button><nav id="nav" class="nav-links" aria-label="Main navigation"><a href="/teach-english-thailand-no-experience/" aria-current={navCurrent('start', '/teach-english-thailand-no-experience/')}>Start Here</a><a href="/where-to-find-teaching-jobs-thailand/" aria-current={navCurrent('jobs', '/where-to-find-teaching-jobs-thailand/')}>Find a Job</a><a class="nav-course" href="/tefl-course-comparison-thailand/" aria-current={navCurrent('tefl', '/tefl-course-comparison-thailand/')}>Compare TEFL</a><a href={page.path === '/' ? '#life-budget' : '/money-to-move-to-thailand-to-teach/'} aria-current={navCurrent('budget', '/money-to-move-to-thailand-to-teach/')}>Life &amp; Budget</a><a class="nav-cta" href="/calculator/" aria-current={page.path === '/calculator/' ? 'page' : undefined}>Budget Calculator <span>↗</span></a></nav></div></header>
 <main id="main"><Fragment set:html={content} /></main>
