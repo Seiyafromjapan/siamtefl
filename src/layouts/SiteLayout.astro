@@ -1,6 +1,7 @@
 ---
 import { createHash } from 'node:crypto';
 import styles from '../styles.css?raw';
+import editorialSystem from '../editorial-system.css?raw';
 import app from '../app.js?raw';
 
 const { page, content, schema } = Astro.props;
@@ -19,8 +20,18 @@ const pageBodyClass = {
   '/essential-tefl-review/': 'essential-review-page',
   '/tefl-course-comparison-thailand/': 'comparison-editorial-page',
   '/first-time-english-teacher-salary-thailand/': 'salary-editorial-page',
-  '/calculator/': 'calculator-editorial-page'
+  '/calculator/': 'calculator-editorial-page',
+  '/see-tefl-chiang-mai-review/': 'editorial-article-page editorial-provider-review',
+  '/how-to-choose-tefl-course-thailand/': 'editorial-article-page editorial-course-guide',
+  '/teach-english-thailand-no-experience/': 'editorial-article-page editorial-job-guide',
+  '/where-to-find-teaching-jobs-thailand/': 'editorial-article-page editorial-job-guide',
+  '/thailand-teacher-visa-work-permit/': 'editorial-article-page editorial-visa-guide',
+  '/money-to-move-to-thailand-to-teach/': 'editorial-article-page editorial-relocation-guide',
+  '/teaching-large-classes-thailand/': 'editorial-article-page editorial-classroom-guide'
 }[page.path];
+const editorialStylesTag = pageBodyClass?.includes('editorial-article-page') || page.path === '/calculator/'
+  ? `<style>${editorialSystem}</style>`
+  : '';
 const appVersion = createHash('sha256').update(app).digest('hex').slice(0, 12);
 const isArticle = page.schema?.['@type'] === 'Article'
   || page.schema?.['@graph']?.some((item) => item['@type'] === 'Article');
@@ -65,6 +76,7 @@ const appLoader = `<script defer>const appBase=location.hostname.endsWith('githu
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://www.essentialtefl.com">
   <Fragment set:html={`<style>${styles}</style>`} />
+  <Fragment set:html={editorialStylesTag} />
   <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
   <title>{page.title}</title>
 </head>

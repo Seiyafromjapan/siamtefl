@@ -1,0 +1,308 @@
+/*
+ * SIAM TEFL editorial system
+ * Shared by editorial article families only. Existing root palette values stay
+ * authoritative in styles.css; these aliases make their roles explicit.
+ */
+:root{
+  --ed-brand:var(--forest);
+  --ed-brand-support:var(--forest2);
+  --ed-field:var(--mint);
+  --ed-paper:var(--paper);
+  --ed-surface:var(--white);
+  --ed-text:var(--ink);
+  --ed-muted:var(--muted);
+  --ed-rule:var(--line);
+  --ed-measure:760px;
+  --ed-feature:1060px;
+  --ed-gutter:24px;
+}
+
+.editorial-article-page{
+  --article-measure:var(--ed-measure);
+  --article-gutter:var(--ed-gutter);
+}
+.editorial-article-page .page-hero{
+  padding:36px 0 38px;
+  background:var(--ed-surface);
+  border-bottom:1px solid var(--ed-rule);
+}
+.editorial-article-page .page-hero>.reading{
+  width:min(900px,calc(100% - 48px));
+}
+.editorial-article-page .breadcrumbs{
+  margin-bottom:19px;
+  color:#536259;
+  font-size:14px;
+  line-height:1.5;
+}
+.editorial-article-page .breadcrumbs a{
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.editorial-article-page .page-hero .eyebrow{
+  margin-bottom:14px;
+  color:var(--ed-brand-support);
+  font-size:13px;
+  line-height:1.5;
+  letter-spacing:.13em;
+}
+.editorial-article-page .page-hero h1{
+  max-width:23ch;
+  margin:0 0 19px;
+  color:var(--ed-text);
+  font-size:clamp(38px,4.8vw,62px);
+  line-height:1.04;
+  letter-spacing:-.052em;
+}
+.editorial-article-page .page-hero .lead{
+  max-width:67ch;
+  margin:0;
+  color:#405349;
+  font-size:19px;
+  line-height:1.67;
+}
+.editorial-article-page .trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 22px;
+  margin-top:19px;
+  color:var(--ed-brand);
+  font-size:14px;
+  line-height:1.5;
+  font-weight:700;
+}
+.editorial-article-page .hero-caveat{
+  max-width:76ch;
+  margin:21px 0 0;
+  padding:13px 0 0;
+  border-top:1px solid #123d3530;
+  color:#405349;
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* Art and caption stay together; preserve the source image ratio and content. */
+.editorial-article-page .decision-photo,
+.editorial-article-page .review-photo{
+  width:min(var(--ed-feature),calc(100% - 48px));
+  margin:0 auto 10px;
+  overflow:hidden;
+  background:#e9eee6;
+}
+.editorial-article-page .decision-photo img,
+.editorial-article-page .review-photo img{
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.editorial-article-page :is(.decision-photo,.review-photo) figcaption{
+  padding:11px 14px;
+  background:var(--ed-surface);
+  color:#4c5d52;
+  font-size:14px;
+  line-height:1.55;
+}
+
+/* Prose, lists and references share one editorial measure and rhythm. */
+.editorial-article-page .article{
+  width:min(var(--ed-measure),calc(100% - 48px));
+  padding-top:30px;
+}
+.editorial-article-page .article h2{
+  margin:42px 0 14px;
+  color:var(--ed-text);
+  font-size:clamp(27px,3vw,34px);
+  line-height:1.15;
+  letter-spacing:-.035em;
+}
+.editorial-article-page .article h2:first-child,
+.editorial-article-page .article section:first-child h2:first-child{
+  margin-top:0;
+}
+.editorial-article-page .article h3{
+  margin:26px 0 10px;
+  color:var(--ed-brand);
+  font-size:22px;
+  line-height:1.25;
+  letter-spacing:-.025em;
+}
+.editorial-article-page .article p,
+.editorial-article-page .article li{
+  color:var(--ed-text);
+  font-size:17px;
+  line-height:1.76;
+}
+.editorial-article-page .article p{margin:0 0 19px}
+.editorial-article-page .article li{margin:0 0 8px}
+.editorial-article-page .article a:not(.button){
+  color:var(--ed-brand);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+.editorial-article-page .article :is(ul,ol){padding-left:1.35em}
+.editorial-article-page .article :is(.source-note,.fine){
+  color:#536259;
+  font-size:14px;
+  line-height:1.65;
+}
+
+/* Decisions and disclosures use a rule and a quiet tint instead of a card stack. */
+.editorial-article-page .disclosure-strip,
+.editorial-article-page .note,
+.editorial-article-page .decision-strip{
+  margin:20px 0 26px;
+  padding:16px 19px;
+  border:0;
+  border-left:3px solid var(--ed-brand);
+  border-radius:0;
+  background:#eef2eb;
+  color:#30443a;
+  font-size:16px;
+  line-height:1.68;
+}
+.editorial-article-page .next-steps{
+  margin-top:38px;
+  padding:25px 26px;
+  border-top:2px solid var(--ed-brand);
+  background:#e9eee6;
+}
+.editorial-article-page .next-steps h2{margin-top:0}
+.editorial-article-page .info-card{
+  padding:20px 21px;
+  border:0;
+  border-top:2px solid var(--ed-brand);
+  border-radius:0;
+  background:var(--ed-surface);
+  box-shadow:none;
+}
+.editorial-article-page .info-card h3{font-size:20px}
+.editorial-article-page .info-card p:last-child{margin-bottom:0}
+.editorial-article-page .button{
+  min-height:48px;
+  padding:12px 17px;
+  border-radius:4px;
+  background:var(--ed-brand);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+}
+.editorial-article-page :is(a,button,input,select,textarea,[tabindex]):focus-visible{
+  outline:3px solid #456d55;
+  outline-offset:3px;
+}
+
+/* Native table semantics remain intact; existing labels and scroll regions remain usable. */
+.editorial-article-page .table-scroll,
+.editorial-article-page .table-wrap,
+.editorial-article-page .job-table-scroll{
+  max-width:100%;
+  margin:20px 0 24px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  overscroll-behavior-inline:contain;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid var(--ed-rule);
+  border-top:2px solid var(--ed-brand);
+  border-radius:0;
+  background:var(--ed-surface);
+}
+.editorial-article-page :is(.table-scroll,.table-wrap,.job-table-scroll):focus-visible{
+  outline:3px solid #456d55;
+  outline-offset:3px;
+}
+.editorial-article-page .price-table,
+.editorial-article-page .course-table,
+.editorial-article-page .job-table{
+  border-collapse:collapse;
+}
+.editorial-article-page :is(.price-table,.course-table,.job-table) th{
+  padding:12px 13px;
+  background:#e9eee6;
+  color:var(--ed-brand);
+  font-size:14px;
+  line-height:1.45;
+  text-align:left;
+}
+.editorial-article-page :is(.price-table,.course-table,.job-table) td{
+  padding:14px 13px;
+  border-bottom:1px solid var(--ed-rule);
+  color:var(--ed-text);
+  font-size:15px;
+  line-height:1.6;
+  vertical-align:top;
+}
+.editorial-article-page :is(.price-table,.course-table,.job-table) tbody tr:nth-child(even){background:#fbfcf9}
+
+/* Page families: distinct treatments while retaining common spacing and type. */
+.editorial-provider-review .page-hero,
+.editorial-course-guide .page-hero,
+.editorial-relocation-guide .page-hero{
+  background:var(--ed-field);
+}
+.editorial-provider-review .stat-row{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+  margin:24px 0 20px;
+  border-top:1px solid var(--ed-rule);
+  border-bottom:1px solid var(--ed-rule);
+}
+.editorial-provider-review .stat{
+  padding:18px 16px;
+  border-right:1px solid var(--ed-rule);
+  background:transparent;
+}
+.editorial-provider-review .stat:last-child{border-right:0}
+.editorial-provider-review .stat strong{color:var(--ed-brand);font:700 27px var(--display)}
+.editorial-provider-review .stat span{display:block;color:#536259;font-size:14px;line-height:1.5}
+.editorial-course-guide .article>ul:first-of-type,
+.editorial-course-guide .article>ol:first-of-type{padding:17px 22px 17px 42px;background:#eef2eb}
+.editorial-job-guide .decision-journey{margin:24px 0;padding:22px;border-top:2px solid var(--ed-brand);background:#eef2eb}
+.editorial-job-guide .journey-next{color:var(--ed-brand);font-weight:700}
+.editorial-visa-guide .visa-permit-table-hint,
+.editorial-visa-guide .table-hint{color:#536259;font-size:14px;line-height:1.55}
+.editorial-visa-guide .visa-permit-table-scroll{scrollbar-color:#829b8a #eef2ed;scrollbar-width:thin}
+.editorial-relocation-guide .hero-actions{margin-top:22px}
+.editorial-relocation-guide .savings-visual{margin:24px 0;padding:22px;background:#eef2eb;border:0;border-top:2px solid var(--ed-brand);border-radius:0}
+.editorial-classroom-guide .review-photo{width:min(960px,calc(100% - 48px))}
+.editorial-classroom-guide .decision-strip{display:grid;gap:5px;background:var(--ed-field)}
+.editorial-classroom-guide .number-list li::marker{color:var(--ed-brand);font-weight:800}
+
+/* The custom-fee control must honor its native hidden state until selected. */
+.calculator-editorial-page .field[hidden]{display:none}
+.calculator-editorial-page :is(a,button,input,select):focus-visible{
+  outline:3px solid #456d55;
+  outline-offset:3px;
+}
+
+@media(max-width:760px){
+  .editorial-article-page .page-hero{padding:27px 0 28px}
+  .editorial-article-page .page-hero>.reading{width:calc(100% - 36px)}
+  .editorial-article-page .breadcrumbs{margin-bottom:15px}
+  .editorial-article-page .page-hero h1{max-width:21ch;font-size:clamp(35px,8.7vw,45px);line-height:1.06}
+  .editorial-article-page .page-hero .lead{font-size:17px;line-height:1.65}
+  .editorial-article-page .trust-row{display:grid;gap:5px}
+  .editorial-article-page .hero-caveat{margin-top:16px;padding-top:11px;font-size:14px}
+  .editorial-article-page :is(.decision-photo,.review-photo){width:100%;margin:0 auto 5px}
+  .editorial-article-page :is(.decision-photo,.review-photo) figcaption{padding:10px 18px}
+  .editorial-article-page .article{width:calc(100% - 36px);padding-top:23px}
+  .editorial-article-page .article h2{margin-top:34px}
+  .editorial-article-page .next-steps{padding:20px 17px}
+  .editorial-provider-review .stat{padding:14px 10px}
+  .editorial-provider-review .stat strong{font-size:22px}
+  .editorial-provider-review .stat span{font-size:14px}
+  .editorial-course-guide .article>ul:first-of-type,
+  .editorial-course-guide .article>ol:first-of-type{padding:15px 17px 15px 37px}
+  .editorial-job-guide .decision-journey{padding:16px}
+  .editorial-relocation-guide .savings-visual{padding:16px}
+  .editorial-classroom-guide .review-photo{width:100%}
+}
+@media(max-width:360px){
+  .editorial-article-page .page-hero>.reading,
+  .editorial-article-page .article{width:calc(100% - 32px)}
+  .editorial-article-page .page-hero h1{font-size:34px;letter-spacing:-.045em}
+  .editorial-article-page :is(.decision-photo,.review-photo) figcaption{padding-right:16px;padding-left:16px}
+}

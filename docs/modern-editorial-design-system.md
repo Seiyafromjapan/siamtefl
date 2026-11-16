@@ -59,3 +59,26 @@ Avoid adding a CSS framework or runtime dependency. Current prototypes are body-
 4. Roll out one family at a time (comparison, practical guides, salary/life, tools, policy pages), with 1440/768/390/320 checks and `npm run verify` after each batch.
 5. Keep route list, canonical, JSON-LD, affiliate attributes, GA consent and tool calculations in automated invariants; stop/rollback a batch if any differ.
 6. Review all 51 routes before any separate production release decision. This phase itself does not merge or deploy.
+
+## Phase 4A trial rollout
+
+Phase 3 was saved on `codex/home-modern-editorial-phase1` in commit `e21a0e6`. Phase 4A is isolated on `codex/phase4a-design-system-rollout`.
+
+The shared, route-scoped article-family rules live in `src/editorial-system.css`; the existing color tokens remain defined in `src/styles.css`. `SiteLayout.astro` assigns additive editorial family classes to trial routes and emits the shared stylesheet only on the seven trial articles and the calculator. The Phase 1–3 homepage and four prototype treatments retain their existing classes and styles. The intentional calculator changes are mobile form-first ordering and honoring the existing `hidden` attribute on its custom-fee field; its calculation code and starting values are unchanged.
+
+Trial routes:
+
+- Provider review: `/see-tefl-chiang-mai-review/`
+- Course selection: `/how-to-choose-tefl-course-thailand/`
+- Job eligibility and job search: `/teach-english-thailand-no-experience/`, `/where-to-find-teaching-jobs-thailand/`
+- Visa and work permit: `/thailand-teacher-visa-work-permit/`
+- Relocation budget: `/money-to-move-to-thailand-to-teach/`
+- Classroom practice: `/teaching-large-classes-thailand/`
+
+The five About, policy, and contact pages do not need extra editorial decoration in this phase. Their reader task is to locate and understand reference or policy text; preserve their current clear reading measure, headings, and links.
+
+Mobile validation covered all twelve pages at 1440, 768, 390 and 320px. No horizontal overflow was found; all in-scope local images decoded in the screenshot pass. Baseline and prototype main markup, metadata, structured data, hrefs and affiliate attributes matched on all twelve routes. A Chrome Performance API sample at 390px on the local static preview recorded 92–140ms LCP and CLS 0 for the sampled page loads, with no external resource requests. These are local lab observations, not Lighthouse or field metrics. Lighthouse was not installed and no dependency was added.
+
+The calculator interaction check confirmed that a keyboard ArrowUp changes the accommodation input and recalculates the estimate, choosing the custom-fee option reveals its field, and entering ฿15,000 updates the estimate from ฿153,000 to ฿123,000. A pre-existing author-style override had made that `hidden` field display before selection; the route-scoped rule now respects the native hidden state. The mobile result follows the form, so the first input begins near the top of the tool section and the estimate follows the final assumption.
+
+Before Phase 4B, inspect the Phase 4A screenshots and approve the seven family patterns. Then migrate remaining pages family-by-family, prioritizing routes with the same markup pattern. Compare each route against a baseline at 1440/768/390/320, check metadata/structured data/internal links/affiliate attributes, and run `npm run verify` after each batch. Keep calculator logic untouched, and do not apply a family class until its template has been visually checked.

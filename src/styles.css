@@ -938,7 +938,8 @@ main p,main li{overflow-wrap:anywhere}
   .calculator-editorial-page .page-hero .lead{font-size:17px}
   .calculator-editorial-page .wrap.section-sm{padding-top:20px}
   .calculator-editorial-page .calculator{grid-template-columns:1fr;gap:16px}
-  .calculator-editorial-page .calc-result{position:static;order:-1;padding:20px}
+  .calculator-editorial-page .calc-result{position:static;order:2;grid-row:auto;padding:20px}
+  .calculator-editorial-page .calc-form{order:1;grid-row:auto}
   .calculator-editorial-page .calc-form{padding:22px 18px}
 }
 .essential-review-page a:focus-visible{outline:3px solid #456d55;outline-offset:3px;border-radius:2px}
