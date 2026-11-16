@@ -306,3 +306,160 @@
   .editorial-article-page .page-hero h1{font-size:34px;letter-spacing:-.045em}
   .editorial-article-page :is(.decision-photo,.review-photo) figcaption{padding-right:16px;padding-left:16px}
 }
+
+/* Phase 4B Batch 1: trim the lead-in without changing article copy or facts. */
+.phase4b-batch1 .page-hero{
+  padding:30px 0 29px;
+}
+.phase4b-batch1 .page-hero>.reading{
+  width:min(980px,calc(100% - 48px));
+}
+.phase4b-batch1 .breadcrumbs{margin-bottom:14px}
+.phase4b-batch1 .page-hero .eyebrow{margin-bottom:11px}
+.phase4b-batch1 .page-hero h1{
+  max-width:27ch;
+  margin-bottom:13px;
+  font-size:clamp(40px,4.4vw,58px);
+  line-height:1.04;
+}
+.phase4b-batch1 .page-hero .lead{
+  max-width:70ch;
+  font-size:18px;
+  line-height:1.58;
+}
+.phase4b-batch1 :is(.article,.article-content) h2{margin-top:20px}
+.phase4b-batch1 .page-hero .trust-row{margin-top:13px}
+.phase4b-batch1 .page-hero .hero-caveat{margin-top:13px;padding-top:10px}
+.phase4b-world-tesol-review .hero-caveat{
+  margin:14px 0 22px;
+  padding:12px 15px;
+  border-left:3px solid var(--ed-brand);
+  background:#eef2eb;
+  color:#30443a;
+  font-size:14px!important;
+  line-height:1.55;
+}
+.phase4b-provider-review .page-hero{background:var(--ed-field)}
+.phase4b-comparison-guide .page-hero{background:var(--ed-paper)}
+.phase4b-qualification-guide .page-hero{background:#eef2eb}
+
+/* TEFLen predates the shared page-hero/article markup; bring that one structure
+   into the same reading measure while keeping its original content sequence. */
+.phase4b-teflen-review .article-content{
+  width:min(var(--ed-measure),calc(100% - 48px));
+  margin:0 auto;
+  padding:24px 0 76px;
+}
+.phase4b-teflen-review main>.breadcrumbs{
+  width:min(var(--ed-measure),calc(100% - 48px));
+  margin:14px auto 12px;
+}
+.phase4b-teflen-review .article-content>.eyebrow{
+  margin:0 0 11px;
+  color:var(--ed-brand-support);
+  font-size:13px;
+  line-height:1.5;
+  letter-spacing:.12em;
+}
+.phase4b-teflen-review .article-content>h1{
+  max-width:22ch;
+  margin:0 0 13px;
+  font-size:clamp(40px,4.4vw,58px);
+  line-height:1.04;
+  letter-spacing:-.052em;
+}
+.phase4b-teflen-review .article-content>.lead{
+  max-width:67ch;
+  margin:0 0 17px;
+  color:#405349;
+  font-size:18px;
+  line-height:1.58;
+}
+.phase4b-teflen-review .article-content>figure:first-of-type{
+  width:min(880px,calc(100% - 48px));
+  margin:18px auto 22px;
+  background:#e9eee6;
+}
+.phase4b-teflen-review .article-content figure figcaption{
+  padding:10px 14px;
+  background:var(--ed-surface);
+  color:#4c5d52;
+  font-size:14px;
+  line-height:1.55;
+}
+.phase4b-teflen-review .article-content .callout{
+  border:0;
+  border-left:3px solid var(--ed-brand);
+  border-radius:0;
+  background:#eef2eb;
+  color:#30443a;
+}
+
+/* Article figures use their intrinsic ratio; captions remain readable. */
+.phase4b-batch1 .location-photo,
+.phase4b-world-tesol-review .wta-review-photo{
+  width:min(880px,calc(100% - 48px));
+  margin:18px auto 22px;
+}
+.phase4b-batch1 .location-photo img,
+.phase4b-world-tesol-review .wta-review-photo img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:auto;
+  object-fit:contain;
+}
+.phase4b-batch1 .location-photo figcaption,
+.phase4b-world-tesol-review .wta-review-photo figcaption{
+  padding:10px 14px;
+  background:var(--ed-surface);
+  color:#4c5d52;
+  font-size:14px;
+  line-height:1.55;
+}
+.phase4b-comparison-guide .article>.disclosure-strip,
+.phase4b-qualification-guide .article>.disclosure-strip{
+  margin-top:14px;
+}
+.phase4b-qualification-guide .article>p:first-of-type{
+  padding:16px 18px;
+  border-left:3px solid var(--ed-brand);
+  background:#eef2eb;
+}
+
+@media(max-width:760px){
+  .phase4b-batch1 .page-hero{padding:20px 0 21px}
+  .phase4b-batch1 .page-hero h1{
+    max-width:25ch;
+    margin-bottom:11px;
+    font-size:clamp(34px,8.3vw,39px);
+    line-height:1.07;
+  }
+  .phase4b-batch1 .page-hero .lead{font-size:17px;line-height:1.57}
+  .phase4b-batch1 .page-hero .trust-row{margin-top:10px;gap:4px 14px}
+  .phase4b-batch1 .page-hero .hero-caveat{margin-top:10px;padding-top:9px;line-height:1.52}
+  .phase4b-world-tesol-review .hero-caveat{margin:12px 0 18px;padding:11px 13px}
+  .phase4b-teflen-review .article-content{
+    width:calc(100% - 36px);
+    padding:18px 0 58px;
+  }
+  .phase4b-batch1 :is(.article,.article-content) h2{margin-top:18px}
+  .phase4b-teflen-review main>.breadcrumbs{width:calc(100% - 36px);margin:12px auto 10px}
+  .phase4b-teflen-review .article-content>h1{
+    max-width:24ch;
+    margin-bottom:11px;
+    font-size:clamp(34px,8.3vw,39px);
+    line-height:1.07;
+  }
+  .phase4b-teflen-review .article-content>.lead{font-size:17px;line-height:1.57}
+  .phase4b-teflen-review .article-content>figure:first-of-type{
+    width:100%;
+    margin:15px 0 18px;
+  }
+  .phase4b-teflen-review .article-content figure figcaption{padding:9px 12px}
+  .phase4b-batch1 .location-photo,
+  .phase4b-world-tesol-review .wta-review-photo{width:100%;margin:15px auto 18px}
+  .phase4b-batch1 .location-photo figcaption,
+  .phase4b-world-tesol-review .wta-review-photo figcaption{padding:9px 18px}
+  .phase4b-qualification-guide .article>p:first-of-type{padding:14px 15px}
+}
