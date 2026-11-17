@@ -18,6 +18,11 @@ test('schedule and calculator source records are structurally valid and evidence
   assert.ok(schedules.schedules.every(item => item.availabilityStatus === 'scheduled' && item.seatAvailability === 'unverified'));
   assert.ok(schedules.schedules.every(item => item.tuitionOverride === null));
   assert.ok(schedules.schedules.every(item => typeof item.monthlyCalendar === 'boolean'));
+  const unresolvedEnd=schedules.schedules.find(item=>item.scheduleId==='see_tefl_120_in_person_2027-06-21');
+  assert.equal(unresolvedEnd.startDate,'2027-06-21');
+  assert.equal(unresolvedEnd.endDate,null);
+  assert.equal(unresolvedEnd.endDateVerificationStatus,'unverified');
+  assert.match(unresolvedEnd.endDateVerificationNotes,/20276/);
 });
 
 test('the date article renders corrected, sourced 2027 schedules and current payment data', () => {
@@ -26,6 +31,9 @@ test('the date article renders corrected, sourced 2027 schedules and current pay
   const html = renderCourseSchedulePage(datePage, database, schedules, '2026-11-17');
   assert.match(html, /17 November 2026/);
   assert.match(html, /6 September–1 October/); // Essential TEFL date missing from the previous matrix
+  assert.match(html, /Starts June 21, 2027 · End date to be confirmed/);
+  assert.match(html, /official page prints the end year as 20276/i);
+  assert.doesNotMatch(html, /21 June–16 July/);
   assert.match(html, /19 April–18 May/); // CMU official end date, not the old May 19 value
   assert.doesNotMatch(html, /19 April–19 May/);
   assert.match(html, /US\$495/);
@@ -59,6 +67,11 @@ test('expired schedules disappear and a not-announced record cannot invent dates
   });
   assert.deepEqual(validateCourseSchedules(notAnnounced, database), []);
   assert.doesNotMatch(renderCourseSchedulePage(datePage, database, notAnnounced, '2026-11-17'), /test-no-dates/);
+
+  const unknownEnd=structuredClone(schedules);
+  const target=unknownEnd.schedules.find(item=>item.scheduleId==='see_tefl_120_in_person_2027-06-21');
+  target.endDateVerificationStatus=null;
+  assert.ok(validateCourseSchedules(unknownEnd,database).some(error=>error.includes('explicit unverified state')));
 });
 
 test('a course tuition fixture propagates to comparison, review, schedule and calculator only', () => {

@@ -16,6 +16,9 @@ for (const marker of ['COURSE_SCHEDULE_CALENDAR_ROWS', 'COURSE_SCHEDULE_PRICE_RO
 }
 assert.match(scheduleHtml, /19 April–18 May/);
 assert.match(scheduleHtml, /6 September–1 October/);
+assert.match(scheduleHtml, /Starts June 21, 2027 · End date to be confirmed/);
+assert.match(scheduleHtml, /official page prints the end year as 20276/i);
+assert.doesNotMatch(scheduleHtml, /21 June–16 July/);
 assert.match(scheduleHtml, /US\$495/);
 assert.match(scheduleHtml, /US\$900/);
 assert.match(scheduleHtml, /Official sources checked 17 November 2026/);

@@ -54,6 +54,7 @@
 .phase4b-course-dates .schedule-entry{padding:8px 0;border-bottom:1px solid #e3e9e2;line-height:1.65}
 .phase4b-course-dates .schedule-entry:last-child{border-bottom:0}
 .phase4b-course-dates .schedule-entry strong{color:#123d35}
+.phase4b-course-dates .schedule-date-note{display:inline-block;margin-top:3px;color:#47564d;font-size:14px;line-height:1.5}
 .phase4b-course-dates .schedule-none{color:#47564d}
 .phase4b-course-dates .schedule-option{padding:16px 0;border-top:1px solid #d7e1d8}
 .phase4b-course-dates .schedule-option h3{margin:0 0 8px}

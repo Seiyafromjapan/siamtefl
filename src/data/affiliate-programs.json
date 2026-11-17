@@ -9,11 +9,11 @@
   },
   {
     "providerId": "see_tefl",
-    "partnershipStatus": "unconfirmed",
+    "partnershipStatus": "confirmed",
     "disclosureRequired": true,
-    "approvedCourseIds": [],
+    "approvedCourseIds": ["see_tefl_120_in_person", "see_tefl_paid_internship"],
     "affiliateUrls": ["https://seetefl.com?ap_id=SiamTEFL"],
-    "statusNote": "The published referral URL exists, but current approval and commission terms were not confirmed."
+    "statusNote": "Approved status and referral URL are based on operator records dated 2026-10-24 and 2026-10-31; the current account dashboard was not rechecked."
   },
   {
     "providerId": "world_tesol_academy",

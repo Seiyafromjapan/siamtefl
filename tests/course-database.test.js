@@ -8,6 +8,10 @@ const clone = value => structuredClone(value);
 
 test('course database baseline is valid', () => {
   assert.deepEqual(validateCourseDatabase(courseDatabase, affiliatePrograms), []);
+  const see=affiliatePrograms.find(provider=>provider.providerId==='see_tefl');
+  assert.equal(see.partnershipStatus,'confirmed');
+  assert.deepEqual(see.approvedCourseIds,['see_tefl_120_in_person','see_tefl_paid_internship']);
+  assert.deepEqual(see.affiliateUrls,['https://seetefl.com?ap_id=SiamTEFL']);
 });
 
 test('duplicate provider and course IDs are rejected', () => {

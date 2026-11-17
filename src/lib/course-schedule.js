@@ -20,7 +20,8 @@ function escapeHtml(value) {
 }
 
 function displayDate(value, options = {}) {
-  return new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC', ...options }).format(new Date(`${value}T00:00:00Z`));
+  const { locale = 'en-GB', ...formatOptions } = options;
+  return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC', ...formatOptions }).format(new Date(`${value}T00:00:00Z`));
 }
 
 export function bangkokToday(now = new Date()) {
@@ -57,7 +58,10 @@ export function validateCourseSchedules(scheduleData = courseSchedules, database
     if (!courseIds.has(item.courseId)) errors.push(`${prefix}.courseId references an unknown course`);
     if (item.availabilityStatus === 'not_announced') {
       if (item.startDate !== null || item.endDate !== null) errors.push(`${prefix} not-announced entries must not claim dates`);
-    } else if (!validDate(item.startDate) || !validDate(item.endDate) || item.endDate < item.startDate) errors.push(`${prefix} has invalid start/end dates`);
+    } else if (!validDate(item.startDate)) errors.push(`${prefix} has an invalid start date`);
+    else if (item.endDate === null) {
+      if (item.endDateVerificationStatus !== 'unverified' || typeof item.endDateVerificationNotes !== 'string' || !item.endDateVerificationNotes.trim()) errors.push(`${prefix} needs an explicit unverified state and note when its end date is unknown`);
+    } else if (!validDate(item.endDate) || item.endDate < item.startDate) errors.push(`${prefix} has an invalid end date`);
     if (item.applicationDeadline !== null && !validDate(item.applicationDeadline)) errors.push(`${prefix}.applicationDeadline must be a valid date or null`);
     if (!item.location || !scheduleData.scheduleStatuses.includes(item.availabilityStatus)) errors.push(`${prefix} needs a location and valid schedule status`);
     if (typeof item.monthlyCalendar !== 'boolean') errors.push(`${prefix}.monthlyCalendar must identify primary-calendar vs separately listed dates`);
@@ -101,6 +105,7 @@ function coursePrice(course) {
 
 function scheduleRange(item) {
   const start = new Date(`${item.startDate}T00:00:00Z`);
+  if (!item.endDate) return `Starts ${displayDate(item.startDate, { month: 'long', day: 'numeric', year: 'numeric', locale: 'en-US' })} · End date to be confirmed`;
   const end = new Date(`${item.endDate}T00:00:00Z`);
   const monthStart = new Intl.DateTimeFormat('en-GB', { month: 'long', timeZone: 'UTC' }).format(start);
   const monthEnd = new Intl.DateTimeFormat('en-GB', { month: 'long', timeZone: 'UTC' }).format(end);
@@ -143,7 +148,8 @@ function renderCalendarRows(database, scheduleData, asOfDate) {
   const renderCell = entries => entries.sort((a,b) => (providerOrder.get(a.course.providerId) ?? 9) - (providerOrder.get(b.course.providerId) ?? 9)).map(({item,courses}) => {
     const distinctCourses=[...new Map(courses.map(course=>[course.courseId,course])).values()];
     const dates=scheduleRange(item);
-    return `<div class="schedule-entry"><strong>${escapeHtml(distinctCourses[0].providerName)}</strong><br>${escapeHtml(dates)}<br>${distinctCourses.map(course=>escapeHtml(course.courseName)).join(' / ')}<br><span>${escapeHtml(distinctCourses.map(coursePrice).join(' · '))}</span><br>${sourceLink(item.sourceUrl)}</div>`;
+    const dateNote=item.endDateVerificationNotes?`<br><span class="schedule-date-note">${escapeHtml(item.endDateVerificationNotes)}</span>`:'';
+    return `<div class="schedule-entry"><strong>${escapeHtml(distinctCourses[0].providerName)}</strong><br>${escapeHtml(dates)}${dateNote}<br>${distinctCourses.map(course=>escapeHtml(course.courseName)).join(' / ')}<br><span>${escapeHtml(distinctCourses.map(coursePrice).join(' · '))}</span><br>${sourceLink(item.sourceUrl)}</div>`;
   }).join('') || '<span class="schedule-none">No listed start in this month.</span>';
   const sortedMonths=[...months.entries()].sort(([a],[b])=>a.localeCompare(b));
   const labels=sortedMonths.map(([month])=>[month,new Intl.DateTimeFormat('en-GB',{month:'long',timeZone:'UTC'}).format(new Date(`${month}-01T00:00:00Z`))]);
