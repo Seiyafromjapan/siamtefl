@@ -203,24 +203,27 @@ function courseSources(course) {
   }).map(([label, evidence]) => sourceLink(label, evidence)).join(' · ');
 }
 
-function supportAndConditions(course) {
-  const parts = [];
+function practiceDescription(course) {
   if (course.teachingPractice.value) {
     const prefix = course.teachingPractice.verificationStatus === 'provider_claim' ? 'Provider describes: ' : '';
-    parts.push(`<p><strong>Practice:</strong> ${prefix}${escapeHtml(course.teachingPractice.value)}</p>`);
+    return `${prefix}${escapeHtml(course.teachingPractice.value)}`;
   } else if (course.teachingPractice.verificationStatus === 'unverified' && course.teachingPractice.verificationNotes) {
-    parts.push('<p><strong>Practice:</strong> Not established in the reviewed pages.</p>');
+    return 'Not established in the reviewed pages.';
   }
+  return 'Not verified';
+}
+
+function jobSupportDescription(course) {
   const guarantee = course.jobGuarantee.value;
   if (guarantee && course.jobGuarantee.verificationStatus !== 'not_applicable') {
-    parts.push(`<p><strong>Job support:</strong> Provider says ${escapeHtml(guarantee)}</p>`);
+    return `Provider says: ${escapeHtml(guarantee)}`;
   } else if (course.jobSupport.value) {
     const prefix = course.jobSupport.verificationStatus === 'provider_claim' ? 'Provider says: ' : '';
-    parts.push(`<p><strong>Support:</strong> ${prefix}${escapeHtml(course.jobSupport.value)}</p>`);
+    return `${prefix}${escapeHtml(course.jobSupport.value)}`;
   } else if (course.jobSupport.verificationStatus === 'unverified' && course.jobSupport.verificationNotes) {
-    parts.push('<p><strong>Support:</strong> Not established in the reviewed pages.</p>');
+    return 'Not established in the reviewed pages.';
   }
-  return parts.join('');
+  return 'Not verified';
 }
 
 function costsAndEvidence(course) {
@@ -241,18 +244,23 @@ function costsAndEvidence(course) {
     entries.push('<li>No promotion end date was shown; confirm the offer is still available.</li>');
   }
   const sources = courseSources(course);
-  return `<details class="course-data-details"><summary>View terms &amp; sources</summary><ul>${entries.join('')}</ul><p class="course-data-sources">${sources}</p></details>`;
+  return `<ul>${entries.join('')}</ul><p class="course-data-sources">${sources}</p>`;
 }
 
 export function renderCourseComparisonTable(database = courseDatabase) {
   const groups = database.providers.map(provider => {
     const providerCourses = database.courses.filter(course => course.providerId === provider.providerId);
-    const location = providerCourses.map(course => course.location.value).filter(Boolean);
-    const providerLocation = [...new Set(location)].join(' · ');
-    const courses = providerCourses.map(course => `<section class="course-data-course" data-course-id="${escapeHtml(course.courseId)}" aria-labelledby="${escapeHtml(course.courseId)}-title"><div class="course-data-course-heading"><h4 id="${escapeHtml(course.courseId)}-title">${escapeHtml(course.courseName)}</h4><p>${escapeHtml(course.deliveryFormat.value)}</p></div><dl class="course-data-facts"><div><dt>Hours &amp; qualification</dt><dd>${courseHours(course)}<p>${escapeHtml(course.qualification.value || 'Qualification details not confirmed.')} <span class="course-data-status">${escapeHtml(displayStatus(course.qualification.verificationStatus))}</span></p></dd></div><div><dt>Published tuition</dt><dd>${coursePrice(course)}</dd></div><div><dt>Practice &amp; support</dt><dd>${supportAndConditions(course)}</dd></div></dl><p class="course-data-visible-sources">Sources: ${courseSources(course)}</p>${publishedPriceVariants(course).length ? `<details class="course-data-details"><summary>Other official price displays</summary><ul>${publishedPriceVariants(course).join('')}</ul></details>` : ''}${costsAndEvidence(course)}</section>`).join('');
-    return `<article class="course-data-provider" data-provider-id="${escapeHtml(provider.providerId)}"><header><p class="eyebrow">${escapeHtml(providerLocation)}</p><h3>${escapeHtml(provider.providerName)}</h3></header>${courses}</article>`;
+    const courses = providerCourses.map(course => {
+      const qualification = course.qualification.value || 'Qualification details not confirmed.';
+      const status = displayStatus(course.qualification.verificationStatus);
+      const location = course.location.value || 'Location not verified';
+      const variants = publishedPriceVariants(course);
+      const courseDetails = `<details class="course-data-details"><summary>Terms &amp; sources</summary>${variants.length ? `<ul>${variants.join('')}</ul>` : ''}${costsAndEvidence(course)}</details>`;
+      return `<tr data-course-id="${escapeHtml(course.courseId)}"><th scope="row"><strong>${escapeHtml(provider.providerName)}</strong><small>${escapeHtml(course.courseName)}</small>${courseDetails}</th><td>${escapeHtml(location)}<br>${escapeHtml(course.deliveryFormat.value || 'Format not verified')}</td><td>${courseHours(course)}<p>${escapeHtml(qualification)}</p><span class="course-data-status">${escapeHtml(status)}</span></td><td>${coursePrice(course)}<p class="course-data-visible-sources">Source: ${sourceLink('Provider fee', course.tuition)}</p></td><td>${escapeHtml(practiceDescription(course))}</td><td>${escapeHtml(jobSupportDescription(course))}</td></tr>`;
+    }).join('');
+    return `<tbody data-provider-id="${escapeHtml(provider.providerId)}">${courses}</tbody>`;
   }).join('');
-  return `<section class="course-data-comparison" data-testid="course-database-comparison" aria-label="TEFL provider comparison"><p class="course-data-caption">Provider-published snapshots in each provider’s stated currency. Source links and check dates are available with each course.</p><div class="course-data-provider-grid">${groups}</div></section>`;
+  return `<section class="course-data-comparison" data-testid="course-database-comparison" aria-label="TEFL provider comparison"><p class="course-data-caption">Provider-published snapshots in each provider’s stated currency. Source links and check dates are available with each course.</p><p class="table-swipe-hint" aria-hidden="true"><span>Swipe horizontally to compare all columns</span><span>More →</span></p><div class="table-scroll snapshot-table" tabindex="0" role="region" aria-label="Course comparison by format, qualification, fee, practice and support. Scroll horizontally to see all columns."><table class="price-table"><thead><tr><th scope="col">Provider / course</th><th scope="col">Format</th><th scope="col">Qualification / hours</th><th scope="col">Published fee</th><th scope="col">Practice</th><th scope="col">Support</th></tr></thead>${groups}</table></div></section>`;
 }
 
 function evidenceMeta(evidence) {

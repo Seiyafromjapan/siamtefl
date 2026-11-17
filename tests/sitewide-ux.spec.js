@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import pages from '../src/pages.json' with { type: 'json' };
 
-const base = 'http://127.0.0.1:4173';
+const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const viewports = [
   { name: 'desktop-1440', width: 1440, height: 1000 },
   { name: 'tablet-768', width: 768, height: 1000 },
@@ -89,7 +89,7 @@ test('responsive navigation, keyboard focus, SEO tags and provider links', async
   await expect(menu).toBeFocused();
 
   for (const [path,selector] of [
-    ['/tefl-course-comparison-thailand/','a[href^="https://seetefl.com/"]'],
+    ['/tefl-course-comparison-thailand/','.course-data-visible-sources a[href^="https://seetefl.com/"]'],
     ['/see-tefl-chiang-mai-review/','a[data-affiliate][data-provider="see_tefl"]'],
     ['/world-tesol-academy-review/','a[data-affiliate][data-provider="world_tesol_academy"]'],
     ['/teflen-review/','a[data-affiliate][data-provider="teflen"]'],

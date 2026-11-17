@@ -896,6 +896,28 @@ main p,main li{overflow-wrap:anywhere}
 .comparison-editorial-page .course-comparison-table .price-table caption{text-align:left;padding:0 0 12px;color:#44554b;font-size:14px;line-height:1.5}
 .comparison-editorial-page .course-comparison-table .price-table tbody th{min-width:180px;background:transparent;color:var(--ink);text-align:left;font-size:15px;line-height:1.55;vertical-align:top}
 .comparison-editorial-page .course-comparison-table .price-table tbody th p{font-size:14px;line-height:1.5}
+.comparison-editorial-page .course-data-comparison{position:relative;left:50%;transform:translateX(-50%);width:min(1100px,calc(100vw - 36px));margin:20px 0 28px}
+.comparison-editorial-page .course-data-comparison .course-data-caption{margin:10px 0 12px}
+.comparison-editorial-page .table-swipe-hint{display:none}
+.comparison-editorial-page .snapshot-table{margin:18px 0 24px;border-top:2px solid var(--forest);overflow-x:auto;overscroll-behavior-inline:contain;-webkit-overflow-scrolling:touch}
+.comparison-editorial-page .snapshot-table .price-table{width:100%;min-width:1100px;table-layout:fixed;border-collapse:collapse;background:#fff}
+.comparison-editorial-page .snapshot-table .price-table th{padding:11px 10px;background:#e9eee6;color:var(--forest);font-size:14px;line-height:1.4;text-align:left;vertical-align:top}
+.comparison-editorial-page .snapshot-table .price-table th:nth-child(1){width:180px}
+.comparison-editorial-page .snapshot-table .price-table th:nth-child(2){width:145px}
+.comparison-editorial-page .snapshot-table .price-table th:nth-child(3){width:235px}
+.comparison-editorial-page .snapshot-table .price-table th:nth-child(4){width:155px}
+.comparison-editorial-page .snapshot-table .price-table th:nth-child(5){width:195px}
+.comparison-editorial-page .snapshot-table .price-table th:nth-child(6){width:190px}
+.comparison-editorial-page .snapshot-table .price-table td,.comparison-editorial-page .snapshot-table .price-table tbody th{padding:12px 10px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.comparison-editorial-page .snapshot-table .price-table tbody th{background:#f5f6f1;color:var(--ink);font-weight:700}
+.comparison-editorial-page .snapshot-table .price-table tbody th small{display:block;margin-top:4px;color:#53645a;font-size:14px;font-weight:400}
+.comparison-editorial-page .snapshot-table .price-table tbody tr:nth-child(even) td{background:#fbfcf9}
+.comparison-editorial-page .snapshot-table .course-data-details{margin-top:8px;padding-top:6px;border-top:1px dashed #cbd4ca}
+.comparison-editorial-page .snapshot-table .course-data-details summary{font-size:14px}
+.comparison-editorial-page .snapshot-table .course-data-details p{margin:8px 0;font-size:14px}
+.comparison-editorial-page .snapshot-table:focus-visible{outline:3px solid #456d55;outline-offset:4px}
+.comparison-editorial-page .snapshot-table th:focus-visible,.comparison-editorial-page .snapshot-table a:focus-visible,.comparison-editorial-page .snapshot-table summary:focus-visible{outline:3px solid #456d55;outline-offset:2px}
+@media(max-width:900px){.comparison-editorial-page .table-swipe-hint{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 -10px;padding:9px 11px;background:#edf2eb;color:var(--forest);font-size:14px;font-weight:700;line-height:1.35}.comparison-editorial-page .table-swipe-hint span:last-child{flex:0 0 auto;padding:3px 7px;border:1px solid #9cab9d;border-radius:2px;background:var(--paper)}}
 .comparison-editorial-page .course-data-note,.comparison-editorial-page .course-data-status{display:block;margin:7px 0 0;color:#4f5f55;font-size:14px;line-height:1.5;font-weight:400}
 .comparison-editorial-page .course-data-sources{font-size:14px;line-height:1.6}
 .comparison-editorial-page .course-data-sources a{display:inline-block;margin:2px 0;text-decoration:underline;text-underline-offset:3px}
@@ -964,6 +986,8 @@ main p,main li{overflow-wrap:anywhere}
   .comparison-editorial-page .course-path:last-child{border-bottom:0}
   .comparison-editorial-page .course-path h3{font-size:22px}
   .comparison-editorial-page .course-comparison-table .price-table td{font-size:14px!important}
+  .comparison-editorial-page .snapshot-table .price-table td,.comparison-editorial-page .snapshot-table .price-table tbody th{padding:11px 10px;font-size:14px}
+  .comparison-editorial-page .snapshot-table .price-table th{padding:10px 10px;font-size:14px}
   .comparison-editorial-page .course-data-provider-grid{grid-template-columns:minmax(0,1fr);gap:18px}
   .comparison-editorial-page .course-data-provider{padding-top:15px}
   .comparison-editorial-page .course-data-provider>header h3{font-size:23px}

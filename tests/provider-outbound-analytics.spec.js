@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const baseUrl = 'http://127.0.0.1:4173';
+const baseUrl = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const gaMeasurementId = 'G-90601G33WS';
 const gaScriptStub = `
   window.__gaCalls = (window.dataLayer || []).map(command => Array.from(command));
@@ -53,6 +53,7 @@ test('first visit and declined analytics do not load the GA tag or send clicks',
   expect(await page.evaluate(() => localStorage.getItem('siamtefl_analytics_consent'))).toBe('denied');
   expect(gaScriptRequests).toHaveLength(0);
 
+  await page.locator('[data-course-id="see_tefl_120_in_person"] .course-data-details summary').click();
   await page.locator('a[href^="https://seetefl.com/"]').first().click();
   expect(gaScriptRequests).toHaveLength(0);
   expect(await analyticsCalls(page)).toHaveLength(0);
@@ -79,6 +80,7 @@ test('consent gates page setup and sends one minimal outbound event per provider
   expect(await page.evaluate(id => window.__gaCalls.some(call => call[0] === 'config' && call[1] === id), gaMeasurementId)).toBe(true);
   expect(gaScriptRequests).toHaveLength(1);
 
+  await page.locator('[data-course-id="see_tefl_120_in_person"] .course-data-details summary').click();
   await page.locator('a[href^="https://seetefl.com/"]').first().click();
   let events = await providerEvents(page);
   expect(events).toHaveLength(1);
@@ -98,6 +100,7 @@ test('consent gates page setup and sends one minimal outbound event per provider
     destination: 'teflen.com'
   });
 
+  await page.locator('[data-course-id="wta_120_online"] .course-data-details summary').click();
   await page.locator('a[href^="https://www.worldtesolacademy.com/"]').first().click();
   events = await providerEvents(page);
   expect(events).toHaveLength(2);
