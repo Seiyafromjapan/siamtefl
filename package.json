@@ -6,7 +6,8 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
-    "verify": "node scripts/verify-site.mjs"
+    "verify": "node scripts/verify-site.mjs",
+    "qa:calculator-cta": "playwright test tests/calculator-cta.spec.js"
   },
   "dependencies": {
     "astro": "7.3.8"

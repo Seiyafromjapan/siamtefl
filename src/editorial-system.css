@@ -648,7 +648,7 @@ body.teflen-sticky-visible{padding-bottom:calc(84px + env(safe-area-inset-bottom
 }
 .phase4b-batch3 :is(.table-scroll,.table-wrap,.job-table-scroll){scrollbar-color:#829b8a #eef2ed;scrollbar-width:thin;overscroll-behavior-inline:contain}
 .phase4b-batch3 :is(.table-scroll,.table-wrap,.job-table-scroll):focus-visible{outline:3px solid #456d55;outline-offset:3px}
-.phase4b-one-year-guide .year-plan-list li{font-size:15px!important}
+.phase4b-one-year-guide .year-plan-list li{font-size:17px!important}
 @media(max-width:760px){
   .phase4b-batch3 .page-hero{padding:20px 0 21px}
   .phase4b-batch3 .page-hero>.reading{width:calc(100% - 36px)}

@@ -4,6 +4,7 @@ import pages from '../src/pages.json' with { type: 'json' };
 const base = 'http://127.0.0.1:4173';
 const viewports = [
   { name: 'desktop-1440', width: 1440, height: 1000 },
+  { name: 'tablet-768', width: 768, height: 1000 },
   { name: 'mobile-390', width: 390, height: 844 },
   { name: 'mobile-320', width: 320, height: 740 },
 ];
@@ -46,7 +47,7 @@ for (const viewport of viewports) {
         await expect(page.locator('h1')).toContainText('Know your options.');
         for (const href of ['/teach-english-thailand-no-experience/','/tefl-course-comparison-thailand/','/calculator/']) await expect(page.locator(`.home-hero .hero-actions a[href="${href}"]`)).toBeVisible();
         if (viewport.width <= 700) {
-          const cap=page.locator('.home-hero .hero-photo figcaption');
+          const cap=page.locator('.home-hero .home-hero-visual figcaption');
           expect(await cap.evaluate(e=>parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(14);
           const ratio=await cap.evaluate(el=>{const rgb=s=>s.match(/[\d.]+/g).slice(0,3).map(Number);const lin=c=>{c/=255;return c<=.04045?c/12.92:((c+.055)/1.055)**2.4};const L=s=>rgb(s).map(lin).reduce((a,c,i)=>a+c*[.2126,.7152,.0722][i],0);const a=L(getComputedStyle(el).backgroundColor),b=L(getComputedStyle(el).color);return (Math.max(a,b)+.05)/(Math.min(a,b)+.05)});
           expect(ratio).toBeGreaterThanOrEqual(4.5);
