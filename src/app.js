@@ -103,40 +103,60 @@ const careerChecklist=document.querySelector('[data-career-checklist]');if(caree
 const teflenSticky=document.querySelector('#teflen-sticky-cta');
 if(teflenSticky&&document.body.classList.contains('phase4b-teflen-review')){
   const article=document.querySelector('.article-content');
-  const disclosure=[...(article?.querySelectorAll('p')||[])].find(p=>p.textContent.includes('Some links on this page are affiliate links.'));
+  const overview=[...(article?.querySelectorAll('.callout')||[])].find(block=>block.textContent.includes('Quick assessment'));
+  const disclosure=document.querySelector('#teflen-affiliate-disclosure');
   const close=teflenSticky.querySelector('.teflen-sticky-close');
+  let overviewPassed=false;
   let disclosurePassed=false;
   let dismissed=false;
   let scheduled=false;
   const consent=document.querySelector('#analytics-consent');
+  const markPassed=()=>{
+    if(overview&&overview.getBoundingClientRect().bottom<=0)overviewPassed=true;
+    if(disclosure&&disclosure.getBoundingClientRect().bottom<=0)disclosurePassed=true;
+  };
   const update=()=>{
     scheduled=false;
-    if(disclosure&&disclosure.getBoundingClientRect().bottom<=0)disclosurePassed=true;
+    markPassed();
     const mobile=window.matchMedia('(max-width: 760px)').matches;
     const consentOpen=consent&&!consent.hidden&&getComputedStyle(consent).display!=='none';
     const inlineCtaVisible=[...(article?.querySelectorAll('a[data-affiliate]:not(.teflen-sticky-link)')||[])].some(link=>{
       const rect=link.getBoundingClientRect();
       return rect.width>0&&rect.height>0&&rect.bottom>0&&rect.top<window.innerHeight;
     });
-    const visible=mobile&&disclosurePassed&&!inlineCtaVisible&&!consentOpen&&!dismissed;
+    const visible=mobile&&overviewPassed&&disclosurePassed&&!inlineCtaVisible&&!consentOpen&&!dismissed;
     teflenSticky.hidden=!visible;
     document.body.classList.toggle('teflen-sticky-visible',visible);
   };
   const schedule=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(update)};
-  if(disclosure&&'IntersectionObserver'in window){
-    const disclosureObserver=new IntersectionObserver(entries=>{
-      for(const entry of entries){if(!entry.isIntersecting&&entry.boundingClientRect.bottom<=0)disclosurePassed=true}
+  if(overview&&disclosure&&'IntersectionObserver'in window){
+    const introObserver=new IntersectionObserver(entries=>{
+      for(const entry of entries){
+        if(entry.isIntersecting||entry.boundingClientRect.bottom>0)continue;
+        if(entry.target===overview)overviewPassed=true;
+        if(entry.target===disclosure)disclosurePassed=true;
+      }
       schedule();
     },{threshold:0});
-    disclosureObserver.observe(disclosure);
-  }else if(disclosure){
-    const checkDisclosure=()=>{if(disclosure.getBoundingClientRect().bottom<=0)disclosurePassed=true;schedule()};
-    window.addEventListener('scroll',checkDisclosure,{passive:true});
-    checkDisclosure();
+    introObserver.observe(overview);
+    introObserver.observe(disclosure);
+  }else{
+    window.addEventListener('scroll',markPassed,{passive:true});
+    markPassed();
   }
   window.addEventListener('scroll',schedule,{passive:true});
   window.addEventListener('resize',schedule,{passive:true});
   consent&&new MutationObserver(schedule).observe(consent,{attributes:true,attributeFilter:['hidden','style','class']});
   close?.addEventListener('click',()=>{dismissed=true;teflenSticky.hidden=true;document.body.classList.remove('teflen-sticky-visible')});
   schedule();
+}
+if(document.body.classList.contains('phase4b-batch3')){
+  document.querySelectorAll('.table-scroll[tabindex="0"],.table-wrap[tabindex="0"],.job-table-scroll[tabindex="0"]').forEach(region=>{
+    region.addEventListener('keydown',event=>{
+      if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
+      if(region.scrollWidth<=region.clientWidth)return;
+      event.preventDefault();
+      region.scrollLeft+=event.key==='ArrowRight'?80:-80;
+    });
+  });
 }
