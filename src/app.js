@@ -150,7 +150,7 @@ if(teflenSticky&&document.body.classList.contains('phase4b-teflen-review')){
   close?.addEventListener('click',()=>{dismissed=true;teflenSticky.hidden=true;document.body.classList.remove('teflen-sticky-visible')});
   schedule();
 }
-if(document.body.classList.contains('phase4b-batch3')||document.body.classList.contains('phase4b-batch4')){
+if(document.body.classList.contains('phase4b-batch3')||document.body.classList.contains('phase4b-batch4')||document.body.classList.contains('phase4b-batch5')){
   document.querySelectorAll('.table-scroll[tabindex="0"],.table-wrap[tabindex="0"],.job-table-scroll[tabindex="0"]').forEach(region=>{
     region.addEventListener('keydown',event=>{
       if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;

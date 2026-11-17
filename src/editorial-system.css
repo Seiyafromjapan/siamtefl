@@ -741,3 +741,122 @@ body.teflen-sticky-visible{padding-bottom:calc(84px + env(safe-area-inset-bottom
   .phase4b-batch4 .page-hero>.reading,.phase4b-batch4 .article{width:calc(100% - 32px)}
   .phase4b-batch4 .page-hero h1{font-size:32px;letter-spacing:-.045em}
 }
+
+/* Batch 5: housing, money, working time and country choice. */
+.phase4b-batch5 .page-hero{padding:30px 0 29px}
+.phase4b-batch5 .page-hero>.reading{width:min(980px,calc(100% - 48px))}
+.phase4b-batch5 .page-hero .breadcrumbs{margin-bottom:14px}
+.phase4b-batch5 .page-hero .eyebrow{margin-bottom:10px}
+.phase4b-batch5 .page-hero h1{max-width:29ch;margin-bottom:13px;font-size:clamp(39px,4.25vw,58px);line-height:1.05}
+.phase4b-batch5 .page-hero .lead{max-width:70ch;font-size:18px;line-height:1.58}
+.phase4b-batch5 .page-hero .trust-row{margin-top:13px}
+.phase4b-batch5 .article{padding-top:25px}
+.phase4b-batch5 .article h2{margin-top:29px}
+.phase4b-batch5 .article :is(.note,.decision-strip,.hero-caveat){overflow-wrap:anywhere}
+.phase4b-batch5 .article :is(a,code){overflow-wrap:anywhere}
+.phase4b-batch5 .article a:not(.button){text-decoration-thickness:1px;text-underline-offset:3px}
+.phase4b-batch5 :is(.table-scroll,.table-wrap,.job-table-scroll){scrollbar-color:#829b8a #eef2ed;scrollbar-width:thin;overscroll-behavior-inline:contain}
+.phase4b-batch5 :is(.table-scroll,.table-wrap,.job-table-scroll):focus-visible{outline:3px solid #456d55;outline-offset:3px}
+.phase4b-batch5 :is(.price-table,.job-table){font-variant-numeric:tabular-nums}
+.phase4b-batch5 .price-table th{font-size:14px;line-height:1.45}
+.phase4b-batch5 .price-table td{font-size:15px;line-height:1.58}
+.phase4b-housing-guide .housing-hero{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);align-items:stretch;min-height:0;overflow:hidden;background:#eef2eb}
+.phase4b-housing-guide .housing-hero-photo{position:relative;inset:auto;z-index:0;grid-column:2;grid-row:1;min-height:440px;overflow:hidden}
+.phase4b-housing-guide .housing-hero-photo img{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;opacity:1}
+.phase4b-housing-guide .housing-hero-photo:after{display:none}
+.phase4b-housing-guide .housing-hero-photo figcaption{position:absolute;right:12px;bottom:12px;left:12px;max-width:none;padding:9px 11px;border-radius:0;background:#fff;color:#405349;font-size:14px;line-height:1.5}
+.phase4b-housing-guide .housing-hero-photo figcaption a{color:#123d35}
+.phase4b-housing-guide .housing-hero-copy{grid-column:1;grid-row:1;align-self:center;width:100%;max-width:none;padding:38px clamp(24px,5vw,68px);color:#19251f}
+.phase4b-housing-guide .housing-hero-copy .breadcrumbs{color:#536259}
+.phase4b-housing-guide .housing-hero-copy .eyebrow{color:#123d35}
+.phase4b-housing-guide .housing-hero-copy h1{max-width:16ch;color:#19251f;font-size:clamp(42px,4.3vw,58px);line-height:1.04}
+.phase4b-housing-guide .housing-hero-copy .lead{max-width:40ch;color:#405349;font-size:18px;line-height:1.58}
+.phase4b-housing-guide .housing-hero-copy .hero-caveat{max-width:44ch;margin:14px 0 0;padding:11px 14px;border-left:3px solid #123d35;background:#fff;color:#405349;font-size:14px;line-height:1.55}
+.phase4b-housing-guide .housing-article{padding-top:28px}
+.phase4b-housing-guide .housing-types{gap:0;border-top:2px solid #123d35;border-bottom:1px solid #dfe4dc}
+.phase4b-housing-guide .housing-types>div{padding:20px 22px;border:0;border-right:1px solid #dfe4dc;border-radius:0;background:transparent}
+.phase4b-housing-guide .housing-types>div:nth-child(even){border-right:0}
+.phase4b-housing-guide .housing-types h3{margin-top:0}
+.phase4b-housing-guide .housing-example{border:0;border-left:3px solid #123d35;border-radius:0;background:#eef2eb}
+.phase4b-budget-guide .page-hero{background:#eef2eb}
+.phase4b-bangkok-budget .budget-table-scroll .price-table{min-width:680px;table-layout:fixed}
+.phase4b-bangkok-budget .budget-table-scroll .price-table th:first-child,.phase4b-bangkok-budget .budget-table-scroll .price-table td:first-child{position:sticky;left:0;z-index:1;width:30%;text-align:left;background:#fff}
+.phase4b-bangkok-budget .budget-table-scroll .price-table th:first-child{z-index:3;background:#e9eee6}
+.phase4b-bangkok-budget .budget-table-scroll .price-table tbody tr:nth-child(even) td:first-child{background:#fbfcf9}
+.phase4b-bangkok-budget .budget-table-scroll .price-table tbody tr:last-child td:first-child{background:#eef2eb}
+.phase4b-bangkok-budget .budget-table-scroll .price-table th:not(:first-child),.phase4b-bangkok-budget .budget-table-scroll .price-table td:not(:first-child){width:23.333%;text-align:right;white-space:nowrap}
+.phase4b-bangkok-budget .budget-table-scroll .price-table tbody tr:last-child{background:#eef2eb;font-weight:700}
+.phase4b-savings-guide .savings-visual{padding:22px 0;border:0;border-top:2px solid #123d35;border-bottom:1px solid #dfe4dc;border-radius:0;background:transparent}
+.phase4b-savings-guide .savings-visual>.eyebrow{font-size:14px;letter-spacing:.08em}
+.phase4b-savings-guide .savings-card{padding:17px 16px;border:0;border-top:1px solid #dfe4dc;border-radius:0;background:#fff;box-shadow:none}
+.phase4b-savings-guide .savings-card h3{font-size:20px}
+.phase4b-savings-guide .savings-card h3 span{font-size:14px}
+.phase4b-savings-guide .savings-card dt,.phase4b-savings-guide .savings-card dd{font-size:14px;line-height:1.5}
+.phase4b-savings-guide .savings-card dl>div{padding:8px 0}
+.phase4b-savings-guide .savings-card .savings-left{margin-top:5px;border-top:2px solid #123d35}
+.phase4b-savings-guide .article-hero-image,.phase4b-savings-guide .article-wide-image{border-radius:0}
+.phase4b-savings-guide .article-hero-image figcaption{font-size:14px;line-height:1.55}
+.phase4b-savings-guide .price-table{min-width:680px;table-layout:fixed}
+.phase4b-savings-guide .price-table th:first-child,.phase4b-savings-guide .price-table td:first-child{position:sticky;left:0;z-index:1;width:31%;text-align:left;background:#fff}
+.phase4b-savings-guide .price-table th:first-child{z-index:3;background:#e9eee6}
+.phase4b-savings-guide .price-table tbody tr:nth-child(even) td:first-child{background:#fbfcf9}
+.phase4b-savings-guide .price-table tbody tr:last-child td:first-child{background:#eef2eb}
+.phase4b-savings-guide .price-table th:not(:first-child),.phase4b-savings-guide .price-table td:not(:first-child){text-align:right;white-space:nowrap}
+.phase4b-savings-guide .price-table tbody tr:last-child{background:#eef2eb;font-weight:700}
+.phase4b-working-hours-guide .page-hero{background:var(--ed-paper)}
+.phase4b-working-hours-guide .workday-hero{width:min(960px,calc(100% - 48px));margin:0 auto 5px;border:0;border-top:2px solid #123d35;border-radius:0;background:#eef2eb}
+.phase4b-working-hours-guide .workday-hero figcaption{font-size:14px;line-height:1.55}
+.phase4b-working-hours-guide .workday-article .price-table{min-width:610px}
+.phase4b-working-hours-guide .workday-article .price-table th:first-child,.phase4b-working-hours-guide .workday-article .price-table td:first-child{font-variant-numeric:tabular-nums}
+.phase4b-country-comparison .page-hero{background:#eef2eb}
+.phase4b-country-comparison .page-hero .lead{max-width:76ch}
+.phase4b-country-comparison .article>section:first-of-type>p:first-of-type{padding:16px 18px;border-left:3px solid #123d35;background:#eef2eb;color:#30443a}
+.phase4b-country-comparison .job-table-scroll{border-top-width:3px}
+.phase4b-country-comparison .job-table th{font-size:14px;line-height:1.5}
+.phase4b-country-comparison .job-table td{font-size:15px;line-height:1.58}
+.phase4b-batch5 :is(.next-steps,.related-guides){border-top:2px solid #123d35;border-radius:0}
+.phase4b-batch5 .next-steps a{font-weight:650;text-decoration:underline;text-decoration-color:#9aab9e;text-underline-offset:4px}
+@media(min-width:761px) and (max-width:900px){
+  .phase4b-housing-guide .housing-hero-copy{padding:28px 25px}
+  .phase4b-housing-guide .housing-hero-copy h1{max-width:20ch;font-size:clamp(36px,5vw,40px)}
+  .phase4b-housing-guide .housing-hero-copy .lead{font-size:17px;line-height:1.52}
+  .phase4b-housing-guide .housing-hero-photo{min-height:400px}
+}
+@media(max-width:900px){
+  .phase4b-bangkok-budget .budget-table-scroll[tabindex="0"]::after,.phase4b-savings-guide .table-scroll[tabindex="0"]::after,.phase4b-working-hours-guide .table-scroll[tabindex="0"]::after{content:"Scroll horizontally to view all columns.";display:block;padding:10px 13px;border-top:1px solid #dfe4dc;background:#f7f7f2;color:#405349;font-size:14px;line-height:1.45}
+}
+@media(max-width:760px){
+  .phase4b-batch5 .page-hero{padding:20px 0 21px}
+  .phase4b-batch5 .page-hero>.reading{width:calc(100% - 36px)}
+  .phase4b-batch5 .page-hero .breadcrumbs{margin-bottom:10px}
+  .phase4b-batch5 .page-hero .eyebrow{margin-bottom:9px}
+  .phase4b-batch5 .page-hero h1{max-width:30ch;margin-bottom:10px;font-size:clamp(32px,8.2vw,38px);line-height:1.08}
+  .phase4b-batch5 .page-hero .lead{font-size:17px;line-height:1.56}
+  .phase4b-batch5 .page-hero .trust-row{display:grid;gap:4px;margin-top:9px}
+  .phase4b-batch5 .article{padding-top:17px}
+  .phase4b-batch5 .article h2{margin-top:23px}
+  .phase4b-batch5 .article :is(.note,.decision-strip,.hero-caveat){padding:14px 15px}
+  .phase4b-housing-guide .housing-hero{grid-template-columns:minmax(0,1fr)}
+  .phase4b-housing-guide .housing-hero-copy{grid-column:1;grid-row:1;padding:21px 18px 20px}
+  .phase4b-housing-guide .housing-hero-copy h1{max-width:24ch;font-size:clamp(33px,8.1vw,38px)}
+  .phase4b-housing-guide .housing-hero-photo{grid-column:1;grid-row:2;min-height:0;height:auto;aspect-ratio:16/9}
+  .phase4b-housing-guide .housing-hero-photo img{position:static;width:100%;height:100%;object-fit:cover}
+  .phase4b-housing-guide .housing-hero-photo figcaption{right:8px;bottom:8px;left:8px;padding:7px 9px;font-size:14px}
+  .phase4b-housing-guide .housing-types{grid-template-columns:1fr}
+  .phase4b-housing-guide .housing-types>div{padding:15px 4px;border-right:0;border-bottom:1px solid #dfe4dc}
+  .phase4b-housing-guide .housing-types>div:last-child{border-bottom:0}
+  .phase4b-housing-guide .housing-example{padding:16px}
+  .phase4b-working-hours-guide .workday-hero{width:calc(100% - 36px)}
+  .phase4b-working-hours-guide .workday-hero figcaption{padding:10px 13px}
+  .phase4b-savings-guide .savings-visual{padding:16px 0}
+  .phase4b-savings-guide .savings-card{padding:14px 15px}
+  .phase4b-country-comparison .job-table td{font-size:14px;line-height:1.55}
+  .phase4b-country-comparison .job-table td:before{font-size:14px;line-height:1.45}
+}
+@media(max-width:360px){
+  .phase4b-batch5 .page-hero>.reading,.phase4b-batch5 .article{width:calc(100% - 32px)}
+  .phase4b-batch5 .page-hero h1{font-size:32px;letter-spacing:-.045em}
+  .phase4b-housing-guide .housing-hero-copy{padding:18px 16px}
+  .phase4b-housing-guide .housing-hero-copy h1{font-size:32px}
+  .phase4b-housing-guide .housing-hero-photo figcaption{left:6px;right:6px;bottom:6px;font-size:14px}
+}
