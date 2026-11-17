@@ -51,14 +51,34 @@
 .job-table tbody td:first-child{font-weight:700;color:#173f36}
 .job-table a{color:#145b4c;text-decoration:underline;text-decoration-color:#a5b9a9;text-underline-offset:3px;overflow-wrap:anywhere}
 .job-table a:hover{color:#0c392f}
+.phase4b-course-dates .schedule-entry{padding:8px 0;border-bottom:1px solid #e3e9e2;line-height:1.65}
+.phase4b-course-dates .schedule-entry:last-child{border-bottom:0}
+.phase4b-course-dates .schedule-entry strong{color:#123d35}
+.phase4b-course-dates .schedule-date-note{display:inline-block;margin-top:3px;color:#47564d;font-size:14px;line-height:1.5}
+.phase4b-course-dates .schedule-none{color:#47564d}
+.phase4b-course-dates .schedule-option{padding:16px 0;border-top:1px solid #d7e1d8}
+.phase4b-course-dates .schedule-option h3{margin:0 0 8px}
+.phase4b-course-dates .schedule-option p{margin:8px 0}
+.phase4b-course-dates .schedule-month-jump{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0 20px;font-size:15px}
+.phase4b-course-dates .schedule-month-jump ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0;padding:0}
+.phase4b-course-dates .schedule-month-jump a{display:inline-flex;min-height:40px;align-items:center;padding:4px 10px;border:1px solid #d7e1d8;border-radius:999px;color:#123d35;text-decoration:underline;text-underline-offset:3px}
+.phase4b-course-dates .schedule-month-jump a:hover{background:#edf3ef}
+.phase4b-course-dates .schedule-month-jump a:focus-visible{outline:3px solid #123d35;outline-offset:2px}
+.phase4b-course-dates #course-month-2027-01,.phase4b-course-dates [id^="course-month-2027-"]{scroll-margin-top:16px}
+.calculator-course-sources{margin:14px 0 0;padding:12px 16px 12px 34px;border-top:1px solid #d7e1d8;color:#47564d;font-size:14px;line-height:1.6}
+.calculator-course-sources a{color:#145b4c;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.calculator-course-sources a:focus-visible{outline:3px solid #75977f;outline-offset:3px}
+.calc-course-payment{margin:16px 0;padding:12px;border-left:3px solid #123d35;background:#f1f5f0;color:#30443a;font-size:15px;line-height:1.55}
 @media(max-width:700px){
   .job-table-scroll{overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;margin:16px 0 24px}
   .job-table{min-width:0!important;border-spacing:0;background:transparent;font-size:13px}
   .job-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  .job-table,.job-table tbody,.job-table tr,.job-table td{display:block;width:100%}
+  .job-table,.job-table tbody,.job-table tr,.job-table td,.phase4b-course-dates .job-table th[scope="row"]{display:block;width:100%}
   .job-table tbody{display:grid;gap:12px}
   .job-table tbody tr{overflow:hidden;border:1px solid #d8e3d9;border-radius:9px;background:#fff!important;box-shadow:0 4px 14px #173b2d0c}
   .job-table td{display:grid;grid-template-columns:minmax(94px,28%) minmax(0,1fr);gap:12px;padding:12px 14px;border-right:0;border-bottom:1px solid #e6ebe5;font-size:13px;line-height:1.6}
+  .phase4b-course-dates .job-table tbody th[scope="row"]{display:grid;grid-template-columns:minmax(94px,28%) minmax(0,1fr);gap:12px;padding:12px 14px;border-right:0;border-bottom:1px solid #e6ebe5;text-align:left;font-size:14px;line-height:1.6;background:#edf4ed;color:#173f36}
+  .phase4b-course-dates .job-table tbody th[scope="row"]:before{content:attr(data-label);font-size:10px;font-weight:750;letter-spacing:.025em;color:#285a49;line-height:1.45}
   .job-table td:before{content:attr(data-label);font-size:10px;font-weight:750;letter-spacing:.025em;color:#285a49;line-height:1.45}
   .job-table td:last-child{border-bottom:0}
   .job-table tbody td:first-child{background:#edf4ed;color:#173f36;font-size:14px}
@@ -200,7 +220,7 @@
 .course-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0 30px}.course-path{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:21px 19px;border:1px solid var(--line);border-radius:8px;background:#fff}.course-path h3{margin:4px 0 10px}.course-path p{font-size:14px;line-height:1.55}.course-path .course-path-link{margin-top:auto;padding-top:8px;font-size:13px;font-weight:700;color:var(--forest);text-decoration:underline;text-underline-offset:4px}.course-path-label{display:inline-flex;align-items:center;min-height:28px;padding:4px 9px;border-radius:999px;background:#edf3ee;color:var(--forest);font-size:11px;font-weight:700;letter-spacing:.02em}.course-path-points{margin:0 0 8px;padding-left:19px;color:var(--muted);font-size:13px}.course-path-points li{margin:4px 0}
 @media(max-width:760px){.course-paths{grid-template-columns:1fr;gap:12px}.course-path{padding:18px}.course-path p{margin-bottom:10px}}
 
-@media(max-width:700px){.table-scroll.course-comparison-table{overflow:visible}.course-comparison-table .price-table{min-width:0;border-collapse:separate;border-spacing:0;background:transparent}.course-comparison-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.course-comparison-table .price-table,.course-comparison-table tbody,.course-comparison-table tr,.course-comparison-table td{display:block;width:100%}.course-comparison-table tbody{display:grid;gap:14px}.course-comparison-table tr{background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden;box-shadow:0 3px 14px #1e45300a}.course-comparison-table td{display:grid;grid-template-columns:minmax(96px,34%) minmax(0,1fr);gap:10px;padding:11px 13px!important;border-bottom:1px solid var(--line)!important;font-size:13px!important;overflow-wrap:anywhere}.course-comparison-table td:before{content:attr(data-label);font-size:10px;font-weight:700;color:var(--forest);line-height:1.4}.course-comparison-table tr:last-child td:last-child{border-bottom:0!important}}
+@media(max-width:700px){.table-scroll.course-comparison-table{overflow:visible}.course-comparison-table .price-table{min-width:0;border-collapse:separate;border-spacing:0;background:transparent}.course-comparison-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.course-comparison-table .price-table,.course-comparison-table tbody,.course-comparison-table tr,.course-comparison-table td,.course-comparison-table th[data-label]{display:block;width:100%}.course-comparison-table tbody{display:grid;gap:14px}.course-comparison-table tr{background:#fff;border:1px solid var(--line);border-radius:7px;overflow:hidden;box-shadow:0 3px 14px #1e45300a}.course-comparison-table td,.course-comparison-table th[data-label]{display:grid;grid-template-columns:minmax(105px,38%) minmax(0,1fr);gap:10px;padding:11px 13px!important;border-bottom:1px solid var(--line)!important;font-size:14px!important;overflow-wrap:anywhere}.course-comparison-table td:before,.course-comparison-table th[data-label]:before{content:attr(data-label);font-size:14px;font-weight:700;color:var(--forest);line-height:1.4}.course-comparison-table tr:last-child td:last-child{border-bottom:0!important}}
 
 /* Teacher housing guide */
 .housing-hero{position:relative;isolation:isolate;min-height:470px;display:flex;align-items:center;overflow:hidden;background:#123d35}
@@ -873,8 +893,65 @@ main p,main li{overflow-wrap:anywhere}
 .comparison-editorial-page .course-comparison-table .price-table th{padding:13px 12px;background:#e9eee6;color:var(--forest);font-size:14px;line-height:1.45;text-align:left}
 .comparison-editorial-page .course-comparison-table .price-table td{padding:15px 12px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.62;vertical-align:top}
 .comparison-editorial-page .course-comparison-table .price-table tbody tr:nth-child(even){background:#fbfcf9}
+.comparison-editorial-page .course-comparison-table .price-table caption{text-align:left;padding:0 0 12px;color:#44554b;font-size:14px;line-height:1.5}
+.comparison-editorial-page .course-comparison-table .price-table tbody th{min-width:180px;background:transparent;color:var(--ink);text-align:left;font-size:15px;line-height:1.55;vertical-align:top}
+.comparison-editorial-page .course-comparison-table .price-table tbody th p{font-size:14px;line-height:1.5}
+.comparison-editorial-page .course-data-note,.comparison-editorial-page .course-data-status{display:block;margin:7px 0 0;color:#4f5f55;font-size:14px;line-height:1.5;font-weight:400}
+.comparison-editorial-page .course-data-sources{font-size:14px;line-height:1.6}
+.comparison-editorial-page .course-data-sources a{display:inline-block;margin:2px 0;text-decoration:underline;text-underline-offset:3px}
+.comparison-editorial-page .course-data-visible-sources{margin:7px 0;font-size:14px;line-height:1.5}
+.comparison-editorial-page .course-data-visible-sources a{display:inline-block;margin:1px 3px;text-decoration:underline;text-underline-offset:3px}
+.comparison-editorial-page .course-data-details summary{cursor:pointer;color:var(--forest);font-size:15px;font-weight:700;line-height:1.5;text-decoration:underline;text-underline-offset:3px}
+.comparison-editorial-page .course-data-details summary:focus-visible{outline:3px solid #456d55;outline-offset:3px}
+.comparison-editorial-page .course-data-details ul{margin:10px 0;padding-left:18px}
+.comparison-editorial-page .course-data-details li{margin:6px 0;font-size:15px;line-height:1.55}
+.comparison-editorial-page .course-data-caption{margin:10px 0 18px;color:#44554b;font-size:14px;line-height:1.5}
+.comparison-editorial-page .course-data-provider-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 28px}
+.comparison-editorial-page .course-data-provider{min-width:0;padding:20px 0 4px;border-top:2px solid var(--forest)}
+.comparison-editorial-page .course-data-provider>header{margin-bottom:12px}
+.comparison-editorial-page .course-data-provider>header .eyebrow{margin:0 0 4px;color:#52645a;font-size:14px}
+.comparison-editorial-page .course-data-provider>header h3{margin:0;font-size:25px;line-height:1.15}
+.comparison-editorial-page .course-data-course{padding:13px 0 0;border-top:1px solid var(--line)}
+.comparison-editorial-page .course-data-course+.course-data-course{margin-top:14px}
+.comparison-editorial-page .course-data-course-heading h4{margin:0 0 4px;font-size:18px;line-height:1.3}
+.comparison-editorial-page .course-data-course-heading p{margin:0 0 8px;color:#52645a;font-size:15px;line-height:1.45}
+.comparison-editorial-page .course-data-facts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:0 18px;margin:0}
+.comparison-editorial-page .course-data-facts>div{min-width:0;padding:10px 0;border-top:1px solid #e2e7df}
+.comparison-editorial-page .course-data-facts>div:last-child{grid-column:1/-1}
+.comparison-editorial-page .course-data-facts dt{margin-bottom:4px;color:#52645a;font-size:14px;font-weight:700}
+.comparison-editorial-page .course-data-facts dd{margin:0;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.comparison-editorial-page .course-data-facts dd p{margin:4px 0;font-size:15px;line-height:1.5}
+.comparison-editorial-page .course-data-facts .course-data-note,.comparison-editorial-page .course-data-facts .course-data-status{margin:3px 0;font-size:14px}
+.comparison-editorial-page .course-data-course .course-data-details{margin:6px 0 2px;padding-top:6px;border-top:1px dashed #d8dfd5}
+.comparison-editorial-page .course-data-course .course-data-details summary{font-size:14px}
 .comparison-editorial-page .course-comparison-table:focus-visible{outline:3px solid #456d55;outline-offset:4px}
 .comparison-editorial-page .disclosure-strip{margin:26px 0;padding:16px 18px;border-left:3px solid var(--forest);background:#eef2eb;font-size:16px;line-height:1.65}
+.editorial-provider-review .course-data-review,.essential-review-page .course-data-review{margin:22px 0 30px;padding:20px 22px;background:#f5f6f1;border-top:2px solid var(--forest)}
+.editorial-provider-review .course-data-caption,.essential-review-page .course-data-caption{margin:0 0 14px;color:#48594f;font-size:15px;line-height:1.6}
+.editorial-provider-review .course-data-review-course,.essential-review-page .course-data-review-course{padding:16px 0;border-top:1px solid #d8dfd5}
+.editorial-provider-review .course-data-review-course h3,.essential-review-page .course-data-review-course h3{margin:0 0 10px;font-size:21px;line-height:1.3}
+.editorial-provider-review .course-data-review-facts,.essential-review-page .course-data-review-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;margin:0}
+.editorial-provider-review .course-data-review-facts>div,.essential-review-page .course-data-review-facts>div{min-width:0;padding:10px 0;border-top:1px solid #e1e5de}
+.editorial-provider-review .course-data-review-facts dt,.essential-review-page .course-data-review-facts dt{margin-bottom:4px;color:#46584d;font-size:14px;font-weight:700}
+.editorial-provider-review .course-data-review-facts dd,.essential-review-page .course-data-review-facts dd{margin:0;font-size:17px;line-height:1.6;overflow-wrap:anywhere}
+.editorial-provider-review .course-data-review-facts dd p,.essential-review-page .course-data-review-facts dd p{margin:4px 0;font-size:17px;line-height:1.55}
+.editorial-provider-review .course-data-review-facts>div,.essential-review-page .course-data-review-facts>div{padding:8px 0;border-top:1px solid #e1e5de}
+.editorial-provider-review .course-data-review-checked,.essential-review-page .course-data-review-checked{margin:9px 0 0;color:#526259;font-size:14px;line-height:1.45}
+.editorial-provider-review .course-data-promo,.essential-review-page .course-data-promo{margin:7px 0 0;padding-top:6px;border-top:1px dashed #d8dfd5;font-size:15px;line-height:1.5}
+.editorial-provider-review .course-data-status,.essential-review-page .course-data-status{display:block;margin-top:4px;color:#526259;font-size:14px;line-height:1.45}
+.editorial-provider-review .course-data-review a,.essential-review-page .course-data-review a{color:#123d35;text-decoration:underline;text-underline-offset:3px}
+.editorial-provider-review .course-data-review-note,.essential-review-page .course-data-review-note{margin:12px 0;padding:12px 14px;border-left:3px solid #a66a2d;background:#fff;font-size:15px;line-height:1.6}
+.editorial-provider-review .course-data-review-variants,.essential-review-page .course-data-review-variants{margin:12px 0;padding:10px 14px;background:#fff}
+.editorial-provider-review .course-data-review-variants h4,.essential-review-page .course-data-review-variants h4{margin:0 0 7px;font-size:16px}
+.editorial-provider-review .course-data-review-variants ul,.essential-review-page .course-data-review-variants ul{margin:0;padding-left:18px}
+.editorial-provider-review .course-data-review-variants li,.essential-review-page .course-data-review-variants li{margin:6px 0;font-size:15px;line-height:1.55}
+.editorial-provider-review .course-data-review .course-data-details,.essential-review-page .course-data-review .course-data-details{margin-top:12px;padding-top:10px;border-top:1px dashed #cbd4ca}
+.editorial-provider-review .course-data-review .course-data-details summary,.essential-review-page .course-data-review .course-data-details summary{cursor:pointer;color:#123d35;font-size:15px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.editorial-provider-review .course-data-review .course-data-details summary:focus-visible,.essential-review-page .course-data-review .course-data-details summary:focus-visible{outline:3px solid #456d55;outline-offset:3px}
+.editorial-provider-review .course-data-review .course-data-details li,.essential-review-page .course-data-review .course-data-details li{font-size:15px;line-height:1.6}
+.editorial-provider-review .course-data-details:not([open])>:not(summary),.essential-review-page .course-data-details:not([open])>:not(summary),.comparison-editorial-page .course-data-details:not([open])>:not(summary){display:none}
+.editorial-provider-review .course-data-sources,.essential-review-page .course-data-sources{font-size:14px;line-height:1.6}
+@media(max-width:700px){.editorial-provider-review .course-data-review,.essential-review-page .course-data-review{margin:18px -2px 24px;padding:17px 14px}.editorial-provider-review .course-data-review-facts,.essential-review-page .course-data-review-facts{grid-template-columns:1fr}.editorial-provider-review .course-data-review-course h3,.essential-review-page .course-data-review-course h3{font-size:19px}.editorial-provider-review .course-data-review-facts dd,.editorial-provider-review .course-data-review-facts dd p,.essential-review-page .course-data-review-facts dd,.essential-review-page .course-data-review-facts dd p{font-size:17px}}
 @media(max-width:760px){
   .comparison-editorial-page .page-hero{padding:29px 0 34px}
   .comparison-editorial-page .page-hero .reading{width:calc(100% - 36px)}
@@ -887,6 +964,13 @@ main p,main li{overflow-wrap:anywhere}
   .comparison-editorial-page .course-path:last-child{border-bottom:0}
   .comparison-editorial-page .course-path h3{font-size:22px}
   .comparison-editorial-page .course-comparison-table .price-table td{font-size:14px!important}
+  .comparison-editorial-page .course-data-provider-grid{grid-template-columns:minmax(0,1fr);gap:18px}
+  .comparison-editorial-page .course-data-provider{padding-top:15px}
+  .comparison-editorial-page .course-data-provider>header h3{font-size:23px}
+  .comparison-editorial-page .course-data-facts{grid-template-columns:minmax(0,1fr)}
+  .comparison-editorial-page .course-data-facts>div:last-child{grid-column:auto}
+  .comparison-editorial-page .course-data-facts dt{font-size:14px}
+  .comparison-editorial-page .course-data-facts dd,.comparison-editorial-page .course-data-facts dd p{font-size:16px}
 }
 
 .salary-editorial-page .page-hero{padding:34px 0 38px;background:#fff}

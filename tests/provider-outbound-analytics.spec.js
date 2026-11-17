@@ -168,8 +168,8 @@ test('World TESOL Academy review has disclosed, accessible affiliate links to ea
 test('review and comparison pages disclose affiliate commissions without exposing partner status', async ({ page }) => {
   for (const route of ['/tefl-course-comparison-thailand/','/see-tefl-chiang-mai-review/','/world-tesol-academy-review/']) {
     await page.goto(`${baseUrl}${route}`);
-    await expect(page.locator('body')).not.toContainText(/pending|application pending/);
-    await expect(page.locator('body')).not.toContainText(/pending|application pending|no referral link on this page|currently has no referral link/i);
+    await expect(page.locator('body')).not.toContainText(/\bpending\b|application pending/);
+    await expect(page.locator('body')).not.toContainText(/\bpending\b|application pending|no referral link on this page|currently has no referral link/i);
     await expect(page.locator('body')).toContainText(/may earn a commission/i);
   }
   await page.goto(`${baseUrl}/`);
