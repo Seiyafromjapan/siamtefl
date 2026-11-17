@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import pages from '../src/pages.json' with { type: 'json' };
 
-const base = 'http://127.0.0.1:4173';
+const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:4173';
 const comparisonPath = '/tefl-course-comparison-thailand/';
 const expectedPage = pages.find(page => page.path === comparisonPath);
 const viewports = [1440, 768, 390, 320];
@@ -23,7 +23,8 @@ for (const width of viewports) {
     await expect(comparison).toContainText('US$339');
     await expect(comparison).toContainText('Official pages differ');
     await expect(comparison).toContainText('Not established in the reviewed pages.');
-    await expect(comparison).toContainText('View terms & sources');
+    await expect(comparison).toContainText('Terms & sources');
+    await expect(comparison.locator('thead th')).toHaveCount(6);
     const terms = comparison.locator('details').first();
     await expect(terms).toHaveJSProperty('open', false);
     await terms.locator('summary').focus();
@@ -32,8 +33,12 @@ for (const width of viewports) {
     await expect(terms.locator('.course-data-sources a').first()).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 
-    if (width <= 700) {
-      expect(await comparison.locator('.course-data-provider-grid').evaluate(element => getComputedStyle(element).gridTemplateColumns)).toMatch(/^\d+px$/);
+    const table = comparison.locator('.snapshot-table');
+    if (width <= 900) {
+      await expect(comparison.locator('.table-swipe-hint')).toBeVisible();
+      expect(await table.evaluate(element => element.scrollWidth > element.clientWidth)).toBe(true);
+    } else {
+      expect(await table.evaluate(element => element.scrollWidth <= element.clientWidth)).toBe(true);
     }
 
     await expect(page).toHaveTitle(expectedPage.title);
