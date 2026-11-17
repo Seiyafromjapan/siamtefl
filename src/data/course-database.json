@@ -1,0 +1,1793 @@
+{
+  "schemaVersion": 1,
+  "verificationStatuses": [
+    "primary_verified",
+    "provider_claim",
+    "conflicting_official_sources",
+    "unverified",
+    "not_applicable"
+  ],
+  "providers": [
+    {
+      "providerId": "essential_tefl",
+      "providerName": "Essential TEFL",
+      "officialWebsite": "https://www.essentialtefl.com/",
+      "providerLocation": {
+        "value": "Bangkok, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      }
+    },
+    {
+      "providerId": "see_tefl",
+      "providerName": "SEE TEFL",
+      "officialWebsite": "https://seetefl.com/",
+      "providerLocation": {
+        "value": "Chiang Mai, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      }
+    },
+    {
+      "providerId": "world_tesol_academy",
+      "providerName": "World TESOL Academy",
+      "officialWebsite": "https://www.worldtesolacademy.com/",
+      "providerLocation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "The reviewed course pages establish online delivery, not the provider headquarters."
+      }
+    },
+    {
+      "providerId": "teflen",
+      "providerName": "TEFLen",
+      "officialWebsite": "https://www.teflen.com/",
+      "providerLocation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "The reviewed course pages establish online delivery, not the provider headquarters."
+      }
+    }
+  ],
+  "courses": [
+    {
+      "courseId": "essential_standard_120",
+      "providerId": "essential_tefl",
+      "courseName": "Standard TEFL Course",
+      "location": {
+        "value": "Bangkok, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Four weeks, in person",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 45000,
+          "currency": "THB",
+          "priceType": "published tuition"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": "Accommodation is not included.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "verificationNotes": "No separate promotion was verified on the checked course page.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "qualification": {
+        "value": "Standard TEFL course certificate; confirm exact award for your intake.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/courses",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "verificationNotes": "No separate accreditation statement recorded for this course in the pilot.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "advertisedHours": {
+        "value": 120,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/courses",
+        "verificationNotes": "Provider describes the Standard route as a 120-hour course; do not equate this with Level 5 guided learning hours.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "Classroom practice and trainer feedback; observed hours not published.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/courses",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Four weeks",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Eligible native English-speaking graduates with a bachelor’s degree may receive guaranteed interviews; no job offer is guaranteed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "verificationNotes": "This route is not represented as guaranteed employment on the checked fee page.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": {
+          "amount": 20000,
+          "currency": "THB"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Current Essential TEFL terms state this course-specific deposit amount."
+      },
+      "refundPolicy": {
+        "value": "Student fees and deposits are described as non-refundable. Optional THB 3,000 booking flexibility allows one date change under stated conditions.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accommodation": {
+        "value": "Not included in tuition.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry date was established for this course in the pilot."
+      },
+      "balanceDue": {
+        "value": {
+          "amount": 25000,
+          "currency": "THB",
+          "calculation": "tuition_minus_deposit",
+          "due": "By the start of the first day unless a different arrangement is approved in writing"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Remaining amount is the arithmetic difference between the provider-listed tuition and deposit. Terms state the remainder is due by the first training day unless a different arrangement is approved in writing."
+      }
+    },
+    {
+      "courseId": "essential_tquk_level5",
+      "providerId": "essential_tefl",
+      "courseName": "TQUK Level 5 TEFL",
+      "location": {
+        "value": "Bangkok, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Four weeks of classroom training plus assignments and portfolio work",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 50000,
+          "currency": "THB",
+          "priceType": "published tuition"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": "Accommodation is not included.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "qualification": {
+        "value": "TQUK Level 5 (601/5234/5); provider describes it as Ofqual-regulated.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "verificationNotes": "Provider describes this as Ofqual-regulated; the qualification register entry was not independently verified in this pilot.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": "Provider describes the qualification as Ofqual-regulated.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "advertisedHours": {
+        "value": 168,
+        "verificationStatus": "conflicting_official_sources",
+        "sourceUrl": "https://www.essentialtefl.com/courses",
+        "verificationNotes": "Provider also describes 120 hours of in-person training; its breakdown against 168 GLH is not published.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": 168,
+        "verificationStatus": "conflicting_official_sources",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "verificationNotes": "Provider also describes 120 hours of in-person training; its breakdown against 168 GLH is not published.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "Real teaching practice; observed hours not published.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Four weeks of classroom training; assessment work may continue beyond classroom sessions.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/level-5-tefl-course-bangkok",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Eligible native English-speaking graduates with a bachelor’s degree may receive guaranteed interviews; no job offer is guaranteed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": {
+          "amount": 20000,
+          "currency": "THB"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Current Essential TEFL terms state this course-specific deposit amount."
+      },
+      "refundPolicy": {
+        "value": "Student fees and deposits are described as non-refundable. Optional THB 3,000 booking flexibility allows one date change under stated conditions.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accommodation": {
+        "value": "Not included in tuition.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry date was established for this course in the pilot."
+      },
+      "balanceDue": {
+        "value": {
+          "amount": 30000,
+          "currency": "THB",
+          "calculation": "tuition_minus_deposit",
+          "due": "By the start of the first day unless a different arrangement is approved in writing"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Remaining amount is the arithmetic difference between the provider-listed tuition and deposit. Terms state the remainder is due by the first training day unless a different arrangement is approved in writing."
+      }
+    },
+    {
+      "courseId": "see_tefl_120_in_person",
+      "providerId": "see_tefl",
+      "courseName": "Four-Week TEFL Course",
+      "location": {
+        "value": "Chiang Mai, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Four weeks, in person",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/4-week-tefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 1395,
+          "currency": "USD",
+          "priceType": "published tuition"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "verificationNotes": "No additional mandatory fee was normalized; visa, travel and payment-specific costs vary.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "qualification": {
+        "value": "120-hour TEFL course; confirm the exact certificate title for your intake.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/4-week-tefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "advertisedHours": {
+        "value": 120,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/4-week-tefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "Six observed teaching practices, one hour each.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/4-week-tefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Four weeks",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Qualifying graduates may receive a work offer within two months after required job-search steps.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/tefl-job-guarantee/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": "Provider says qualifying graduates may be offered work within two months.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/tefl-job-guarantee/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guaranteeConditions": {
+        "value": "Native English speakers with a bachelor’s degree must complete job-search steps. Public remedy if no offer is made is unclear.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/tefl-job-guarantee/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deposit": {
+        "value": {
+          "amount": 495,
+          "currency": "USD"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "refundPolicy": {
+        "value": "Refunds vary by deposit/balance and cancellation date; terms describe partial refunds before the start and no balance refund on or after it.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/terms-conditions/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accommodation": {
+        "value": "Optional 30-night lodging: USD 400 single / USD 450 double.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry date was established for this course in the pilot."
+      },
+      "balanceDue": {
+        "value": {
+          "amount": 900,
+          "currency": "USD",
+          "due": "On or before the first training day"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Published balance after the USD 495 deposit; due on or before the first training day."
+      }
+    },
+    {
+      "courseId": "see_tefl_paid_internship",
+      "providerId": "see_tefl",
+      "courseName": "Paid TEFL Internship",
+      "location": {
+        "value": "Chiang Mai or another Thailand location, depending on placement",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Course plus a four-to-five-month teaching placement",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 2650,
+          "currency": "USD",
+          "priceType": "published Chiang Mai package; outside-Chiang-Mai fee differs"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "verificationNotes": "Provider also lists USD 2,450 for placements outside Chiang Mai.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "qualification": {
+        "value": "Includes the provider’s 120-hour course; confirm certificate title for this package.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "advertisedHours": {
+        "value": 120,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "Training plus teaching placement; package conditions apply.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Four-to-five-month placement after training.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Paid placement included subject to eligibility; provider advertises THB 35,000/month minimum salary.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "verificationNotes": "Package placement terms must be distinguished from the standard-course job-guarantee page.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": {
+          "amount": 900,
+          "currency": "USD"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/terms-conditions/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "accommodation": {
+        "value": "Provider advertises 30 hotel nights during training; confirm remaining housing and placement arrangements.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry date was established for this course in the pilot."
+      },
+      "publishedPriceVariants": [
+        {
+          "value": {
+            "amount": 2450,
+            "currency": "USD",
+            "label": "Outside-Chiang-Mai placement package"
+          },
+          "verificationStatus": "primary_verified",
+          "sourceUrl": "https://seetefl.com/paid-tefl-internships/",
+          "lastCheckedDate": "2026-11-17",
+          "lastVerifiedDate": "2026-11-17"
+        }
+      ],
+      "balanceDue": {
+        "value": {
+          "variants": [
+            {
+              "amount": 1750,
+              "currency": "USD",
+              "condition": "Chiang Mai placement"
+            },
+            {
+              "amount": 1550,
+              "currency": "USD",
+              "condition": "placement outside Chiang Mai"
+            }
+          ],
+          "due": "One week before onsite training starts"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://seetefl.com/fees-dates/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      }
+    },
+    {
+      "courseId": "wta_120_online",
+      "providerId": "world_tesol_academy",
+      "courseName": "120-Hour Online TESOL/TEFL Certificate",
+      "location": {
+        "value": "Online",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Online, self-paced",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 36,
+          "currency": "USD",
+          "priceType": "listed price snapshot; checkout may vary"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "verificationNotes": "Provider may display different currencies or promotional totals by location and checkout.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "verificationNotes": "The public listing shows a low current price; a separate regular-price baseline and promotion end date were not verified.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "qualification": {
+        "value": "120-hour TESOL/TEFL certificate; employer acceptance varies.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": "Provider advertises ACCREDITAT and CPD recognition; current certificate evidence should be confirmed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.worldtesolacademy.com/accreditation/",
+        "verificationNotes": "The located 2024–2025 ACCREDITAT certificate is expired and does not establish current accreditation.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "advertisedHours": {
+        "value": 120,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "No Thailand classroom practice; separate selective 36-hour online practicum.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/online-teaching-practicum/page/2/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Self-paced; course listing states 12 months of access.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Tutor support; no Thailand placement or work permission included in course listing.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "accommodation": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry date was established for this course in the pilot."
+      },
+      "publishedPriceVariants": [
+        {
+          "value": {
+            "amount": 29,
+            "currency": "GBP",
+            "label": "Detailed course listing promotional price"
+          },
+          "verificationStatus": "primary_verified",
+          "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+          "lastCheckedDate": "2026-11-17",
+          "lastVerifiedDate": "2026-11-17"
+        }
+      ],
+      "balanceDue": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/tesol-course-enrollment/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate balance amount and due date were not normalized for this course in the Phase 4C review."
+      }
+    },
+    {
+      "courseId": "wta_level5_online",
+      "providerId": "world_tesol_academy",
+      "courseName": "Level 5 TESOL Diploma",
+      "location": {
+        "value": "Online",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Online, self-paced",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 189,
+          "currency": "USD",
+          "priceType": "listed price snapshot; checkout may vary"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "verificationNotes": "Provider also presents other currencies; this pilot stores the USD listing observed.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "qualification": {
+        "value": "Highfield Level 5 Diploma; provider lists 610/5386/7 and describes Ofqual regulation.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "verificationNotes": "Provider describes this as Ofqual-regulated; independent register verification remains necessary before asserting it as independently verified.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": "Provider describes this as a Highfield/Ofqual-regulated qualification.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "advertisedHours": {
+        "value": 200,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": 200,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "totalQualificationTime": {
+        "value": 320,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "teachingPractice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "verificationNotes": "Observed real-learner practice was not established in the reviewed page.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "courseDuration": {
+        "value": "Self-paced; study duration depends on learner pace.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "verificationNotes": "No Thailand job-support claim was confirmed from the reviewed public course page.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "accommodation": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry date was established for this course in the pilot."
+      },
+      "publishedPriceVariants": [
+        {
+          "value": {
+            "amount": 149,
+            "currency": "GBP",
+            "label": "Course catalogue listing with four months of access"
+          },
+          "verificationStatus": "primary_verified",
+          "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+          "lastCheckedDate": "2026-11-17",
+          "lastVerifiedDate": "2026-11-17"
+        },
+        {
+          "value": {
+            "amount": 159,
+            "currency": "GBP",
+            "label": "Course catalogue listing with lifetime access"
+          },
+          "verificationStatus": "primary_verified",
+          "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+          "lastCheckedDate": "2026-11-17",
+          "lastVerifiedDate": "2026-11-17"
+        }
+      ],
+      "balanceDue": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.worldtesolacademy.com/level-5-tesol-diploma",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate balance amount and due date were not normalized for this course in the Phase 4C review."
+      }
+    },
+    {
+      "courseId": "teflen_advanced_120",
+      "providerId": "teflen",
+      "courseName": "Advanced 120-Hour TEFL Course",
+      "location": {
+        "value": "Online",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Online, self-paced",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 299,
+          "currency": "USD",
+          "priceType": "provider-listed regular price"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionalPrice": {
+        "value": {
+          "amount": 254,
+          "currency": "USD",
+          "conditions": "Partner page displays 15% savings; confirm course eligibility and final checkout total."
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://teflen.com/siamtefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "qualification": {
+        "value": "120-hour TEFL course; verify certificate issuer and employer acceptance.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": "IARC relationship is described by the provider; it does not establish Ofqual regulation or universal employer acceptance.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.iarcedu.com/membership-joinus.aspx",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "advertisedHours": {
+        "value": 120,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "verificationNotes": "Observed real-learner practice was not established in the reviewed public pages.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "courseDuration": {
+        "value": "Self-paced; provider lists 12 months of access on its course pages.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Job-search guidance; no Thailand placement or employment guarantee was verified.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.teflen.com/TEFL-FAQs",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": "https://www.teflen.com/TEFL-FAQs",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.teflen.com/TEFL-FAQs",
+        "verificationNotes": "A clear product-specific refund window was not verified in the reviewed public information.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "accommodation": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionConditions": {
+        "value": "The SiamTEFL partner page displays 15% savings; eligible products and final checkout total must be confirmed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://teflen.com/siamtefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://teflen.com/siamtefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion end date was shown on the partner page reviewed."
+      },
+      "balanceDue": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.teflen.com/Advacned-120-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate balance amount and due date were not normalized for this course in the Phase 4C review."
+      }
+    },
+    {
+      "courseId": "teflen_master_150",
+      "providerId": "teflen",
+      "courseName": "Master 150-Hour TEFL Course",
+      "location": {
+        "value": "Online",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Online, self-paced",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 399,
+          "currency": "USD",
+          "priceType": "provider-listed regular price"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionalPrice": {
+        "value": {
+          "amount": 339,
+          "currency": "USD",
+          "conditions": "Partner page displays 15% savings; confirm course eligibility and final checkout total."
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://teflen.com/siamtefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "qualification": {
+        "value": "150-hour TEFL course; verify certificate issuer and employer acceptance.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": "IARC relationship is described by the provider; it does not establish Ofqual regulation or universal employer acceptance.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.iarcedu.com/membership-joinus.aspx",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "advertisedHours": {
+        "value": 150,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "verificationNotes": "Observed real-learner practice was not established in the reviewed public pages.",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "courseDuration": {
+        "value": "Self-paced; provider lists 12 months of access on its course pages.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Job-search guidance; no Thailand placement or employment guarantee was verified.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.teflen.com/TEFL-FAQs",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": "https://www.teflen.com/TEFL-FAQs",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "deposit": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.teflen.com/TEFL-FAQs",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A clear product-specific refund window was not verified in the reviewed public information."
+      },
+      "accommodation": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "promotionConditions": {
+        "value": "The SiamTEFL partner page displays 15% savings; eligible products and final checkout total must be confirmed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://teflen.com/siamtefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://teflen.com/siamtefl/",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion end date was shown on the partner page reviewed."
+      },
+      "balanceDue": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.teflen.com/Master-150-TEFL-Course",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate balance amount and due date were not normalized for this course in the Phase 4C review."
+      }
+    },
+    {
+      "courseId": "essential_paid_internship",
+      "providerId": "essential_tefl",
+      "courseName": "Paid Internship",
+      "location": {
+        "value": "Bangkok, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Bangkok course followed by a paid teaching placement, subject to eligibility.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 90000,
+          "currency": "THB",
+          "priceType": "published tuition"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": "Confirm any additional fees and placement expenses in the written offer.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion was verified for this route."
+      },
+      "qualification": {
+        "value": "120-hour TEFL course; exact certificate award should be confirmed for intake.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate accreditation record was added for this package."
+      },
+      "advertisedHours": {
+        "value": 120,
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate guided-learning-hour total was not stated for this route."
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "Practical training; exact observed practice allocation is not stated here.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Course plus placement; placement duration depends on offer and terms.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Provider describes a paid teaching placement for eligible applicants; native English, a bachelor’s degree, an eligible passport and an online interview are listed requirements.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": "Native English, bachelor’s degree, eligible passport and compulsory online interview are listed; named eligible countries include Australia, Canada, Ireland, New Zealand, the UK and the US.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deposit": {
+        "value": {
+          "amount": 45000,
+          "currency": "THB"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Current Essential TEFL terms state this course-specific deposit amount."
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "Confirm current written terms for this package before paying."
+      },
+      "accommodation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "Package accommodation terms were not confirmed in this record."
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry was recorded for this route."
+      },
+      "balanceDue": {
+        "value": {
+          "amount": 45000,
+          "currency": "THB",
+          "calculation": "tuition_minus_deposit",
+          "due": "By the start of the first day unless a different arrangement is approved in writing"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17",
+        "verificationNotes": "Remaining amount is the arithmetic difference between the provider-listed tuition and deposit. Terms state the remainder is due by the first training day unless a different arrangement is approved in writing."
+      }
+    },
+    {
+      "courseId": "essential_all_in_bundle",
+      "providerId": "essential_tefl",
+      "courseName": "All-In Bundle",
+      "location": {
+        "value": "Bangkok, Thailand",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deliveryFormat": {
+        "value": "Bangkok course bundle with first-month accommodation and listed support.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "tuition": {
+        "value": {
+          "amount": 130000,
+          "currency": "THB",
+          "priceType": "published tuition"
+        },
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "mandatoryAdditionalFees": {
+        "value": "Confirm utilities, accommodation deposit and costs after the included first month.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionalPrice": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion was verified for this route."
+      },
+      "qualification": {
+        "value": "Course and package contents are listed; exact certificate route should be confirmed for the selected intake.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "accreditation": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate accreditation record was added for this package."
+      },
+      "advertisedHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "The bundle page does not identify a single course-hours figure for all package choices."
+      },
+      "guidedLearningHours": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate guided-learning-hour total was not stated for this route."
+      },
+      "totalQualificationTime": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "teachingPractice": {
+        "value": "Practical training; package-specific allocation should be confirmed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "courseDuration": {
+        "value": "Includes first-month accommodation; course duration depends on selected route.",
+        "verificationStatus": "primary_verified",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobSupport": {
+        "value": "Provider lists guaranteed interviews for eligible native English speakers with a bachelor’s degree; a school makes the hiring decision.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "jobGuarantee": {
+        "value": null,
+        "verificationStatus": "not_applicable",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null
+      },
+      "guaranteeConditions": {
+        "value": "Interview eligibility and any separate placement commitment require confirmation in the written package agreement.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "deposit": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "Package-specific deposit amount not confirmed in this record."
+      },
+      "refundPolicy": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/terms-and-conditions",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "Confirm current written terms for this package before paying."
+      },
+      "accommodation": {
+        "value": "First-month accommodation is listed; location, utilities, deposit and later-month costs should be confirmed.",
+        "verificationStatus": "provider_claim",
+        "sourceUrl": "https://www.essentialtefl.com/tefl-all-in-bundle",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": "2026-11-17"
+      },
+      "promotionConditions": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No separate promotion conditions were established for this course in the pilot."
+      },
+      "promotionExpiry": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": null,
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "No promotion expiry was recorded for this route."
+      },
+      "balanceDue": {
+        "value": null,
+        "verificationStatus": "unverified",
+        "sourceUrl": "https://www.essentialtefl.com/dates-and-fees",
+        "lastCheckedDate": "2026-11-17",
+        "lastVerifiedDate": null,
+        "verificationNotes": "A separate balance amount and due date were not normalized for this course in the Phase 4C review."
+      }
+    }
+  ],
+  "lastCheckedDate": "2026-11-17"
+}

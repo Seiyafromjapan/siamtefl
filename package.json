@@ -6,8 +6,9 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
-    "verify": "node scripts/verify-site.mjs",
-    "qa:calculator-cta": "playwright test tests/calculator-cta.spec.js"
+    "verify": "node scripts/verify-site.mjs && node scripts/verify-course-database.mjs && node scripts/verify-course-schedules.mjs",
+    "qa:calculator-cta": "playwright test tests/calculator-cta.spec.js",
+    "test:course-data": "node --test tests/course-database.test.js tests/course-review-data.test.js tests/course-schedule.test.js"
   },
   "dependencies": {
     "astro": "7.3.8"

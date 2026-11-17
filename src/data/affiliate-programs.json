@@ -1,0 +1,37 @@
+[
+  {
+    "providerId": "essential_tefl",
+    "partnershipStatus": "confirmed",
+    "disclosureRequired": true,
+    "approvedCourseIds": ["essential_standard_120", "essential_tquk_level5"],
+    "affiliateUrls": ["https://www.essentialtefl.com/?ref=suThaiJapan"],
+    "statusNote": "Approval record confirmed for Standard 120h and TQUK Level 5. Other packages require separate written confirmation."
+  },
+  {
+    "providerId": "see_tefl",
+    "partnershipStatus": "unconfirmed",
+    "disclosureRequired": true,
+    "approvedCourseIds": [],
+    "affiliateUrls": ["https://seetefl.com?ap_id=SiamTEFL"],
+    "statusNote": "The published referral URL exists, but current approval and commission terms were not confirmed."
+  },
+  {
+    "providerId": "world_tesol_academy",
+    "partnershipStatus": "confirmed",
+    "disclosureRequired": true,
+    "approvedCourseIds": ["wta_120_online", "wta_level5_online"],
+    "affiliateUrls": [
+      "https://www.worldtesolacademy.com/tesol-course-enrollment/?study=140057",
+      "https://www.worldtesolacademy.com/level-5-tesol-diploma/?study=140057"
+    ],
+    "statusNote": "Partner account activation and existing provider tracking IDs were confirmed."
+  },
+  {
+    "providerId": "teflen",
+    "partnershipStatus": "confirmed",
+    "disclosureRequired": true,
+    "approvedCourseIds": ["teflen_advanced_120", "teflen_master_150"],
+    "affiliateUrls": ["https://teflen.com/siamtefl/"],
+    "statusNote": "Affiliate agreement and dedicated SiamTEFL page were confirmed."
+  }
+]

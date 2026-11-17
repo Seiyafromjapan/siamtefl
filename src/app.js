@@ -96,7 +96,89 @@ document.addEventListener('click',e=>{
     destination:destination.hostname.toLowerCase()
   });
 });
-const form=document.querySelector('#budget-calculator');if(form){const get=id=>document.getElementById(id);const money=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.max(0,Math.round(Number(n)||0)));const courseCta=form.closest('.calculator')?.querySelector('[data-calculator-course-link]');const referralHref='https://www.essentialtefl.com/?ref=suThaiJapan';const referralPlacement='calculator-result';const calculate=()=>{const course=get('course').value;if(courseCta){const eligible=['standard','level5'].includes(course);courseCta.href=eligible?referralHref:'https://www.essentialtefl.com/courses';courseCta.textContent=eligible?'View in-person course details ↗':'Explore provider course options ↗';courseCta.setAttribute('rel',eligible?'sponsored nofollow noopener':'noopener');if(eligible){courseCta.setAttribute('data-affiliate','');courseCta.dataset.placement=referralPlacement}else{courseCta.removeAttribute('data-affiliate');courseCta.removeAttribute('data-placement')}}const customField=get('custom-fee-field');if(customField)customField.hidden=course!=='custom';const listed={standard:45000,level5:50000,internship:90000,allin:130000,custom:0};const cost=course==='custom'?(Number(get('customFee')?.value)||0):listed[course];const monthCount=Number(get('months').value)||0;const stay=Number(get('accommodation').value)||0;const food=Number(get('food').value)||0;const transport=Number(get('transport').value)||0;const flight=Number(get('flight').value)||0;const emergency=Number(get('emergency').value)||0;const other=Number(get('other').value)||0;const deposit=Number(get('rentDeposit')?.value)||0;const advanceRent=Number(get('advanceRent')?.value)||0;const documents=Number(get('documents')?.value)||0;const delay=Number(get('delayMonths')?.value)||0;const included=course==='allin'&&get('allInHousing').checked;const monthsBeforePay=monthCount+delay;const accommodationRunway=monthsBeforePay*(included?0:stay);const prepaidRentCredit=Math.min(advanceRent,accommodationRunway);const netAccommodationRunway=accommodationRunway-prepaidRentCredit;const total=cost+netAccommodationRunway+monthsBeforePay*(food+transport)+deposit+advanceRent+documents+flight+emergency+other;const rows=[['Course fee',cost],['Accommodation runway (after prepaid rent)',netAccommodationRunway],['Food',monthsBeforePay*food],['Transport',monthsBeforePay*transport],['Refundable housing deposit (cash tied up)',deposit],['Advance rent due at move-in',advanceRent],['Visa and document costs',documents],['Flight',flight],['Emergency buffer',emergency],['Other',other]];get('calc-total').textContent=`฿${money(total)}`;get('calc-breakdown').innerHTML=rows.map(([n,v])=>`<div class="breakdown-row"><span>${n}</span><strong>฿${money(v)}</strong></div>`).join('')+`<div class="breakdown-row total"><span>Estimated cash needed</span><strong>฿${money(total)}</strong></div>`;get('calc-disclaimer').textContent=`Your estimate covers the course and ${monthsBeforePay} month(s) before first pay. Advance rent is credited against matching accommodation costs to avoid counting the same rent twice. This is a planning scenario, not a quote. Confirm payment timing, housing and current fees directly.`};form.addEventListener('input',calculate);form.addEventListener('change',calculate);calculate()}
+const form=document.querySelector('#budget-calculator');
+if(form){
+  const get=id=>document.getElementById(id);
+  const money=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.max(0,Math.round(Number(n)||0)));
+  const courseCta=form.closest('.calculator')?.querySelector('[data-calculator-course-link]');
+  const referralHref='https://www.essentialtefl.com/?ref=suThaiJapan';
+  const referralPlacement='calculator-result';
+  const coursePrices=JSON.parse(form.dataset.coursePrices||'{}');
+  const numberValue=id=>{
+    const input=get(id);
+    const raw=input?.value?.trim()||'';
+    if(!raw)return 0;
+    const value=Number(raw);
+    if(!Number.isFinite(value)){input.value='0';return 0}
+    const minimum=input?.min?Number(input.min):NaN;
+    const maximum=input?.max?Number(input.max):NaN;
+    if(Number.isFinite(minimum)&&value<minimum){input.value=String(minimum);return minimum}
+    if(Number.isFinite(maximum)&&value>maximum){input.value=String(maximum);return maximum}
+    return value;
+  };
+  const courseLabel=value=>value?.currency==='THB'?`฿${money(value.amount)}`:'Course price unavailable';
+  const updatePaymentNote=course=>{
+    const note=get('calc-course-payment');
+    if(!note)return;
+    if(course==='custom'){note.textContent='Your custom course fee is a user-entered amount in THB. Add any costs that apply to your own situation.';return}
+    const item=coursePrices[course];
+    if(!item){note.textContent='A confirmed course fee is unavailable; this estimate cannot include course tuition.';return}
+    const tuition={amount:item.amount,currency:item.currency};
+    const parts=[`Provider-listed tuition: ${courseLabel(tuition)}.`];
+    if(item.deposit&&typeof item.deposit.amount==='number'){
+      parts.push(`Provider-listed deposit: ${courseLabel(item.deposit)}.`);
+      if(item.balanceDue&&typeof item.balanceDue.amount==='number')parts.push(`${item.balanceDue.calculation==='tuition_minus_deposit'?'Calculated remainder after the provider-listed deposit':'Provider-listed balance'}: ${courseLabel(item.balanceDue)}${item.balanceDue.due?` (${item.balanceDue.due})`:''}.`);
+      else if(item.balanceDue&&typeof item.balanceDue==='string')parts.push(item.balanceDue);
+      else if(item.deposit.currency===item.currency&&item.deposit.amount<=item.amount)parts.push(`Arithmetic remainder after the deposit: ${courseLabel({amount:item.amount-item.deposit.amount,currency:item.currency})}; the due date was not established.`);
+    }else{
+      parts.push('Deposit or payment split was not confirmed in the checked source; do not treat it as zero.');
+    }
+    parts.push('The course fee in the estimate is the full listed tuition. A deposit and balance are parts of that total and are not added again.');
+    parts.push('Unconfirmed required extras are not included in the numeric result. Add any confirmed amounts to Other one-off costs.');
+    note.textContent=parts.join(' ');
+  };
+  const calculate=()=>{
+    const course=get('course').value;
+    if(courseCta){
+      const eligible=['standard','level5'].includes(course);
+      courseCta.href=eligible?referralHref:'https://www.essentialtefl.com/courses';
+      courseCta.textContent=eligible?'View in-person course details ↗':'Explore provider course options ↗';
+      courseCta.setAttribute('rel',eligible?'sponsored nofollow noopener':'noopener');
+      if(eligible){courseCta.setAttribute('data-affiliate','');courseCta.dataset.placement=referralPlacement}else{courseCta.removeAttribute('data-affiliate');courseCta.removeAttribute('data-placement')}
+    }
+    const customField=get('custom-fee-field');if(customField)customField.hidden=course!=='custom';
+    const courseRecord=coursePrices[course];
+    const cost=course==='custom'?numberValue('customFee'):courseRecord?.currency==='THB'?Number(courseRecord.amount):null;
+    const monthCount=numberValue('months');
+    const stay=numberValue('accommodation');
+    const food=numberValue('food');
+    const transport=numberValue('transport');
+    const flight=numberValue('flight');
+    const emergency=numberValue('emergency');
+    const other=numberValue('other');
+    const deposit=numberValue('rentDeposit');
+    const advanceRent=numberValue('advanceRent');
+    const documents=numberValue('documents');
+    const delay=numberValue('delayMonths');
+    const included=course==='allin'&&get('allInHousing').checked;
+    const monthsBeforePay=monthCount+delay;
+    const accommodationRunway=monthsBeforePay*stay;
+    const includedHousingCredit=included?Math.min(stay,accommodationRunway):0;
+    const rentAfterIncludedHousing=accommodationRunway-includedHousingCredit;
+    const prepaidRentCredit=Math.min(advanceRent,rentAfterIncludedHousing);
+    const netAccommodationRunway=rentAfterIncludedHousing-prepaidRentCredit;
+    if(cost===null){get('calc-total').textContent='Incomplete';get('calc-breakdown').replaceChildren();get('calc-disclaimer').textContent='A confirmed course price is missing, so a complete estimate cannot be calculated.';updatePaymentNote(course);return}
+    const total=cost+netAccommodationRunway+monthsBeforePay*(food+transport)+deposit+advanceRent+documents+flight+emergency+other;
+    const rows=[['Full course tuition (deposit is included)',cost],['Accommodation runway (after included housing and prepaid rent)',netAccommodationRunway],['Food',monthsBeforePay*food],['Transport',monthsBeforePay*transport],['Refundable housing deposit (cash tied up)',deposit],['Advance rent paid at move-in',advanceRent],['Visa and document costs (your input)',documents],['Flight and arrival costs (your input)',flight],['Emergency buffer (your input)',emergency],['Other one-off costs (your input)',other]];
+    get('calc-total').textContent=`฿${money(total)}`;
+    get('calc-breakdown').innerHTML=rows.map(([name,value])=>`<div class="breakdown-row"><span>${name}</span><strong>฿${money(value)}</strong></div>`).join('')+`<div class="breakdown-row total"><span>Known-cost estimate</span><strong>฿${money(total)}</strong></div>`;
+    get('calc-disclaimer').textContent=`Known-cost estimate for listed tuition and your entered costs through ${monthsBeforePay} month(s) before first pay. It is a planning scenario, not a quote. Unknown required fees are excluded, not treated as zero. Advance rent is credited against matching rent; All-In housing offsets one month only.`;
+    updatePaymentNote(course);
+  };
+  form.addEventListener('input',calculate);
+  form.addEventListener('change',calculate);
+  calculate();
+}
 
 const careerChecklist=document.querySelector('[data-career-checklist]');if(careerChecklist){const boxes=[...careerChecklist.querySelectorAll('input[type="checkbox"]')];const count=careerChecklist.querySelector('[data-checklist-count]');const progress=careerChecklist.querySelector('[data-checklist-progress]');const percent=careerChecklist.querySelector('[data-checklist-percent]');const reset=careerChecklist.querySelector('[data-checklist-reset]');const update=()=>{const complete=boxes.filter(box=>box.checked).length;const ratio=boxes.length?Math.round(complete/boxes.length*100):0;if(count)count.textContent=`${complete} of ${boxes.length} complete`;if(progress)progress.value=complete;if(percent)percent.textContent=`${ratio}% complete`};boxes.forEach(box=>box.addEventListener('change',update));reset?.addEventListener('click',()=>{boxes.forEach(box=>{box.checked=false});update();boxes[0]?.focus()});update()}
 

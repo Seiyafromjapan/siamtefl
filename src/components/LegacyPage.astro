@@ -1,11 +1,18 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 import { addBreadcrumbs, removeInternalStoryLabels, renderSavingsScenarioVisual } from '../lib/page-rendering.js';
+import courseDatabase from '../data/course-database.json' with { type: 'json' };
+import courseSchedules from '../data/course-schedules.json' with { type: 'json' };
+import { renderCourseSchedulePage } from '../lib/course-schedule.js';
+import { renderCourseCalculatorData, renderCourseDatabasePilot, renderReviewCourseFacts } from '../lib/course-database.js';
 
 const { page } = Astro.props;
+const scheduledPage = { ...page, content: renderCourseSchedulePage(page, courseDatabase, courseSchedules) };
+const calculatorPage = { ...scheduledPage, content: renderCourseCalculatorData(scheduledPage, courseDatabase) };
+const pilotPage = { ...calculatorPage, content: renderCourseDatabasePilot(calculatorPage) };
 const resolvedPage = {
-  ...page,
-  content: page.content.replaceAll('{{AFFILIATE}}', 'https://www.essentialtefl.com/?ref=suThaiJapan')
+  ...pilotPage,
+  content: renderReviewCourseFacts(pilotPage).replaceAll('{{AFFILIATE}}', 'https://www.essentialtefl.com/?ref=suThaiJapan')
 };
 const enhanced = addBreadcrumbs({
   ...resolvedPage,
