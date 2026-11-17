@@ -96,6 +96,67 @@ document.addEventListener('click',e=>{
     destination:destination.hostname.toLowerCase()
   });
 });
-const form=document.querySelector('#budget-calculator');if(form){const get=id=>document.getElementById(id);const money=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.max(0,Math.round(Number(n)||0)));const courseCta=form.querySelector('[data-calculator-course-link]');const referralHref='https://www.essentialtefl.com/?ref=suThaiJapan';const referralPlacement='calculator-result';const calculate=()=>{const course=get('course').value;if(courseCta){const eligible=['standard','level5'].includes(course);courseCta.href=eligible?referralHref:'https://www.essentialtefl.com/courses';courseCta.textContent=eligible?'View in-person course details ↗':'Explore provider course options ↗';courseCta.setAttribute('rel',eligible?'sponsored nofollow noopener':'noopener');if(eligible){courseCta.setAttribute('data-affiliate','');courseCta.dataset.placement=referralPlacement}else{courseCta.removeAttribute('data-affiliate');courseCta.removeAttribute('data-placement')}}const customField=get('custom-fee-field');if(customField)customField.hidden=course!=='custom';const listed={standard:45000,level5:50000,internship:90000,allin:130000,custom:0};const cost=course==='custom'?(Number(get('customFee')?.value)||0):listed[course];const monthCount=Number(get('months').value)||0;const stay=Number(get('accommodation').value)||0;const food=Number(get('food').value)||0;const transport=Number(get('transport').value)||0;const flight=Number(get('flight').value)||0;const emergency=Number(get('emergency').value)||0;const other=Number(get('other').value)||0;const deposit=Number(get('rentDeposit')?.value)||0;const advanceRent=Number(get('advanceRent')?.value)||0;const documents=Number(get('documents')?.value)||0;const delay=Number(get('delayMonths')?.value)||0;const included=course==='allin'&&get('allInHousing').checked;const monthsBeforePay=monthCount+delay;const accommodationRunway=monthsBeforePay*(included?0:stay);const prepaidRentCredit=Math.min(advanceRent,accommodationRunway);const netAccommodationRunway=accommodationRunway-prepaidRentCredit;const total=cost+netAccommodationRunway+monthsBeforePay*(food+transport)+deposit+advanceRent+documents+flight+emergency+other;const rows=[['Course fee',cost],['Accommodation runway (after prepaid rent)',netAccommodationRunway],['Food',monthsBeforePay*food],['Transport',monthsBeforePay*transport],['Refundable housing deposit (cash tied up)',deposit],['Advance rent due at move-in',advanceRent],['Visa and document costs',documents],['Flight',flight],['Emergency buffer',emergency],['Other',other]];get('calc-total').textContent=`฿${money(total)}`;get('calc-breakdown').innerHTML=rows.map(([n,v])=>`<div class="breakdown-row"><span>${n}</span><strong>฿${money(v)}</strong></div>`).join('')+`<div class="breakdown-row total"><span>Estimated cash needed</span><strong>฿${money(total)}</strong></div>`;get('calc-disclaimer').textContent=`Your estimate covers the course and ${monthsBeforePay} month(s) before first pay. Advance rent is credited against matching accommodation costs to avoid counting the same rent twice. This is a planning scenario, not a quote. Confirm payment timing, housing and current fees directly.`};form.addEventListener('input',calculate);form.addEventListener('change',calculate);calculate()}
+const form=document.querySelector('#budget-calculator');if(form){const get=id=>document.getElementById(id);const money=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(Math.max(0,Math.round(Number(n)||0)));const courseCta=form.closest('.calculator')?.querySelector('[data-calculator-course-link]');const referralHref='https://www.essentialtefl.com/?ref=suThaiJapan';const referralPlacement='calculator-result';const calculate=()=>{const course=get('course').value;if(courseCta){const eligible=['standard','level5'].includes(course);courseCta.href=eligible?referralHref:'https://www.essentialtefl.com/courses';courseCta.textContent=eligible?'View in-person course details ↗':'Explore provider course options ↗';courseCta.setAttribute('rel',eligible?'sponsored nofollow noopener':'noopener');if(eligible){courseCta.setAttribute('data-affiliate','');courseCta.dataset.placement=referralPlacement}else{courseCta.removeAttribute('data-affiliate');courseCta.removeAttribute('data-placement')}}const customField=get('custom-fee-field');if(customField)customField.hidden=course!=='custom';const listed={standard:45000,level5:50000,internship:90000,allin:130000,custom:0};const cost=course==='custom'?(Number(get('customFee')?.value)||0):listed[course];const monthCount=Number(get('months').value)||0;const stay=Number(get('accommodation').value)||0;const food=Number(get('food').value)||0;const transport=Number(get('transport').value)||0;const flight=Number(get('flight').value)||0;const emergency=Number(get('emergency').value)||0;const other=Number(get('other').value)||0;const deposit=Number(get('rentDeposit')?.value)||0;const advanceRent=Number(get('advanceRent')?.value)||0;const documents=Number(get('documents')?.value)||0;const delay=Number(get('delayMonths')?.value)||0;const included=course==='allin'&&get('allInHousing').checked;const monthsBeforePay=monthCount+delay;const accommodationRunway=monthsBeforePay*(included?0:stay);const prepaidRentCredit=Math.min(advanceRent,accommodationRunway);const netAccommodationRunway=accommodationRunway-prepaidRentCredit;const total=cost+netAccommodationRunway+monthsBeforePay*(food+transport)+deposit+advanceRent+documents+flight+emergency+other;const rows=[['Course fee',cost],['Accommodation runway (after prepaid rent)',netAccommodationRunway],['Food',monthsBeforePay*food],['Transport',monthsBeforePay*transport],['Refundable housing deposit (cash tied up)',deposit],['Advance rent due at move-in',advanceRent],['Visa and document costs',documents],['Flight',flight],['Emergency buffer',emergency],['Other',other]];get('calc-total').textContent=`฿${money(total)}`;get('calc-breakdown').innerHTML=rows.map(([n,v])=>`<div class="breakdown-row"><span>${n}</span><strong>฿${money(v)}</strong></div>`).join('')+`<div class="breakdown-row total"><span>Estimated cash needed</span><strong>฿${money(total)}</strong></div>`;get('calc-disclaimer').textContent=`Your estimate covers the course and ${monthsBeforePay} month(s) before first pay. Advance rent is credited against matching accommodation costs to avoid counting the same rent twice. This is a planning scenario, not a quote. Confirm payment timing, housing and current fees directly.`};form.addEventListener('input',calculate);form.addEventListener('change',calculate);calculate()}
 
 const careerChecklist=document.querySelector('[data-career-checklist]');if(careerChecklist){const boxes=[...careerChecklist.querySelectorAll('input[type="checkbox"]')];const count=careerChecklist.querySelector('[data-checklist-count]');const progress=careerChecklist.querySelector('[data-checklist-progress]');const percent=careerChecklist.querySelector('[data-checklist-percent]');const reset=careerChecklist.querySelector('[data-checklist-reset]');const update=()=>{const complete=boxes.filter(box=>box.checked).length;const ratio=boxes.length?Math.round(complete/boxes.length*100):0;if(count)count.textContent=`${complete} of ${boxes.length} complete`;if(progress)progress.value=complete;if(percent)percent.textContent=`${ratio}% complete`};boxes.forEach(box=>box.addEventListener('change',update));reset?.addEventListener('click',()=>{boxes.forEach(box=>{box.checked=false});update();boxes[0]?.focus()});update()}
+
+const teflenSticky=document.querySelector('#teflen-sticky-cta');
+if(teflenSticky&&document.body.classList.contains('phase4b-teflen-review')){
+  const article=document.querySelector('.article-content');
+  const overview=[...(article?.querySelectorAll('.callout')||[])].find(block=>block.textContent.includes('Quick assessment'));
+  const disclosure=document.querySelector('#teflen-affiliate-disclosure');
+  const close=teflenSticky.querySelector('.teflen-sticky-close');
+  let overviewPassed=false;
+  let disclosurePassed=false;
+  let dismissed=false;
+  let scheduled=false;
+  const consent=document.querySelector('#analytics-consent');
+  const markPassed=()=>{
+    if(overview&&overview.getBoundingClientRect().bottom<=0)overviewPassed=true;
+    if(disclosure&&disclosure.getBoundingClientRect().bottom<=0)disclosurePassed=true;
+  };
+  const update=()=>{
+    scheduled=false;
+    markPassed();
+    const mobile=window.matchMedia('(max-width: 760px)').matches;
+    const consentOpen=consent&&!consent.hidden&&getComputedStyle(consent).display!=='none';
+    const inlineCtaVisible=[...(article?.querySelectorAll('a[data-affiliate]:not(.teflen-sticky-link)')||[])].some(link=>{
+      const rect=link.getBoundingClientRect();
+      return rect.width>0&&rect.height>0&&rect.bottom>0&&rect.top<window.innerHeight;
+    });
+    const visible=mobile&&overviewPassed&&disclosurePassed&&!inlineCtaVisible&&!consentOpen&&!dismissed;
+    teflenSticky.hidden=!visible;
+    document.body.classList.toggle('teflen-sticky-visible',visible);
+  };
+  const schedule=()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(update)};
+  if(overview&&disclosure&&'IntersectionObserver'in window){
+    const introObserver=new IntersectionObserver(entries=>{
+      for(const entry of entries){
+        if(entry.isIntersecting||entry.boundingClientRect.bottom>0)continue;
+        if(entry.target===overview)overviewPassed=true;
+        if(entry.target===disclosure)disclosurePassed=true;
+      }
+      schedule();
+    },{threshold:0});
+    introObserver.observe(overview);
+    introObserver.observe(disclosure);
+  }else{
+    window.addEventListener('scroll',markPassed,{passive:true});
+    markPassed();
+  }
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule,{passive:true});
+  consent&&new MutationObserver(schedule).observe(consent,{attributes:true,attributeFilter:['hidden','style','class']});
+  close?.addEventListener('click',()=>{dismissed=true;teflenSticky.hidden=true;document.body.classList.remove('teflen-sticky-visible')});
+  schedule();
+}
+if(document.body.classList.contains('phase4b-batch3')||document.body.classList.contains('phase4b-batch4')||document.body.classList.contains('phase4b-batch5')){
+  document.querySelectorAll('.table-scroll[tabindex="0"],.table-wrap[tabindex="0"],.job-table-scroll[tabindex="0"]').forEach(region=>{
+    region.addEventListener('keydown',event=>{
+      if(event.key!=='ArrowLeft'&&event.key!=='ArrowRight')return;
+      if(region.scrollWidth<=region.clientWidth)return;
+      event.preventDefault();
+      region.scrollLeft+=event.key==='ArrowRight'?80:-80;
+    });
+  });
+}

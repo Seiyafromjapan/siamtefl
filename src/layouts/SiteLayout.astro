@@ -1,6 +1,7 @@
 ---
 import { createHash } from 'node:crypto';
 import styles from '../styles.css?raw';
+import editorialSystem from '../editorial-system.css?raw';
 import app from '../app.js?raw';
 
 const { page, content, schema } = Astro.props;
@@ -14,6 +15,57 @@ const currentNavSection = (() => {
   return Object.entries(sections).find(([, paths]) => paths.includes(page.path))?.[0] || null;
 })();
 const navCurrent = (section, exactPath) => page.path === exactPath ? 'page' : currentNavSection === section ? 'location' : undefined;
+const pageBodyClass = {
+  '/': 'home-page',
+  '/essential-tefl-review/': 'essential-review-page',
+  '/tefl-course-comparison-thailand/': 'comparison-editorial-page',
+  '/first-time-english-teacher-salary-thailand/': 'salary-editorial-page',
+  '/calculator/': 'calculator-editorial-page',
+  '/see-tefl-chiang-mai-review/': 'editorial-article-page editorial-provider-review',
+  '/how-to-choose-tefl-course-thailand/': 'editorial-article-page editorial-course-guide',
+  '/teach-english-thailand-no-experience/': 'editorial-article-page editorial-job-guide',
+  '/where-to-find-teaching-jobs-thailand/': 'editorial-article-page editorial-job-guide',
+  '/thailand-teacher-visa-work-permit/': 'editorial-article-page editorial-visa-guide',
+  '/money-to-move-to-thailand-to-teach/': 'editorial-article-page editorial-relocation-guide',
+  '/teaching-large-classes-thailand/': 'editorial-article-page editorial-classroom-guide',
+  '/world-tesol-academy-review/': 'editorial-article-page editorial-provider-review phase4b-batch1 phase4b-provider-review phase4b-world-tesol-review',
+  '/teflen-review/': 'editorial-article-page editorial-provider-review phase4b-batch1 phase4b-provider-review phase4b-teflen-review',
+  '/standard-vs-all-in/': 'editorial-article-page editorial-course-guide editorial-comparison-guide phase4b-batch1 phase4b-comparison-guide phase4b-package-comparison',
+  '/tefl-bangkok-cost/': 'editorial-article-page editorial-comparison-guide phase4b-batch1 phase4b-comparison-guide phase4b-cost-guide',
+  '/online-vs-in-person-tefl-thailand/': 'editorial-article-page editorial-comparison-guide phase4b-batch1 phase4b-comparison-guide phase4b-format-comparison',
+  '/do-you-need-tefl-to-teach-in-thailand/': 'editorial-article-page editorial-course-guide editorial-qualification-guide phase4b-batch1 phase4b-qualification-guide',
+  '/120-hour-tefl-certificate-thailand/': 'editorial-article-page editorial-course-guide editorial-qualification-guide phase4b-batch1 phase4b-qualification-guide',
+  '/celta-vs-tefl-thailand/': 'editorial-article-page editorial-comparison-guide phase4b-batch2 phase4b-credential-comparison',
+  '/tefl-job-placement-guarantee-thailand/': 'editorial-article-page editorial-comparison-guide phase4b-batch2 phase4b-guarantee-guide',
+  '/120-hour-vs-level-5-tefl-thailand/': 'editorial-article-page editorial-comparison-guide phase4b-batch2 phase4b-level-comparison',
+  '/tefl-course-deposit-refund-thailand/': 'editorial-article-page editorial-course-guide phase4b-batch2 phase4b-refund-guide',
+  '/tefl-course-dates-thailand/': 'editorial-article-page editorial-comparison-guide phase4b-batch2 phase4b-course-dates',
+  '/is-chiang-mai-a-good-place-to-get-tefl-certified/': 'editorial-article-page editorial-relocation-guide phase4b-batch2 phase4b-chiang-mai-guide',
+  '/teach-english-thailand-non-native-speaker/': 'editorial-article-page editorial-job-guide phase4b-batch3 phase4b-eligibility-guide phase4b-nonnative-guide',
+  '/teach-english-thailand-without-degree/': 'editorial-article-page editorial-qualification-guide phase4b-batch3 phase4b-eligibility-guide phase4b-degree-guide',
+  '/teaching-english-thailand-after-40/': 'editorial-article-page editorial-job-guide phase4b-batch3 phase4b-candidate-fit-guide phase4b-age-guide',
+  '/teach-english-thailand-without-speaking-thai/': 'editorial-article-page editorial-job-guide phase4b-batch3 phase4b-candidate-fit-guide phase4b-language-guide',
+  '/teach-english-thailand-with-tattoos/': 'editorial-article-page editorial-job-guide phase4b-batch3 phase4b-candidate-fit-guide phase4b-appearance-guide',
+  '/teach-english-thailand-one-year/': 'editorial-article-page editorial-relocation-guide phase4b-batch3 phase4b-career-planning-guide phase4b-one-year-guide',
+  '/move-to-thailand-before-finding-teaching-job/': 'editorial-article-page editorial-relocation-guide phase4b-batch3 phase4b-career-planning-guide phase4b-move-first-guide',
+  '/how-long-after-tefl-to-get-teaching-job-thailand/': 'editorial-article-page editorial-job-guide phase4b-batch3 phase4b-career-planning-guide phase4b-timeline-guide',
+  '/thailand-teaching-contract-checklist/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-contract-guide phase4b-contract-checklist',
+  '/teaching-agency-vs-direct-hire-thailand/': 'editorial-article-page editorial-comparison-guide phase4b-batch4 phase4b-job-search-guide phase4b-agency-guide',
+  '/too-late-apply-teaching-jobs-thailand/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-job-search-guide phase4b-apply-timing-guide',
+  '/thailand-teaching-job-application-documents/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-application-guide phase4b-documents-guide',
+  '/thailand-teaching-interview-demo-lesson/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-application-guide phase4b-interview-guide',
+  '/cv-resume-teaching-jobs-thailand/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-application-guide phase4b-cv-guide',
+  '/no-replies-teaching-jobs-thailand/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-job-search-guide phase4b-no-replies-guide',
+  '/thailand-teacher-school-holiday-pay/': 'editorial-article-page editorial-job-guide phase4b-batch4 phase4b-contract-guide phase4b-holiday-pay-guide',
+  '/english-teacher-housing-thailand/': 'editorial-article-page editorial-relocation-guide phase4b-batch5 phase4b-housing-guide',
+  '/can-you-live-in-bangkok-on-35000-baht-teaching-salary/': 'editorial-article-page editorial-relocation-guide phase4b-batch5 phase4b-budget-guide phase4b-bangkok-budget',
+  '/can-you-save-money-teaching-english-thailand/': 'editorial-article-page editorial-relocation-guide phase4b-batch5 phase4b-budget-guide phase4b-savings-guide',
+  '/english-teacher-working-hours-thailand/': 'editorial-article-page editorial-job-guide phase4b-batch5 phase4b-working-hours-guide',
+  '/thailand-vs-vietnam-teaching-english/': 'editorial-article-page editorial-comparison-guide phase4b-batch5 phase4b-country-comparison'
+}[page.path];
+const editorialStylesTag = pageBodyClass?.includes('editorial-article-page') || page.path === '/calculator/'
+  ? `<style>${editorialSystem}</style>`
+  : '';
 const appVersion = createHash('sha256').update(app).digest('hex').slice(0, 12);
 const isArticle = page.schema?.['@type'] === 'Article'
   || page.schema?.['@graph']?.some((item) => item['@type'] === 'Article');
@@ -58,15 +110,21 @@ const appLoader = `<script defer>const appBase=location.hostname.endsWith('githu
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://www.essentialtefl.com">
   <Fragment set:html={`<style>${styles}</style>`} />
+  <Fragment set:html={editorialStylesTag} />
   <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
   <title>{page.title}</title>
 </head>
-<body>
+<body class={pageBodyClass}>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="nav-wrap"><a class="brand" href="/" aria-label="SiamTEFL home"><span class="brand-mark">S</span><span>SIAM<span class="brand-light">TEFL</span><small>THE THAILAND DECISION GUIDE</small></span></a><button class="menu-toggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span><span></span></button><nav id="nav" class="nav-links" aria-label="Main navigation"><a href="/teach-english-thailand-no-experience/" aria-current={navCurrent('start', '/teach-english-thailand-no-experience/')}>Start Here</a><a href="/where-to-find-teaching-jobs-thailand/" aria-current={navCurrent('jobs', '/where-to-find-teaching-jobs-thailand/')}>Find a Job</a><a class="nav-course" href="/tefl-course-comparison-thailand/" aria-current={navCurrent('tefl', '/tefl-course-comparison-thailand/')}>Compare TEFL</a><a href={page.path === '/' ? '#life-budget' : '/money-to-move-to-thailand-to-teach/'} aria-current={navCurrent('budget', '/money-to-move-to-thailand-to-teach/')}>Life &amp; Budget</a><a class="nav-cta" href="/calculator/" aria-current={page.path === '/calculator/' ? 'page' : undefined}>Budget Calculator <span>↗</span></a></nav></div></header>
 <main id="main"><Fragment set:html={content} /></main>
 <footer class="site-footer"><div class="footer-grid"><div class="footer-brand"><a class="brand brand-footer" href="/"><span class="brand-mark">S</span><span>SIAM<span class="brand-light">TEFL</span><small>THE THAILAND DECISION GUIDE</small></span></a><p class="footer-note">Independent research for your next chapter in Thailand.</p><nav class="footer-social" aria-label="Official social media"><a href="https://x.com/siam_tefl" target="_blank" rel="noopener noreferrer">X (Twitter)</a><a href="https://jp.pinterest.com/siamtefl/" target="_blank" rel="noopener noreferrer">Pinterest</a></nav></div><div class="footer-group"><h2>Find teaching work</h2><a href="/teach-english-thailand-no-experience/">Start with eligibility</a><a href="/where-to-find-teaching-jobs-thailand/">Find teaching jobs</a><a href="/thailand-teaching-job-application-documents/">Prepare your application</a><a href="/thailand-teaching-interview-demo-lesson/">Prepare for interviews</a></div><div class="footer-group"><h2>Compare TEFL courses</h2><a href="/tefl-course-comparison-thailand/">Compare courses by format and location</a><a href="/do-you-need-tefl-to-teach-in-thailand/">Do you need TEFL?</a><a href="/how-to-choose-tefl-course-thailand/">Course selection guide</a><a href="/essential-tefl-review/">Essential TEFL review</a><a href="/see-tefl-chiang-mai-review/">SEE TEFL Chiang Mai review</a><a href="/world-tesol-academy-review/">World TESOL Academy review</a></div><div class="footer-group"><h2>Life &amp; Budget</h2><a href="/money-to-move-to-thailand-to-teach/">Plan your move and first-pay runway</a><a href="/calculator/">Budget calculator</a><a href="/first-time-english-teacher-salary-thailand/">Teacher salary guide</a><a href="/english-teacher-housing-thailand/">Teacher housing guide</a><a href="/english-teacher-working-hours-thailand/">Working hours guide</a><a href="/can-you-live-in-bangkok-on-35000-baht-teaching-salary/">Bangkok cost of living</a></div><div class="footer-group"><h2>About this guide</h2><a href="/about/">About SiamTEFL</a><a href="/methodology/">Research methodology</a><a href="/affiliate-disclosure/">Affiliate disclosure</a><a href="/contact/">Contact</a><a href="/privacy/">Privacy policy</a></div></div><div class="footer-bottom"><span>© 2026 SiamTEFL · Independent guide, independently operated.</span><span>Course details can change. Verify fees, dates and eligibility with the provider before booking.</span><button class="privacy-settings-link" id="privacy-settings" type="button">Privacy choices</button></div></footer>
 <aside class="consent-banner" id="analytics-consent" role="region" aria-label="Privacy choices" hidden><div><strong>Choose whether to allow analytics</strong><p id="analytics-consent-status" aria-live="polite"></p><p>Optional Google Analytics helps us understand page visits and clicks to course details. It stays off unless you allow it. <a href="/privacy/">Privacy policy</a></p></div><div class="consent-actions"><button class="consent-decline" type="button" data-analytics-consent="denied">Decline</button><button class="consent-allow" type="button" data-analytics-consent="granted">Allow analytics</button></div></aside>
+{page.path === '/teflen-review/' && <aside class="teflen-sticky-cta" id="teflen-sticky-cta" aria-label="TEFLen course details" hidden>
+  <span class="teflen-sticky-label"><strong>TEFLen</strong><small>Affiliate link</small></span>
+  <a class="teflen-sticky-link" href="https://teflen.com/siamtefl/" data-affiliate data-provider="teflen" data-placement="teflen-sticky" target="_blank" rel="sponsored nofollow noopener">View Course Details <span aria-hidden="true">↗</span></a>
+  <button class="teflen-sticky-close" type="button" aria-label="Close course details bar">×</button>
+</aside>}
 <Fragment set:html={appLoader} />
 </body>
 </html>
