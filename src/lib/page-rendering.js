@@ -21,6 +21,7 @@ const clusterFor = {
   '/cv-resume-teaching-jobs-thailand/': 'jobs',
   '/thailand-teaching-interview-demo-lesson/': 'jobs',
   '/thailand-teaching-contract-checklist/': 'jobs',
+  '/offer-comparison/': 'jobs',
   '/english-teacher-working-hours-thailand/': 'jobs',
   '/how-long-after-tefl-to-get-teaching-job-thailand/': 'jobs',
   '/do-you-need-tefl-to-teach-in-thailand/': 'tefl',

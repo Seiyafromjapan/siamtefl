@@ -242,3 +242,67 @@ if(document.body.classList.contains('phase4b-batch3')||document.body.classList.c
     });
   });
 }
+
+// Thailand teaching job offer comparison MVP: no offer data leaves the browser.
+const offerForm=document.querySelector('#offer-comparison-form');
+if(offerForm){
+  const offers=['A','B'];
+  const fieldIds={salary:'salary',salaryMonths:'salary-months',housing:'housing',housingMonths:'housing-months',other:'other',rent:'rent',rentMonths:'rent-months',teaching:'teaching-hours',work:'work-hours'};
+  const read=(offer,key)=>{const input=offerForm.querySelector(`[name="${offer}-${fieldIds[key]}"]`);if(!input||input.value.trim()==='')return null;const value=Number(input.value);return Number.isFinite(value)?value:null};
+  const money=value=>`฿${new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(value)}`;
+  const set=(id,value)=>{const node=document.getElementById(id);if(node)node.textContent=value};
+  const product=(amount,months)=>amount===0||months===0?0:(amount!==null&&months!==null?amount*months:null);
+  const validate=(offer,key,value)=>{
+    const id=fieldIds[key],input=offerForm.querySelector(`[name="${offer}-${id}"]`),error=document.getElementById(`${offer}-${id}-error`);let message='';
+    if(input&&input.value.trim()!==''&&value===null)message='Enter a valid number.';
+    else if(value!==null&&value<0)message='Enter 0 or a positive number.';
+    else if(value!==null&&!id.endsWith('months')&&!id.endsWith('hours')&&value>100000000)message='Enter an amount up to 100,000,000 THB.';
+    else if(value!==null&&id.endsWith('months')&&value>12)message='Enter no more than 12 months per year.';
+    else if(value!==null&&id.endsWith('hours')&&value>168)message='Enter no more than 168 hours per week.';
+    if(error)error.textContent=message;if(input)input.setAttribute('aria-invalid',String(Boolean(message)));return !message;
+  };
+  const render=()=>{
+    const data=offers.map(name=>{
+      const raw=Object.fromEntries(Object.keys(fieldIds).map(key=>[key,read(name,key)]));
+      const goodFields=Object.keys(fieldIds).map(key=>validate(name,key,raw[key]));let valid=goodFields.every(Boolean);
+      if(raw.teaching!==null&&raw.work!==null&&raw.teaching>raw.work){const error=document.getElementById(`${name}-work-hours-error`);if(error)error.textContent='Total weekly work hours should be at least as high as teaching hours.';offerForm.querySelector(`[name="${name}-work-hours"]`)?.setAttribute('aria-invalid','true');valid=false}
+      const salary=product(raw.salary,raw.salaryMonths),housing=product(raw.housing,raw.housingMonths),rent=product(raw.rent,raw.rentMonths);
+      const total=salary!==null&&housing!==null&&raw.other!==null?salary+housing+raw.other:null;
+      return {name,raw,salary,housing,rent,total,after:total!==null&&rent!==null?total-rent:null,valid};
+    });
+    data.forEach(({name,raw,salary,housing,rent,total,after,valid})=>{
+      const prefix=`result-${name}-`,allowances=housing!==null&&raw.other!==null?money(housing+raw.other):`Known components: ${[housing===null?'housing allowance not entered':money(housing),raw.other===null?'other allowance not entered':money(raw.other)].join(' · ')}`;
+      set(prefix+'salary',salary===null?'Incomplete — salary or paid months not entered':money(salary));set(prefix+'allowances',allowances);
+      set(prefix+'total',total===null?'Incomplete — enter salary, pay periods and confirmed allowances':money(total));set(prefix+'rent',rent===null?'Incomplete — rent or rent months not entered':money(rent));
+      set(prefix+'after',after===null?'Incomplete — complete all amounts and payment periods':money(after));set(prefix+'teaching',raw.teaching===null?'Not entered':`${raw.teaching} hrs / week`);set(prefix+'work',raw.work===null?'Not entered':`${raw.work} hrs / week`);
+      set(prefix+'status',valid?'':'Check highlighted inputs before relying on this offer’s results.');
+      const salaryPeriod=raw.salaryMonths===null?(raw.salary===0?'not needed (salary is 0)':'not entered'):raw.salaryMonths;const housingPeriod=raw.housingMonths===null?(raw.housing===0?'not needed (allowance is 0)':'not entered'):raw.housingMonths;set(prefix+'periods',`Salary paid months: ${salaryPeriod} · Housing allowance paid months: ${housingPeriod}`);
+    });
+    const compare=(key,label)=>{const a=data[0],b=data[1],x=a[key],y=b[key];if(!a.valid||!b.valid||x===null||y===null)return `${label}: Cannot compare yet — complete both offers.`;const delta=y-x;return `${label}: ${delta===0?'No difference':`${money(Math.abs(delta))} ${delta>0?'more for Offer B':'more for Offer A'}`}.`};
+    set('offer-difference',compare('total','Annual salary + allowances'));set('rent-difference',compare('rent','Annual rent'));set('after-difference',compare('after','Amount after rent'));
+    set('hours-comparison',`Offer A: ${data[0].valid?(data[0].raw.teaching===null?'Not entered':`${data[0].raw.teaching} teaching`)+` / ${data[0].raw.work===null?'Not entered':`${data[0].raw.work} total`} hrs per week`:'Needs correction'} · Offer B: ${data[1].valid?(data[1].raw.teaching===null?'Not entered':`${data[1].raw.teaching} teaching`)+` / ${data[1].raw.work===null?'Not entered':`${data[1].raw.work} total`} hrs per week`:'Needs correction'}`);
+    const comparisonComplete=data.every(({raw,salary,housing,rent,total,after,valid})=>valid&&salary!==null&&housing!==null&&raw.other!==null&&rent!==null&&total!==null&&after!==null&&raw.teaching!==null&&raw.work!==null);
+    if(comparisonComplete&&!completedSent){completedSent=true;track('offer_comparison_complete')}
+  };
+  let startedSent=false,completedSent=false;
+  const track=eventName=>{if(hasAnalyticsConsent()&&typeof window.gtag==='function')window.gtag('event',eventName)};
+  const startOnce=()=>{if(startedSent)return;startedSent=true;track('offer_comparison_start')};
+  const exampleValues={'A-salary':'40000','A-salary-months':'10','A-housing':'5000','A-housing-months':'8','A-other':'12000','A-rent':'12000','A-rent-months':'12','A-teaching-hours':'20','A-work-hours':'40','B-salary':'37000','B-salary-months':'12','B-housing':'3000','B-housing-months':'12','B-other':'0','B-rent':'8500','B-rent-months':'12','B-teaching-hours':'24','B-work-hours':'45'};
+  const exampleButton=document.querySelector('[data-offer-example]');
+  const resetButton=document.querySelector('[data-offer-reset]');
+  exampleButton?.addEventListener('click',()=>{
+    startOnce();track('offer_comparison_example');
+    for(const [name,value] of Object.entries(exampleValues)){const input=offerForm.querySelector(`[name="${name}"]`);if(input)input.value=value}
+    const status=document.getElementById('offer-action-status');if(status)status.textContent='Example loaded. Change any values to match your offers.';
+    render();
+  });
+  resetButton?.addEventListener('click',()=>{
+    offerForm.querySelectorAll('input[type="number"]').forEach(input=>{input.value='';input.setAttribute('aria-invalid','false')});
+    offerForm.querySelectorAll('.offer-error').forEach(error=>{error.textContent=''});
+    const status=document.getElementById('offer-action-status');if(status)status.textContent='All fields cleared.';
+    startedSent=false;completedSent=false;render();
+  });
+  offerForm.addEventListener('input',()=>{startOnce();render()});
+  offerForm.addEventListener('change',()=>{startOnce();render()});
+  render();
+}
