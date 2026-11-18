@@ -13,23 +13,31 @@ test('offer comparison works at requested widths and records clear preview scree
   await page.goto(`${base}/offer-comparison/`);
   await expect(page.locator('h1')).toHaveText('Compare two teaching job offers');
   await expect(page.locator('[data-offer-example]')).toBeVisible();
-  await page.getByRole('button',{name:'Try an example'}).click();
-  await expect(page.locator('#result-A-total')).toHaveText('฿452,000');
-  await expect(page.locator('#result-B-total')).toHaveText('฿480,000');
-  await expect(page.locator('#after-difference')).toContainText('฿70,000 more for Offer B');
-  await expect(page.locator('#hours-comparison')).toContainText('20 teaching / 40 total');
-  const eventNames=await page.evaluate(()=>window.__offerEvents.map(event=>event[1]));
-  expect(eventNames).toEqual(['offer_comparison_start','offer_comparison_example','offer_comparison_complete']);
-  const eventArgs=await page.evaluate(()=>window.__offerEvents);
-  expect(eventArgs.every(event=>event.length===2)).toBe(true);
   expect(await page.locator('#offer-comparison-form input').evaluateAll(inputs=>inputs.every(input=>input.type==='number'&&input.inputMode==='decimal'&&input.labels.length===1))).toBe(true);
   for(const width of widths){
+    await page.getByRole('button',{name:'Reset'}).click();
     await page.setViewportSize({width,height:900});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`horizontal overflow at ${width}px`).toBe(true);
     await expect(page.locator('[name="A-salary"]')).toBeVisible();
     await expect(page.locator('#offer-difference')).toBeVisible();
-    const screenshots='qa/previews';await mkdir(screenshots,{recursive:true});
-    await page.screenshot({path:`${screenshots}/offer-comparison-${width}px.png`,fullPage:true});
+    await expect(page.locator('[name="A-salary"]')).toHaveValue('');
+    const screenshots='test-results/screenshots';await mkdir(screenshots,{recursive:true});
+    await page.screenshot({path:`${screenshots}/offer-comparison-${width}px-initial.png`,fullPage:true});
+    await page.getByRole('button',{name:'Try an example'}).click();
+    await expect(page.locator('#result-A-total')).toHaveText('฿452,000');
+    await expect(page.locator('#result-B-total')).toHaveText('฿480,000');
+    await expect(page.locator('#after-difference')).toContainText('฿70,000 more for Offer B');
+    await expect(page.locator('#hours-comparison')).toContainText('20 teaching / 40 total');
+    await page.screenshot({path:`${screenshots}/offer-comparison-${width}px-example.png`,fullPage:true});
+    if(width===320){
+      const eventNames=await page.evaluate(()=>window.__offerEvents.map(event=>event[1]));
+      expect(eventNames).toEqual(['offer_comparison_start','offer_comparison_example','offer_comparison_complete']);
+      const eventArgs=await page.evaluate(()=>window.__offerEvents);
+      expect(eventArgs.every(event=>event.length===2)).toBe(true);
+      await page.locator('[name="A-salary"]').fill('41000');
+      await page.locator('[name="A-salary"]').fill('40000');
+      expect(await page.evaluate(()=>window.__offerEvents.filter(event=>event[1]==='offer_comparison_complete').length)).toBe(1);
+    }
   }
   await page.locator('[name="A-housing"]').fill('0');
   await page.locator('[name="A-housing-months"]').fill('');
@@ -38,7 +46,6 @@ test('offer comparison works at requested widths and records clear preview scree
   await expect(page.locator('#result-A-total')).toContainText('Incomplete');
   await expect(page.locator('[name="A-salary"]')).toHaveValue('');
   await expect(page.locator('.offer-product')).toHaveCount(0);
-  expect(await page.evaluate(()=>window.__offerEvents.filter(event=>event[1]==='offer_comparison_complete').length)).toBe(1);
   expect(dataRequests).toEqual([]);
 });
 
