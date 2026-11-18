@@ -9,6 +9,7 @@ test('offer comparison works at requested widths and records clear preview scree
     window.__offerEvents=[];
     window.gtag=(...args)=>window.__offerEvents.push(args);
   });
+  const dataRequests=[];page.on('request',request=>{if(['xhr','fetch'].includes(request.resourceType()))dataRequests.push(request.url())});
   await page.goto(`${base}/offer-comparison/`);
   await expect(page.locator('h1')).toHaveText('Compare two teaching job offers');
   await expect(page.locator('[data-offer-example]')).toBeVisible();
@@ -21,6 +22,7 @@ test('offer comparison works at requested widths and records clear preview scree
   expect(eventNames).toEqual(['offer_comparison_start','offer_comparison_example','offer_comparison_complete']);
   const eventArgs=await page.evaluate(()=>window.__offerEvents);
   expect(eventArgs.every(event=>event.length===2)).toBe(true);
+  expect(await page.locator('#offer-comparison-form input').evaluateAll(inputs=>inputs.every(input=>input.type==='number'&&input.inputMode==='decimal'&&input.labels.length===1))).toBe(true);
   for(const width of widths){
     await page.setViewportSize({width,height:900});
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`horizontal overflow at ${width}px`).toBe(true);
@@ -36,6 +38,8 @@ test('offer comparison works at requested widths and records clear preview scree
   await expect(page.locator('#result-A-total')).toContainText('Incomplete');
   await expect(page.locator('[name="A-salary"]')).toHaveValue('');
   await expect(page.locator('.offer-product')).toHaveCount(0);
+  expect(await page.evaluate(()=>window.__offerEvents.filter(event=>event[1]==='offer_comparison_complete').length)).toBe(1);
+  expect(dataRequests).toEqual([]);
 });
 
 test('invalid inputs are announced and zero amounts need no payment periods',async({page})=>{
@@ -49,4 +53,24 @@ test('invalid inputs are announced and zero amounts need no payment periods',asy
   await expect(page.locator('#A-salary-error')).toContainText('0 or a positive');
   await expect(page.locator('[name="A-salary"]')).toHaveAttribute('aria-invalid','true');
   await expect(page.locator('.offer-product')).toHaveCount(0);
+});
+
+
+test('analytics respects denial and JavaScript-disabled users can still read guidance',async({browser})=>{
+  const denied=await browser.newPage();
+  await denied.addInitScript(()=>{localStorage.setItem('siamtefl_analytics_consent','denied');window.__offerEvents=[];window.gtag=(...args)=>window.__offerEvents.push(args)});
+  const dataRequests=[];denied.on('request',request=>{if(['xhr','fetch'].includes(request.resourceType()))dataRequests.push(request.url())});
+  await denied.goto(`${base}/offer-comparison/`);
+  await denied.locator('[name="A-salary"]').fill('35000');
+  await denied.getByRole('button',{name:'Try an example'}).click();
+  expect(await denied.evaluate(()=>window.__offerEvents)).toEqual([]);
+  expect(dataRequests).toEqual([]);
+  await denied.close();
+  const noScript=await browser.newPage();await noScript.setJavaScriptEnabled(false);await noScript.goto(`${base}/offer-comparison/`);
+  await expect(noScript.locator('h1')).toHaveText('Compare two teaching job offers');
+  await expect(noScript.locator('.offer-noscript')).toContainText('JavaScript is required to calculate');
+  await expect(noScript.getByText('Annual salary = monthly salary × salary paid months per year.')).toBeVisible();
+  await expect(noScript.locator('[name="A-salary"]')).toBeVisible();
+  await expect(noScript.locator('.offer-product')).toHaveCount(0);
+  await noScript.close();
 });
