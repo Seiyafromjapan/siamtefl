@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import vm from 'node:vm';
+const source=await readFile('src/app.js','utf8');
+const logic=source.slice(source.indexOf('// Thailand teaching job offer comparison MVP:'));
+const names=['salary','salary-months','housing','housing-months','other','rent','rent-months','teaching-hours','work-hours'];
+const inputs=new Map(),nodes=new Map();
+for(const offer of ['A','B'])for(const key of names){const name=`${offer}-${key}`;inputs.set(name,{value:'',attributes:{},setAttribute(k,v){this.attributes[k]=v}});nodes.set(`${name}-error`,{textContent:''})}
+const form={handlers:{},querySelector(selector){const match=selector.match(/name="([^"]+)"/);return match?inputs.get(match[1]):null},addEventListener(type,fn){this.handlers[type]=fn}};
+const document={querySelector(selector){return selector==='#offer-comparison-form'?form:null},getElementById(id){if(!nodes.has(id))nodes.set(id,{textContent:''});return nodes.get(id)}};
+vm.runInNewContext(logic,{document,Intl,Number,Math,String,Boolean,console});
+const set=(key,value)=>{inputs.get(key).value=value;form.handlers.input()};
+const out=id=>nodes.get(id).textContent;
+assert.match(out('result-A-total'),/Incomplete/);
+for(const [k,v] of Object.entries({'A-salary':'40000','A-salary-months':'10','A-housing':'5000','A-housing-months':'8','A-other':'12000','A-rent':'12000','A-rent-months':'12','A-teaching-hours':'20','A-work-hours':'40','B-salary':'37000','B-salary-months':'12','B-housing':'3000','B-housing-months':'12','B-other':'0','B-rent':'8500','B-rent-months':'12','B-teaching-hours':'24','B-work-hours':'45'}))set(k,v);
+for(const [id,value] of Object.entries({'result-A-salary':'฿400,000','result-A-allowances':'฿52,000','result-A-total':'฿452,000','result-A-rent':'฿144,000','result-A-after':'฿308,000','result-B-salary':'฿444,000','result-B-allowances':'฿36,000','result-B-total':'฿480,000','result-B-rent':'฿102,000','result-B-after':'฿378,000'}))assert.equal(out(id),value);
+assert.match(out('offer-difference'),/฿28,000 more for Offer B/);assert.match(out('rent-difference'),/฿42,000 more for Offer A/);assert.match(out('after-difference'),/฿70,000 more for Offer B/);
+set('B-other','');assert.match(out('result-B-total'),/Incomplete/);set('B-other','0');assert.equal(out('result-B-total'),'฿480,000');
+set('A-salary','-1');assert.match(out('A-salary-error'),/0 or a positive/);assert.equal(inputs.get('A-salary').attributes['aria-invalid'],'true');
+set('A-salary','40000');set('A-salary-months','13');assert.match(out('A-salary-months-error'),/no more than 12/);set('A-salary-months','10');
+set('A-teaching-hours','42.25');assert.match(out('A-work-hours-error'),/at least as high/);set('A-teaching-hours','20');
+set('A-housing-months','3.5');assert.equal(out('result-A-allowances'),'฿29,500');set('A-housing-months','8');
+set('A-salary','100000001');assert.match(out('A-salary-error'),/up to 100,000,000/);
+console.log('Calculation and validation checks passed for fictional offers, blank vs 0, pay periods, rent, decimals, negative, over-12-month, oversized amount and weekly-hour consistency.');
