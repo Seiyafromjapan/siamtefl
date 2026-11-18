@@ -276,11 +276,33 @@ if(offerForm){
       set(prefix+'total',total===null?'Incomplete — enter salary, pay periods and confirmed allowances':money(total));set(prefix+'rent',rent===null?'Incomplete — rent or rent months not entered':money(rent));
       set(prefix+'after',after===null?'Incomplete — complete all amounts and payment periods':money(after));set(prefix+'teaching',raw.teaching===null?'Not entered':`${raw.teaching} hrs / week`);set(prefix+'work',raw.work===null?'Not entered':`${raw.work} hrs / week`);
       set(prefix+'status',valid?'':'Check highlighted inputs before relying on this offer’s results.');
-      set(prefix+'periods',`Salary: ${raw.salary===0?'0':raw.salaryMonths===null?'not entered':raw.salaryMonths} paid months · Housing allowance: ${raw.housing===0?'0':raw.housingMonths===null?'not entered':raw.housingMonths} paid months`);
+      const salaryPeriod=raw.salaryMonths===null?(raw.salary===0?'not needed (salary is 0)':'not entered'):raw.salaryMonths;const housingPeriod=raw.housingMonths===null?(raw.housing===0?'not needed (allowance is 0)':'not entered'):raw.housingMonths;set(prefix+'periods',`Salary paid months: ${salaryPeriod} · Housing allowance paid months: ${housingPeriod}`);
     });
     const compare=(key,label)=>{const a=data[0],b=data[1],x=a[key],y=b[key];if(!a.valid||!b.valid||x===null||y===null)return `${label}: Cannot compare yet — complete both offers.`;const delta=y-x;return `${label}: ${delta===0?'No difference':`${money(Math.abs(delta))} ${delta>0?'more for Offer B':'more for Offer A'}`}.`};
     set('offer-difference',compare('total','Annual salary + allowances'));set('rent-difference',compare('rent','Annual rent'));set('after-difference',compare('after','Amount after rent'));
     set('hours-comparison',`Offer A: ${data[0].valid?(data[0].raw.teaching===null?'Not entered':`${data[0].raw.teaching} teaching`)+` / ${data[0].raw.work===null?'Not entered':`${data[0].raw.work} total`} hrs per week`:'Needs correction'} · Offer B: ${data[1].valid?(data[1].raw.teaching===null?'Not entered':`${data[1].raw.teaching} teaching`)+` / ${data[1].raw.work===null?'Not entered':`${data[1].raw.work} total`} hrs per week`:'Needs correction'}`);
+    const comparisonComplete=data.every(({raw,salary,housing,rent,total,after,valid})=>valid&&salary!==null&&housing!==null&&raw.other!==null&&rent!==null&&total!==null&&after!==null&&raw.teaching!==null&&raw.work!==null);
+    if(comparisonComplete&&!completedSent){completedSent=true;track('offer_comparison_complete')}
   };
-  offerForm.addEventListener('input',render);offerForm.addEventListener('change',render);render();
+  let startedSent=false,completedSent=false;
+  const track=eventName=>{if(hasAnalyticsConsent()&&typeof window.gtag==='function')window.gtag('event',eventName)};
+  const startOnce=()=>{if(startedSent)return;startedSent=true;track('offer_comparison_start')};
+  const exampleValues={'A-salary':'40000','A-salary-months':'10','A-housing':'5000','A-housing-months':'8','A-other':'12000','A-rent':'12000','A-rent-months':'12','A-teaching-hours':'20','A-work-hours':'40','B-salary':'37000','B-salary-months':'12','B-housing':'3000','B-housing-months':'12','B-other':'0','B-rent':'8500','B-rent-months':'12','B-teaching-hours':'24','B-work-hours':'45'};
+  const exampleButton=document.querySelector('[data-offer-example]');
+  const resetButton=document.querySelector('[data-offer-reset]');
+  exampleButton?.addEventListener('click',()=>{
+    startOnce();track('offer_comparison_example');
+    for(const [name,value] of Object.entries(exampleValues)){const input=offerForm.querySelector(`[name="${name}"]`);if(input)input.value=value}
+    const status=document.getElementById('offer-action-status');if(status)status.textContent='Example loaded. Change any values to match your offers.';
+    render();
+  });
+  resetButton?.addEventListener('click',()=>{
+    offerForm.querySelectorAll('input[type="number"]').forEach(input=>{input.value='';input.setAttribute('aria-invalid','false')});
+    offerForm.querySelectorAll('.offer-error').forEach(error=>{error.textContent=''});
+    const status=document.getElementById('offer-action-status');if(status)status.textContent='All fields cleared.';
+    startedSent=false;completedSent=false;render();
+  });
+  offerForm.addEventListener('input',()=>{startOnce();render()});
+  offerForm.addEventListener('change',()=>{startOnce();render()});
+  render();
 }
