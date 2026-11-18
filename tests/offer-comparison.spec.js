@@ -73,11 +73,12 @@ test('analytics respects denial and JavaScript-disabled users can still read gui
   expect(await denied.evaluate(()=>window.__offerEvents)).toEqual([]);
   expect(dataRequests).toEqual([]);
   await denied.close();
-  const noScript=await browser.newPage();await noScript.setJavaScriptEnabled(false);await noScript.goto(`${base}/offer-comparison/`);
+  const noScriptContext=await browser.newContext({javaScriptEnabled:false});
+  const noScript=await noScriptContext.newPage();await noScript.goto(`${base}/offer-comparison/`);
   await expect(noScript.locator('h1')).toHaveText('Compare two teaching job offers');
   await expect(noScript.locator('.offer-noscript')).toContainText('JavaScript is required to calculate');
   await expect(noScript.getByText('Annual salary = monthly salary × salary paid months per year.')).toBeVisible();
   await expect(noScript.locator('[name="A-salary"]')).toBeVisible();
   await expect(noScript.locator('.offer-product')).toHaveCount(0);
-  await noScript.close();
+  await noScriptContext.close();
 });
