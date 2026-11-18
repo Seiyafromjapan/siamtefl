@@ -20,6 +20,7 @@ test('offer comparison works at requested widths and records clear preview scree
     expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`horizontal overflow at ${width}px`).toBe(true);
     await expect(page.locator('[name="A-salary"]')).toBeVisible();
     await expect(page.locator('#offer-difference')).toBeVisible();
+    if(width===768)expect((await page.locator('[name="A-salary"]').boundingBox()).width).toBeGreaterThan(250);
     await expect(page.locator('[name="A-salary"]')).toHaveValue('');
     const screenshots='test-results/screenshots';await mkdir(screenshots,{recursive:true});
     await page.screenshot({path:`${screenshots}/offer-comparison-${width}px-initial.png`,fullPage:true});
